@@ -76,17 +76,33 @@ h2 { font-size: 15px; margin: 0; color: var(--brand); font-weight: 700; letter-s
 .muted { color: var(--muted); font-size: 14px; margin: 0; }
 p { margin: 0; }
 
-.langs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.lang { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 16px 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-height: 76px; }
-.lang b { font-size: 20px; font-weight: 700; }
-.lang:first-child { grid-column: 1 / -1; min-height: 60px; }
-.lang span { font-size: 13px; color: var(--muted); }
+.langs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.lang { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 68px; transition: border-color .15s, background .15s; }
+.lang b { font-size: 18px; font-weight: 700; line-height: 1.3; }
+.lang span { font-size: 12px; color: var(--muted); }
+.lang:hover, .lang:focus-visible { border-color: var(--sel); }
+
+/* First-page banner */
+.bar.is-hero { position: relative; top: auto; overflow: hidden; padding-block: 26px 30px; }
+.bar.is-hero .bar-row { display: none; }
+.hero { position: relative; display: flex; flex-direction: column; gap: 16px; }
+.hero .brand .bird { width: 50px; height: 36px; }
+.hero .brand .eco { font-size: 38px; }
+.hero .brand .mob { font-size: 12px; letter-spacing: 9px; margin-top: 6px; }
+.hello { margin: 0; font-size: 15px; line-height: 1.75; font-weight: 600; max-width: 30em; }
+.hello span { white-space: nowrap; }
+.hello span:not(:last-child)::after { content: " ·"; opacity: .55; }
+.hero h1 { font-size: 27px; line-height: 1.2; color: var(--brand-ink); }
+.hero .sub { margin: 4px 0 0; font-size: 15px; opacity: .9; }
+.hero-mark { position: absolute; right: -50px; bottom: -40px; width: 230px; height: 170px; opacity: .12; pointer-events: none; }
+.lede { display: flex; flex-direction: column; gap: 4px; }
+.lede p { margin: 0; }
+.lede .facts { margin-top: 8px; }
 .lang[aria-pressed="true"] { border-color: var(--sel); background: var(--brand-soft); }
 
 .welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.intro { display: flex; flex-direction: column; gap: 2px; }
-.pick { font-size: 19px; font-weight: 700; margin: 0; }
-.pick span { font-size: 16px; font-weight: 600; color: var(--muted); }
+.pick { font-size: 17px; font-weight: 700; margin: 6px 0 0; color: var(--fg); }
+.pick span { font-weight: 600; color: var(--muted); }
 .welcome h1 { font-size: 21px; }
 .tag { font-size: 24px; font-weight: 700; color: var(--brand); line-height: 1.2; }
 :root:not([data-theme="light"]) .tag { color: var(--sel); }
@@ -145,6 +161,7 @@ textarea:focus { border-color: var(--sel); outline: none; }
       <div class="brand" aria-label="ECO Mobility"><span class="logo"><svg class="bird" viewBox="90 630 540 390" aria-hidden="true"><path fill="currentColor" d="M98 875C110 855 118 838 122 825C135 790 160 775 190 790C200 795 205 808 220 815C232 820 245 818 240 812C225 800 210 793 200 788C175 775 168 755 172 740C180 690 250 642 350 642C430 642 500 660 540 672C470 668 360 672 330 720C305 760 340 822 405 822C450 822 520 805 572 780C500 840 420 900 360 920C300 942 260 945 230 940C200 935 178 915 157 885C150 875 135 873 125 874Z"/><path fill="currentColor" d="M276 958C320 948 360 935 382 918C410 945 440 957 470 956C520 955 590 935 622 921C580 965 510 1008 440 1010C400 1011 360 1012 330 1003C310 996 295 975 276 958Z"/></svg><span class="eco">ECO</span></span><span class="mob">MOBILITY</span><small id="barSub">Vendor Experience Survey</small></div>
       <button class="lang-btn" id="langBtn" type="button" hidden>अ / A</button>
     </div>
+    <div class="hero" id="hero" hidden></div>
     <div id="prog" hidden>
       <div class="progress"><i id="progFill" style="width:0"></i></div>
       <div class="step" id="stepTxt"></div>
@@ -480,6 +497,8 @@ function render() {
   document.documentElement.lang = S.lang || "en";
   document.getElementById("barSub").textContent = L.title;
   document.getElementById("langBtn").hidden = S.screen === "lang";
+  document.querySelector(".bar").classList.toggle("is-hero", S.screen === "lang");
+  document.getElementById("hero").hidden = S.screen !== "lang";
   const inQ = S.screen === "q";
   document.getElementById("prog").hidden = !inQ;
   if (inQ) {
@@ -490,13 +509,26 @@ function render() {
   window.scrollTo(0, 0);
 }
 
+// "Welcome" in each survey language, for the first-page banner.
+const HELLO = ["Welcome", "स्वागत", "ਜੀ ਆਇਆਂ ਨੂੰ", "স্বাগতম", "আদৰণি", "ସ୍ୱାଗତ", "வணக்கம்", "స్వాగతం", "ಸ್ವಾಗತ", "സ്വാഗതം"];
+
 function renderLang() {
+  const bird = document.querySelector(".bar .bird").outerHTML;
+  document.getElementById("hero").innerHTML = `
+    ${bird.replace('class="bird"', 'class="hero-mark"')}
+    <div class="brand" aria-label="ECO Mobility"><span class="logo">${bird}<span class="eco">ECO</span></span><span class="mob">MOBILITY</span></div>
+    <p class="hello">${HELLO.map(w => `<span>${w}</span>`).join(" ")}</p>
+    <div>
+      <h1>Vendor Experience Survey</h1>
+      <p class="sub">${T.en.tagline}</p>
+    </div>`;
   $view.innerHTML = `
-    <section class="intro">
-      <div class="tag">${T.en.tagline}</div>
-      <p class="muted">${T.hi.tagline}</p>
+    <section class="lede">
+      <p><b>Help us serve you better.</b> Tell us how we are doing on payments, support and training.</p>
+      <p class="muted" lang="hi">हमें बेहतर सेवा देने में मदद करें। भुगतान, सहयोग और प्रशिक्षण पर अपनी राय दें।</p>
+      <div class="facts"><span class="chip">2 min · 2 मिनट</span><span class="chip">8 questions · 8 प्रश्न</span></div>
     </section>
-    <h1 class="pick">Choose your language to begin<br><span lang="hi">शुरू करने के लिए अपनी भाषा चुनें</span></h1>
+    <h2 class="pick">Choose your language · <span lang="hi">अपनी भाषा चुनें</span></h2>
     <div class="langs" role="group" aria-label="Language">
       ${LANGS.map(([k, n, e]) => `<button type="button" class="lang" data-lang="${k}" aria-pressed="${S.lang === k}"><b>${n}</b><span>${e}</span></button>`).join("")}
     </div>`;
