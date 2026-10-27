@@ -15,12 +15,14 @@ function validate(b) {
     name: text(b.name, 100),
     chauffeurId: text(b.chauffeurId, 40),
     mobile: text(b.mobile, 10),
+    vehicleNumber: text(b.vehicleNumber, 12).toUpperCase(),
     language: text(b.language, 20),
     suggestion: text(b.suggestion, 1000),
   };
   if (!row.name) return ["name is required"];
   if (!row.chauffeurId) return ["chauffeurId is required"];
   if (!/^[6-9]\d{9}$/.test(row.mobile)) return ["mobile must be a 10-digit Indian mobile number"];
+  if (!/^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{1,4}|\d{2}BH\d{4}[A-Z]{1,2})$/.test(row.vehicleNumber)) return ["vehicleNumber must be a vehicle registration number like MH12AB1234"];
   if (!LANGUAGES.includes(row.language)) return ["unknown language"];
   for (let i = 1; i <= 5; i++) {
     if (!isInt(b["q" + i], 1, 5)) return [`q${i} must be 1-5`];

@@ -469,6 +469,28 @@ const DETAILS = {
 };
 for (const k in DETAILS) DETAIL_KEYS.forEach((key, i) => { T[k][key] = DETAILS[k][i]; });
 
+// Vehicle number field: [label, error]
+const VEHICLE = {
+  en: ["Vehicle number", "Enter a valid vehicle number, e.g. MH12AB1234"],
+  hi: ["वाहन नंबर", "सही वाहन नंबर डालें, जैसे MH12AB1234"],
+  mr: ["वाहन क्रमांक", "योग्य वाहन क्रमांक टाका, उदा. MH12AB1234"],
+  pa: ["ਗੱਡੀ ਨੰਬਰ", "ਸਹੀ ਗੱਡੀ ਨੰਬਰ ਭਰੋ, ਜਿਵੇਂ MH12AB1234"],
+  bn: ["গাড়ির নম্বর", "সঠিক গাড়ির নম্বর দিন, যেমন MH12AB1234"],
+  as: ["গাড়ীৰ নম্বৰ", "শুদ্ধ গাড়ীৰ নম্বৰ দিয়ক, যেনে MH12AB1234"],
+  or: ["ଗାଡ଼ି ନମ୍ବର", "ସଠିକ୍ ଗାଡ଼ି ନମ୍ବର ଦିଅନ୍ତୁ, ଯେପରି MH12AB1234"],
+  ta: ["வாகன எண்", "சரியான வாகன எண்ணை உள்ளிடவும், எ.கா. MH12AB1234"],
+  te: ["వాహన నంబర్", "సరైన వాహన నంబర్ నమోదు చేయండి, ఉదా. MH12AB1234"],
+  kn: ["ವಾಹನ ಸಂಖ್ಯೆ", "ಸರಿಯಾದ ವಾಹನ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ, ಉದಾ. MH12AB1234"],
+  ml: ["വാഹന നമ്പർ", "ശരിയായ വാഹന നമ്പർ നൽകുക, ഉദാ. MH12AB1234"],
+};
+for (const k in VEHICLE) { T[k].fVehicle = VEHICLE[k][0]; T[k].badVehicle = VEHICLE[k][1]; }
+
+// Indian registration number, e.g. MH12AB1234 or 22BH1234AA: returns it without spaces, or null.
+function cleanVehicle(v) {
+  const n = String(v || "").toUpperCase().replace(/[\s.\-]/g, "");
+  return /^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{1,4}|\d{2}BH\d{4}[A-Z]{1,2})$/.test(n) ? n : null;
+}
+
 // Welcome screen: [heading, why we are running the survey]
 const WELCOME = {
   en: ["Welcome to the ECO Mobility Vendor Experience Survey", "This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you."],
@@ -514,7 +536,7 @@ const REPORT_KEYS = ["Q1 Credibility", "Q2 Respect", "Q3 Fairness", "Q4 Pride", 
 const TOTAL = 8; // 7 questions + suggestion
 
 const S = load() || { lang: null, screen: "lang", step: 0, a: {}, sug: "" };
-S.d = S.d || { name: "", id: "", phone: "" };
+S.d = Object.assign({ name: "", id: "", phone: "", vehicle: "" }, S.d);
 if (S.screen === "welcome") S.screen = "lang";
 let showHint = false, showErrs = false;
 
@@ -609,6 +631,7 @@ function detailErrors() {
     name: S.d.name.trim() ? "" : L.req,
     id: S.d.id.trim() ? "" : L.req,
     phone: !S.d.phone.trim() ? L.req : cleanPhone(S.d.phone) ? "" : L.badPhone,
+    vehicle: !S.d.vehicle.trim() ? L.req : cleanVehicle(S.d.vehicle) ? "" : L.badVehicle,
   };
 }
 
@@ -618,6 +641,7 @@ function renderDetails() {
     ["name", L.fName, "text", "name", "text", ""],
     ["id", L.fId, "text", "off", "text", ""],
     ["phone", L.fPhone, "tel", "tel", "numeric", 'maxlength="18" placeholder="98XXXXXXXX"'],
+    ["vehicle", L.fVehicle, "text", "off", "text", 'maxlength="16" autocapitalize="characters" spellcheck="false" placeholder="MH 12 AB 1234" style="text-transform: uppercase"'],
   ];
   $view.innerHTML = `<h2>${L.detTitle}</h2><p class="muted">${L.detNote}</p>
     <div class="fields">
@@ -735,7 +759,7 @@ const SEND_TEXT = {
 
 function payload() {
   const lang = LANGS.find(l => l[0] === S.lang)[2];
-  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), language: lang, suggestion: S.sug.trim() };
+  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), vehicleNumber: cleanVehicle(S.d.vehicle), language: lang, suggestion: S.sug.trim() };
   for (let i = 0; i < 7; i++) out["q" + (i + 1)] = S.a[i];
   return out;
 }
@@ -752,7 +776,7 @@ async function submit() {
     const j = await r.json().catch(() => ({}));
     if (!r.ok || !j.ok) throw new Error(j.error || "HTTP " + r.status);
     // Clear answers so the phone can be handed to the next chauffeur; keep the language.
-    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "" } });
+    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "", vehicle: "" } });
     save(); render();
   } catch (e) {
     $view.querySelectorAll(".hint").forEach(n => n.remove());

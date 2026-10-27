@@ -6,7 +6,7 @@ const SECRET = "CHANGE-ME-to-a-long-random-string"; // must match SHEET_SECRET o
 const SHEET_NAME = "Responses";
 
 const HEADERS = [
-  "Submitted at", "Name", "Chauffeur ID", "Mobile", "Language",
+  "Submitted at", "Name", "Chauffeur ID", "Mobile", "Vehicle Number", "Language",
   "Q1 Credibility (1-5)", "Q2 Respect (1-5)", "Q3 Fairness (1-5)", "Q4 Pride (1-5)", "Q5 Camaraderie (1-5)",
   "Q6 Training (1-5)", "Q7 NPS (0-10)", "Suggestion",
 ];
@@ -25,16 +25,14 @@ function doPost(e) {
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
-      sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold");
-      sheet.setFrozenRows(1);
-    }
-    const row = sheet.getLastRow() + 1;
-    // Keep Chauffeur ID and Mobile as text so leading zeros survive.
-    sheet.getRange(row, 3, 1, 2).setNumberFormat("@");
+    // Row 1 always holds the current headings, so added columns show up.
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight("bold");
+    sheet.setFrozenRows(1);
+    const row = Math.max(sheet.getLastRow() + 1, 2);
+    // Keep Chauffeur ID, Mobile and Vehicle Number as text so leading zeros survive.
+    sheet.getRange(row, 3, 1, 3).setNumberFormat("@");
     sheet.getRange(row, 1, 1, HEADERS.length).setValues([[
-      new Date(), body.name, body.chauffeurId, body.mobile, body.language,
+      new Date(), body.name, body.chauffeurId, body.mobile, body.vehicleNumber || "", body.language,
       body.q1, body.q2, body.q3, body.q4, body.q5, body.q6, body.q7, body.suggestion || "",
     ]]);
   } finally {
