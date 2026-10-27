@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#d50019">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>ECO Mobility – Vendor Experience Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: single-column phone app — ECO red app bar with wordmark, one question per screen, sticky bottom action bar */
+:root {
+  --bg: #f7f4f4;
+  --surface: #ffffff;
+  --fg: #1d1213;
+  --muted: #6b5d5e;
+  --line: #e6dcdc;
+  --brand: #d50019;
+  --brand-ink: #ffffff;
+  --brand-soft: #fde8ea;
+  --sel: #d50019;
+  --bad: #c2412d;
+  --mid: #c98a12;
+  --good: #1f8a4c;
+  --wa: #1fa855;
+  --font-body: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-brand: "Archivo Black", "Arial Black", "Noto Sans", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151011; --surface: #201819; --fg: #f3eaea; --muted: #b3a2a3; --line: #3a2c2d;
+    --brand: #c00017; --brand-ink: #ffffff; --brand-soft: #3a1a1d; --sel: #ff5a69;
+    --bad: #e36a55; --mid: #e0a83a; --good: #45b876; --wa: #25c264; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151011; --surface: #201819; --fg: #f3eaea; --muted: #b3a2a3; --line: #3a2c2d;
+  --brand: #c00017; --brand-ink: #ffffff; --brand-soft: #3a1a1d; --sel: #ff5a69;
+  --bad: #e36a55; --mid: #e0a83a; --good: #45b876; --wa: #25c264; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.5; -webkit-tap-highlight-color: transparent; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--brand); }
+button { font: inherit; color: inherit; }
+button:focus-visible, textarea:focus-visible { outline: 3px solid var(--sel); outline-offset: 2px; }
+
+.app { max-width: 520px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--brand); color: var(--brand-ink);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px; }
+.bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; flex-direction: column; line-height: 1; min-width: 0; }
+.brand .logo { display: flex; align-items: center; gap: 4px; }
+.brand .bird { width: 34px; height: 25px; flex: none; }
+.brand .eco { font-family: var(--font-brand); font-size: 26px; letter-spacing: .5px; }
+.brand .mob { font-family: Arial, "Helvetica Neue", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 6.2px; margin-top: 4px; }
+.fields { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 15px; }
+.field input { width: 100%; min-height: 54px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); padding: 0 14px; font: inherit; font-size: 18px; font-weight: 500; }
+.field input:focus { border-color: var(--sel); outline: none; }
+.field input[aria-invalid="true"] { border-color: var(--bad); }
+.err { color: var(--bad); font-style: normal; font-size: 14px; }
+.brand small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 12px; opacity: .9; margin-top: 6px; letter-spacing: .3px; }
+.lang-btn { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); color: var(--brand-ink); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.progress { margin-top: 12px; height: 6px; background: rgba(255,255,255,.22); border-radius: 99px; overflow: hidden; }
+.progress > i { display: block; height: 100%; background: var(--brand-ink); border-radius: 99px; transition: width .3s ease; }
+.step { font-size: 13px; margin-top: 6px; opacity: .9; font-variant-numeric: tabular-nums; }
+
+main { flex: 1; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 24px; display: flex; flex-direction: column; gap: 18px; }
+h1 { font-size: 24px; line-height: 1.3; margin: 0; text-wrap: balance; }
+h2 { font-size: 15px; margin: 0; color: var(--brand); font-weight: 700; letter-spacing: .2px; }
+:root:not([data-theme="light"]) h2 { color: var(--sel); }
+.qtext { font-size: 20px; font-weight: 600; line-height: 1.45; margin: 0; text-wrap: pretty; }
+.muted { color: var(--muted); font-size: 14px; margin: 0; }
+p { margin: 0; }
+
+.langs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lang { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 16px 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-height: 76px; }
+.lang b { font-size: 20px; font-weight: 700; }
+.lang:first-child { grid-column: 1 / -1; min-height: 60px; }
+.lang span { font-size: 13px; color: var(--muted); }
+.lang[aria-pressed="true"] { border-color: var(--sel); background: var(--brand-soft); }
+
+.welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.tag { font-size: 24px; font-weight: 700; color: var(--brand); line-height: 1.2; }
+:root:not([data-theme="light"]) .tag { color: var(--sel); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) h2, :root:not([data-theme="dark"]) .tag { color: var(--brand); } }
+:root[data-theme="light"] h2, :root[data-theme="light"] .tag { color: var(--brand); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--brand-soft); border-radius: 99px; padding: 4px 12px; font-size: 13px; font-weight: 600; }
+
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; cursor: pointer; text-align: left; min-height: 60px; transition: border-color .15s, background .15s; }
+.opt .n { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 18px; border: 2px solid var(--c, var(--line)); color: var(--c, var(--fg)); font-family: "Noto Sans", system-ui, sans-serif; }
+.opt .l { font-size: 17px; font-weight: 500; }
+.opt[aria-checked="true"] { border-color: var(--sel); background: var(--brand-soft); }
+.opt[aria-checked="true"] .n { background: var(--c); color: #fff; border-color: var(--c); }
+
+.row5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.nps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.sq { aspect-ratio: 1; max-width: 100%; border-radius: 12px; border: 2px solid var(--line); background: var(--surface); font-weight: 700; font-size: 20px; cursor: pointer; font-family: "Noto Sans", system-ui, sans-serif; color: var(--c, var(--fg)); }
+.sq[aria-checked="true"] { background: var(--c); border-color: var(--c); color: #fff; }
+.ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); font-weight: 500; }
+.ends span:last-child { text-align: right; }
+.or { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+.or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.alt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.alt .opt { justify-content: center; text-align: center; padding: 12px 10px; }
+.alt .opt .l { font-size: 15px; }
+
+textarea { width: 100%; min-height: 150px; resize: vertical; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); padding: 14px; font: inherit; font-size: 17px; }
+textarea:focus { border-color: var(--sel); outline: none; }
+
+.hint { color: var(--bad); font-size: 14px; font-weight: 600; }
+
+.actions { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); display: flex; gap: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
+.btn { flex: 1; min-height: 54px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-weight: 700; font-size: 17px; cursor: pointer; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); flex: 2; }
+.btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+.btn[disabled] { opacity: .45; cursor: default; }
+
+.done { text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center; padding-top: 8px; }
+.tick { width: 72px; height: 72px; border-radius: 50%; background: var(--brand-soft); display: grid; place-items: center; }
+.tick svg { width: 40px; height: 40px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; width: 100%; text-align: left; }
+.summary { margin: 0; white-space: pre-wrap; font-size: 13px; line-height: 1.55; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 12px; font-family: ui-monospace, Menlo, monospace; overflow-wrap: anywhere; user-select: text; }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.foot { text-align: center; font-weight: 700; color: var(--muted); font-size: 15px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <div class="bar-row">
+      <div class="brand" aria-label="ECO Mobility"><span class="logo"><svg class="bird" viewBox="90 630 540 390" aria-hidden="true"><path fill="currentColor" d="M98 875C110 855 118 838 122 825C135 790 160 775 190 790C200 795 205 808 220 815C232 820 245 818 240 812C225 800 210 793 200 788C175 775 168 755 172 740C180 690 250 642 350 642C430 642 500 660 540 672C470 668 360 672 330 720C305 760 340 822 405 822C450 822 520 805 572 780C500 840 420 900 360 920C300 942 260 945 230 940C200 935 178 915 157 885C150 875 135 873 125 874Z"/><path fill="currentColor" d="M276 958C320 948 360 935 382 918C410 945 440 957 470 956C520 955 590 935 622 921C580 965 510 1008 440 1010C400 1011 360 1012 330 1003C310 996 295 975 276 958Z"/></svg><span class="eco">ECO</span></span><span class="mob">MOBILITY</span><small id="barSub">Vendor Experience Survey</small></div>
+      <button class="lang-btn" id="langBtn" type="button" hidden>अ / A</button>
+    </div>
+    <div id="prog" hidden>
+      <div class="progress"><i id="progFill" style="width:0"></i></div>
+      <div class="step" id="stepTxt"></div>
+    </div>
+  </header>
+  <main id="view" aria-live="polite"></main>
+  <div class="actions" id="actions"></div>
+</div>
+
+<script>
+const LANGS = [
+  ["en", "English", "English"],
+  ["hi", "हिंदी", "Hindi"],
+  ["mr", "मराठी", "Marathi"],
+  ["pa", "ਪੰਜਾਬੀ", "Punjabi"],
+  ["bn", "বাংলা", "Bengali"],
+  ["as", "অসমীয়া", "Assamese"],
+  ["or", "ଓଡ଼ିଆ", "Odia"],
+  ["ta", "தமிழ்", "Tamil"],
+  ["te", "తెలుగు", "Telugu"],
+  ["kn", "ಕನ್ನಡ", "Kannada"],
+  ["ml", "മലയാളം", "Malayalam"],
+];
+
+// Each language: ui strings, agree scale, and q[] = [heading, statement] for Q1–Q7.
+const T = {
+en: {
+  title: "Vendor Experience Survey", tagline: "Your Partnership. Your Voice.", greet: "Dear Valued Partner,",
+  intro: "At ECO Mobility, we value your partnership. Your feedback will help us strengthen trust, improve our services and build better relationships.",
+  start: "Start Survey", time: "About 2 minutes", qs: "8 short questions", choose: "Choose your language",
+  scale: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+  q: [
+    ["Credibility – Trust & Transparency", "ECO Mobility ensures timely payments and maintains transparency in billing and payment processes."],
+    ["Respect – Valuing Partners", "My concerns and suggestions are heard, addressed and valued by ECO Mobility."],
+    ["Fairness – Equal Opportunities", "ECO Mobility allocates vehicle business opportunities fairly and transparently."],
+    ["Pride – Association with ECO", "I feel proud to be associated with ECO Mobility as a vehicle partner."],
+    ["Camaraderie – Working Relationships", "I receive cooperation and support from my ECO Mobility Branch Team."],
+    ["Chauffeur Training & Development", "How useful are the chauffeur training programmes conducted by ECO Mobility in improving chauffeur skills and service quality?"],
+    ["Overall Recommendation", "How likely are you to recommend ECO Mobility to other vehicle owners as a company to attach their vehicles with?"],
+  ],
+  rateAgree: "Tap one: how much do you agree?", notUseful: "Not Useful", veryUseful: "Very Useful", notAttended: "Have Not Attended Training", notSure: "Not Sure", or: "or",
+  npsLow: "0 – Not at all likely", npsHigh: "10 – Extremely likely",
+  sugTitle: "Your Suggestions", optional: "Optional", sugQ: "What is one thing ECO Mobility should improve?", sugPh: "Type here…",
+  next: "Next", back: "Back", submit: "Submit", skip: "Skip & Submit", progress: "Question {n} of {t}", pick: "Please select an answer to continue",
+  thanks: "Thank you for your valuable feedback!", footer: "ECO Mobility – Moving Forward, Together.",
+  sendTitle: "One last step: send your answers", sendBody: "Tap the green button to send your answers on WhatsApp.",
+  wa: "Send on WhatsApp", copy: "Copy answers", copied: "Copied", edit: "Change answers",
+},
+hi: {
+  title: "वेंडर अनुभव सर्वेक्षण", tagline: "आपकी साझेदारी। आपकी आवाज़।", greet: "प्रिय सम्मानित साझेदार,",
+  intro: "ECO Mobility में हम आपकी साझेदारी को महत्व देते हैं। आपकी राय से हमें भरोसा मज़बूत करने, अपनी सेवाएँ बेहतर बनाने और बेहतर संबंध बनाने में मदद मिलेगी।",
+  start: "सर्वे शुरू करें", time: "लगभग 2 मिनट", qs: "8 छोटे प्रश्न", choose: "अपनी भाषा चुनें",
+  scale: ["पूरी तरह असहमत", "असहमत", "तटस्थ", "सहमत", "पूरी तरह सहमत"],
+  q: [
+    ["विश्वसनीयता – भरोसा और पारदर्शिता", "ECO Mobility समय पर भुगतान करता है और बिलिंग व भुगतान प्रक्रिया में पारदर्शिता रखता है।"],
+    ["सम्मान – साझेदारों की कद्र", "मेरी समस्याओं और सुझावों को ECO Mobility सुनता है, उनका समाधान करता है और उन्हें महत्व देता है।"],
+    ["निष्पक्षता – समान अवसर", "ECO Mobility वाहन व्यवसाय के अवसर निष्पक्ष और पारदर्शी तरीके से देता है।"],
+    ["गर्व – ECO से जुड़ाव", "मुझे वाहन पार्टनर के रूप में ECO Mobility से जुड़े होने पर गर्व है।"],
+    ["आपसी सहयोग – कामकाजी संबंध", "मुझे अपनी ECO Mobility ब्रांच टीम से सहयोग और समर्थन मिलता है।"],
+    ["चालक प्रशिक्षण और विकास", "ECO Mobility द्वारा आयोजित चालक प्रशिक्षण कार्यक्रम, चालकों के कौशल और सेवा की गुणवत्ता सुधारने में कितने उपयोगी हैं?"],
+    ["कुल मिलाकर सिफ़ारिश", "आप दूसरे वाहन मालिकों को ECO Mobility के साथ अपने वाहन जोड़ने की सलाह देने की कितनी संभावना रखते हैं?"],
+  ],
+  rateAgree: "एक चुनें: आप कितना सहमत हैं?", notUseful: "उपयोगी नहीं", veryUseful: "बहुत उपयोगी", notAttended: "प्रशिक्षण में भाग नहीं लिया", notSure: "पक्का नहीं पता", or: "या",
+  npsLow: "0 – बिल्कुल संभावना नहीं", npsHigh: "10 – बहुत अधिक संभावना",
+  sugTitle: "आपके सुझाव", optional: "वैकल्पिक", sugQ: "ECO Mobility को कौन-सी एक चीज़ में सुधार करना चाहिए?", sugPh: "यहाँ लिखें…",
+  next: "आगे", back: "पीछे", submit: "जमा करें", skip: "छोड़ें और जमा करें", progress: "प्रश्न {n} / {t}", pick: "आगे बढ़ने के लिए कृपया एक उत्तर चुनें",
+  thanks: "आपकी बहुमूल्य राय के लिए धन्यवाद!", footer: "ECO Mobility – साथ मिलकर आगे बढ़ें।",
+  sendTitle: "आख़िरी कदम: अपने उत्तर भेजें", sendBody: "हरे बटन को दबाकर अपने उत्तर WhatsApp पर भेजें।",
+  wa: "WhatsApp पर भेजें", copy: "उत्तर कॉपी करें", copied: "कॉपी हो गया", edit: "उत्तर बदलें",
+},
+mr: {
+  title: "व्हेंडर अनुभव सर्वेक्षण", tagline: "तुमची भागीदारी. तुमचा आवाज.", greet: "प्रिय सन्माननीय भागीदार,",
+  intro: "ECO Mobility मध्ये आम्ही तुमच्या भागीदारीला महत्त्व देतो. तुमच्या अभिप्रायामुळे आम्हाला विश्वास दृढ करण्यास, आमच्या सेवा सुधारण्यास आणि अधिक चांगले संबंध निर्माण करण्यास मदत होईल.",
+  start: "सर्वेक्षण सुरू करा", time: "सुमारे 2 मिनिटे", qs: "8 छोटे प्रश्न", choose: "तुमची भाषा निवडा",
+  scale: ["पूर्णपणे असहमत", "असहमत", "तटस्थ", "सहमत", "पूर्णपणे सहमत"],
+  q: [
+    ["विश्वासार्हता – विश्वास आणि पारदर्शकता", "ECO Mobility वेळेवर पेमेंट करते आणि बिलिंग व पेमेंट प्रक्रियेत पारदर्शकता ठेवते."],
+    ["आदर – भागीदारांची कदर", "माझ्या अडचणी आणि सूचना ECO Mobility ऐकते, त्यावर कार्यवाही करते आणि त्यांना महत्त्व देते."],
+    ["निष्पक्षता – समान संधी", "ECO Mobility वाहन व्यवसायाच्या संधी निष्पक्ष आणि पारदर्शकपणे देते."],
+    ["अभिमान – ECO शी नाते", "वाहन भागीदार म्हणून ECO Mobility शी जोडलेले असल्याचा मला अभिमान वाटतो."],
+    ["सहकार्य – कामाचे संबंध", "मला माझ्या ECO Mobility शाखा टीमकडून सहकार्य आणि पाठिंबा मिळतो."],
+    ["चालक प्रशिक्षण आणि विकास", "ECO Mobility ने घेतलेले चालक प्रशिक्षण कार्यक्रम चालकांचे कौशल्य आणि सेवेचा दर्जा सुधारण्यासाठी किती उपयुक्त आहेत?"],
+    ["एकूण शिफारस", "इतर वाहन मालकांना ECO Mobility सोबत त्यांची वाहने जोडण्याची शिफारस तुम्ही करण्याची किती शक्यता आहे?"],
+  ],
+  rateAgree: "एक निवडा: तुम्ही किती सहमत आहात?", notUseful: "उपयुक्त नाही", veryUseful: "खूप उपयुक्त", notAttended: "प्रशिक्षणाला उपस्थित नव्हतो", notSure: "निश्चित माहिती नाही", or: "किंवा",
+  npsLow: "0 – अजिबात शक्यता नाही", npsHigh: "10 – खूप जास्त शक्यता",
+  sugTitle: "तुमच्या सूचना", optional: "ऐच्छिक", sugQ: "ECO Mobility ने कोणती एक गोष्ट सुधारली पाहिजे?", sugPh: "इथे लिहा…",
+  next: "पुढे", back: "मागे", submit: "सबमिट करा", skip: "वगळा आणि सबमिट करा", progress: "प्रश्न {n} / {t}", pick: "पुढे जाण्यासाठी कृपया एक उत्तर निवडा",
+  thanks: "तुमच्या मौल्यवान अभिप्रायाबद्दल धन्यवाद!", footer: "ECO Mobility – एकत्र पुढे जाऊया.",
+  sendTitle: "शेवटची पायरी: तुमची उत्तरे पाठवा", sendBody: "हिरवे बटण दाबून तुमची उत्तरे WhatsApp वर पाठवा.",
+  wa: "WhatsApp वर पाठवा", copy: "उत्तरे कॉपी करा", copied: "कॉपी झाले", edit: "उत्तरे बदला",
+},
+ta: {
+  title: "வெண்டர் அனுபவ கணக்கெடுப்பு", tagline: "உங்கள் கூட்டாண்மை. உங்கள் குரல்.", greet: "மதிப்பிற்குரிய கூட்டாளரே,",
+  intro: "ECO Mobility-யில் உங்கள் கூட்டாண்மையை நாங்கள் மதிக்கிறோம். உங்கள் கருத்துகள் நம்பிக்கையை வலுப்படுத்தவும், எங்கள் சேவைகளை மேம்படுத்தவும், சிறந்த உறவுகளை உருவாக்கவும் எங்களுக்கு உதவும்.",
+  start: "கணக்கெடுப்பைத் தொடங்கு", time: "சுமார் 2 நிமிடங்கள்", qs: "8 சிறிய கேள்விகள்", choose: "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்",
+  scale: ["முற்றிலும் உடன்படவில்லை", "உடன்படவில்லை", "நடுநிலை", "உடன்படுகிறேன்", "முற்றிலும் உடன்படுகிறேன்"],
+  q: [
+    ["நம்பகத்தன்மை – நம்பிக்கை & வெளிப்படைத்தன்மை", "ECO Mobility சரியான நேரத்தில் பணம் செலுத்துகிறது; பில்லிங் மற்றும் பணம் செலுத்தும் முறைகளில் வெளிப்படைத்தன்மையைப் பேணுகிறது."],
+    ["மரியாதை – கூட்டாளர்களை மதித்தல்", "என் குறைகளும் பரிந்துரைகளும் ECO Mobility-யால் கேட்கப்பட்டு, தீர்க்கப்பட்டு, மதிக்கப்படுகின்றன."],
+    ["நியாயம் – சம வாய்ப்புகள்", "ECO Mobility வாகன வணிக வாய்ப்புகளை நியாயமாகவும் வெளிப்படையாகவும் ஒதுக்குகிறது."],
+    ["பெருமை – ECO உடனான இணைப்பு", "வாகன கூட்டாளராக ECO Mobility உடன் இணைந்திருப்பதில் நான் பெருமைப்படுகிறேன்."],
+    ["தோழமை – பணி உறவுகள்", "என் ECO Mobility கிளைக் குழுவிடமிருந்து எனக்கு ஒத்துழைப்பும் ஆதரவும் கிடைக்கிறது."],
+    ["ஓட்டுநர் பயிற்சி & மேம்பாடு", "ஓட்டுநர்களின் திறன்களையும் சேவைத் தரத்தையும் மேம்படுத்துவதில் ECO Mobility நடத்தும் ஓட்டுநர் பயிற்சித் திட்டங்கள் எவ்வளவு பயனுள்ளதாக உள்ளன?"],
+    ["ஒட்டுமொத்த பரிந்துரை", "மற்ற வாகன உரிமையாளர்கள் தங்கள் வாகனங்களை இணைக்க ECO Mobility-யை நீங்கள் பரிந்துரைக்க எவ்வளவு வாய்ப்பு உள்ளது?"],
+  ],
+  rateAgree: "ஒன்றைத் தேர்ந்தெடுக்கவும்: நீங்கள் எவ்வளவு உடன்படுகிறீர்கள்?", notUseful: "பயனில்லை", veryUseful: "மிகவும் பயனுள்ளது", notAttended: "பயிற்சியில் கலந்துகொள்ளவில்லை", notSure: "உறுதியாகத் தெரியவில்லை", or: "அல்லது",
+  npsLow: "0 – வாய்ப்பே இல்லை", npsHigh: "10 – மிக அதிக வாய்ப்பு",
+  sugTitle: "உங்கள் பரிந்துரைகள்", optional: "விருப்பத்தேர்வு", sugQ: "ECO Mobility மேம்படுத்த வேண்டிய ஒரு விஷயம் என்ன?", sugPh: "இங்கே எழுதுங்கள்…",
+  next: "அடுத்து", back: "பின்செல்", submit: "சமர்ப்பி", skip: "தவிர்த்து சமர்ப்பி", progress: "கேள்வி {n} / {t}", pick: "தொடர ஒரு பதிலைத் தேர்ந்தெடுக்கவும்",
+  thanks: "உங்கள் மதிப்புமிக்க கருத்துக்கு நன்றி!", footer: "ECO Mobility – ஒன்றாக முன்னேறுவோம்.",
+  sendTitle: "கடைசி படி: உங்கள் பதில்களை அனுப்புங்கள்", sendBody: "பச்சை பொத்தானை அழுத்தி உங்கள் பதில்களை WhatsApp-இல் அனுப்புங்கள்.",
+  wa: "WhatsApp-இல் அனுப்பு", copy: "பதில்களை நகலெடு", copied: "நகலெடுக்கப்பட்டது", edit: "பதில்களை மாற்று",
+},
+te: {
+  title: "వెండర్ అనుభవ సర్వే", tagline: "మీ భాగస్వామ్యం. మీ గొంతు.", greet: "గౌరవనీయ భాగస్వామి,",
+  intro: "ECO Mobilityలో మేము మీ భాగస్వామ్యానికి విలువ ఇస్తాము. మీ అభిప్రాయం నమ్మకాన్ని బలపరచడానికి, మా సేవలను మెరుగుపరచడానికి మరియు మంచి సంబంధాలను ఏర్పరచుకోవడానికి మాకు సహాయపడుతుంది.",
+  start: "సర్వే ప్రారంభించండి", time: "సుమారు 2 నిమిషాలు", qs: "8 చిన్న ప్రశ్నలు", choose: "మీ భాషను ఎంచుకోండి",
+  scale: ["పూర్తిగా అంగీకరించను", "అంగీకరించను", "తటస్థం", "అంగీకరిస్తాను", "పూర్తిగా అంగీకరిస్తాను"],
+  q: [
+    ["విశ్వసనీయత – నమ్మకం & పారదర్శకత", "ECO Mobility సకాలంలో చెల్లింపులు చేస్తుంది మరియు బిల్లింగ్, చెల్లింపు ప్రక్రియల్లో పారదర్శకతను పాటిస్తుంది."],
+    ["గౌరవం – భాగస్వాములకు విలువ", "నా సమస్యలు మరియు సూచనలను ECO Mobility వింటుంది, పరిష్కరిస్తుంది మరియు వాటికి విలువ ఇస్తుంది."],
+    ["న్యాయం – సమాన అవకాశాలు", "ECO Mobility వాహన వ్యాపార అవకాశాలను న్యాయంగా మరియు పారదర్శకంగా కేటాయిస్తుంది."],
+    ["గర్వం – ECOతో అనుబంధం", "వాహన భాగస్వామిగా ECO Mobilityతో అనుబంధం ఉన్నందుకు నేను గర్వపడుతున్నాను."],
+    ["స్నేహభావం – పని సంబంధాలు", "నా ECO Mobility బ్రాంచ్ టీమ్ నుండి నాకు సహకారం మరియు మద్దతు లభిస్తుంది."],
+    ["డ్రైవర్ శిక్షణ & అభివృద్ధి", "డ్రైవర్ల నైపుణ్యాలను మరియు సేవా నాణ్యతను మెరుగుపరచడంలో ECO Mobility నిర్వహించే డ్రైవర్ శిక్షణ కార్యక్రమాలు ఎంత ఉపయోగకరంగా ఉన్నాయి?"],
+    ["మొత్తం సిఫార్సు", "ఇతర వాహన యజమానులు తమ వాహనాలను జత చేయడానికి ECO Mobilityని మీరు సిఫార్సు చేసే అవకాశం ఎంత?"],
+  ],
+  rateAgree: "ఒకటి ఎంచుకోండి: మీరు ఎంతవరకు అంగీకరిస్తారు?", notUseful: "ఉపయోగకరం కాదు", veryUseful: "చాలా ఉపయోగకరం", notAttended: "శిక్షణకు హాజరు కాలేదు", notSure: "ఖచ్చితంగా తెలియదు", or: "లేదా",
+  npsLow: "0 – అస్సలు అవకాశం లేదు", npsHigh: "10 – చాలా ఎక్కువ అవకాశం",
+  sugTitle: "మీ సూచనలు", optional: "ఐచ్ఛికం", sugQ: "ECO Mobility మెరుగుపరచాల్సిన ఒక విషయం ఏమిటి?", sugPh: "ఇక్కడ రాయండి…",
+  next: "తదుపరి", back: "వెనుకకు", submit: "సమర్పించండి", skip: "దాటవేసి సమర్పించండి", progress: "ప్రశ్న {n} / {t}", pick: "కొనసాగడానికి దయచేసి ఒక సమాధానాన్ని ఎంచుకోండి",
+  thanks: "మీ విలువైన అభిప్రాయానికి ధన్యవాదాలు!", footer: "ECO Mobility – కలిసి ముందుకు సాగుదాం.",
+  sendTitle: "చివరి దశ: మీ సమాధానాలను పంపండి", sendBody: "ఆకుపచ్చ బటన్ నొక్కి మీ సమాధానాలను WhatsAppలో పంపండి.",
+  wa: "WhatsAppలో పంపండి", copy: "సమాధానాలను కాపీ చేయండి", copied: "కాపీ అయింది", edit: "సమాధానాలు మార్చండి",
+},
+kn: {
+  title: "ವೆಂಡರ್ ಅನುಭವ ಸಮೀಕ್ಷೆ", tagline: "ನಿಮ್ಮ ಪಾಲುದಾರಿಕೆ. ನಿಮ್ಮ ಧ್ವನಿ.", greet: "ಗೌರವಾನ್ವಿತ ಪಾಲುದಾರರೇ,",
+  intro: "ECO Mobility ನಲ್ಲಿ ನಾವು ನಿಮ್ಮ ಪಾಲುದಾರಿಕೆಯನ್ನು ಗೌರವಿಸುತ್ತೇವೆ. ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವು ನಂಬಿಕೆಯನ್ನು ಬಲಪಡಿಸಲು, ನಮ್ಮ ಸೇವೆಗಳನ್ನು ಸುಧಾರಿಸಲು ಮತ್ತು ಉತ್ತಮ ಸಂಬಂಧಗಳನ್ನು ಬೆಳೆಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+  start: "ಸಮೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ", time: "ಸುಮಾರು 2 ನಿಮಿಷ", qs: "8 ಚಿಕ್ಕ ಪ್ರಶ್ನೆಗಳು", choose: "ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+  scale: ["ಸಂಪೂರ್ಣವಾಗಿ ಒಪ್ಪುವುದಿಲ್ಲ", "ಒಪ್ಪುವುದಿಲ್ಲ", "ತಟಸ್ಥ", "ಒಪ್ಪುತ್ತೇನೆ", "ಸಂಪೂರ್ಣವಾಗಿ ಒಪ್ಪುತ್ತೇನೆ"],
+  q: [
+    ["ವಿಶ್ವಾಸಾರ್ಹತೆ – ನಂಬಿಕೆ ಮತ್ತು ಪಾರದರ್ಶಕತೆ", "ECO Mobility ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಪಾವತಿ ಮಾಡುತ್ತದೆ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಹಾಗೂ ಪಾವತಿ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಪಾರದರ್ಶಕತೆಯನ್ನು ಕಾಪಾಡುತ್ತದೆ."],
+    ["ಗೌರವ – ಪಾಲುದಾರರಿಗೆ ಮಹತ್ವ", "ನನ್ನ ಸಮಸ್ಯೆಗಳು ಮತ್ತು ಸಲಹೆಗಳನ್ನು ECO Mobility ಕೇಳುತ್ತದೆ, ಪರಿಹರಿಸುತ್ತದೆ ಮತ್ತು ಅವುಗಳಿಗೆ ಮಹತ್ವ ನೀಡುತ್ತದೆ."],
+    ["ನ್ಯಾಯಸಮ್ಮತತೆ – ಸಮಾನ ಅವಕಾಶಗಳು", "ECO Mobility ವಾಹನ ವ್ಯವಹಾರದ ಅವಕಾಶಗಳನ್ನು ನ್ಯಾಯಯುತವಾಗಿ ಮತ್ತು ಪಾರದರ್ಶಕವಾಗಿ ಹಂಚುತ್ತದೆ."],
+    ["ಹೆಮ್ಮೆ – ECO ಜೊತೆಗಿನ ಸಂಬಂಧ", "ವಾಹನ ಪಾಲುದಾರನಾಗಿ ECO Mobility ಜೊತೆ ಸಂಬಂಧ ಹೊಂದಿರುವುದಕ್ಕೆ ನನಗೆ ಹೆಮ್ಮೆ ಇದೆ."],
+    ["ಸೌಹಾರ್ದ – ಕೆಲಸದ ಸಂಬಂಧಗಳು", "ನನ್ನ ECO Mobility ಶಾಖಾ ತಂಡದಿಂದ ನನಗೆ ಸಹಕಾರ ಮತ್ತು ಬೆಂಬಲ ಸಿಗುತ್ತದೆ."],
+    ["ಚಾಲಕ ತರಬೇತಿ ಮತ್ತು ಅಭಿವೃದ್ಧಿ", "ಚಾಲಕರ ಕೌಶಲ್ಯ ಮತ್ತು ಸೇವಾ ಗುಣಮಟ್ಟವನ್ನು ಸುಧಾರಿಸುವಲ್ಲಿ ECO Mobility ನಡೆಸುವ ಚಾಲಕ ತರಬೇತಿ ಕಾರ್ಯಕ್ರಮಗಳು ಎಷ್ಟು ಉಪಯುಕ್ತವಾಗಿವೆ?"],
+    ["ಒಟ್ಟಾರೆ ಶಿಫಾರಸು", "ಇತರ ವಾಹನ ಮಾಲೀಕರು ತಮ್ಮ ವಾಹನಗಳನ್ನು ಜೋಡಿಸಲು ECO Mobility ಅನ್ನು ನೀವು ಶಿಫಾರಸು ಮಾಡುವ ಸಾಧ್ಯತೆ ಎಷ್ಟು?"],
+  ],
+  rateAgree: "ಒಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ: ನೀವು ಎಷ್ಟು ಒಪ್ಪುತ್ತೀರಿ?", notUseful: "ಉಪಯುಕ್ತವಲ್ಲ", veryUseful: "ತುಂಬಾ ಉಪಯುಕ್ತ", notAttended: "ತರಬೇತಿಗೆ ಹಾಜರಾಗಿಲ್ಲ", notSure: "ಖಚಿತವಾಗಿ ಗೊತ್ತಿಲ್ಲ", or: "ಅಥವಾ",
+  npsLow: "0 – ಸಾಧ್ಯತೆಯೇ ಇಲ್ಲ", npsHigh: "10 – ಅತ್ಯಂತ ಹೆಚ್ಚು ಸಾಧ್ಯತೆ",
+  sugTitle: "ನಿಮ್ಮ ಸಲಹೆಗಳು", optional: "ಐಚ್ಛಿಕ", sugQ: "ECO Mobility ಸುಧಾರಿಸಬೇಕಾದ ಒಂದು ವಿಷಯ ಯಾವುದು?", sugPh: "ಇಲ್ಲಿ ಬರೆಯಿರಿ…",
+  next: "ಮುಂದೆ", back: "ಹಿಂದೆ", submit: "ಸಲ್ಲಿಸಿ", skip: "ಬಿಟ್ಟು ಸಲ್ಲಿಸಿ", progress: "ಪ್ರಶ್ನೆ {n} / {t}", pick: "ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಒಂದು ಉತ್ತರ ಆಯ್ಕೆಮಾಡಿ",
+  thanks: "ನಿಮ್ಮ ಅಮೂಲ್ಯ ಅಭಿಪ್ರಾಯಕ್ಕೆ ಧನ್ಯವಾದಗಳು!", footer: "ECO Mobility – ಜೊತೆಯಾಗಿ ಮುನ್ನಡೆಯೋಣ.",
+  sendTitle: "ಕೊನೆಯ ಹಂತ: ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು ಕಳುಹಿಸಿ", sendBody: "ಹಸಿರು ಬಟನ್ ಒತ್ತಿ ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ.",
+  wa: "WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ", copy: "ಉತ್ತರಗಳನ್ನು ನಕಲಿಸಿ", copied: "ನಕಲಿಸಲಾಗಿದೆ", edit: "ಉತ್ತರಗಳನ್ನು ಬದಲಿಸಿ",
+},
+bn: {
+  title: "ভেন্ডর অভিজ্ঞতা সমীক্ষা", tagline: "আপনার অংশীদারিত্ব। আপনার কণ্ঠস্বর।", greet: "প্রিয় সম্মানিত অংশীদার,",
+  intro: "ECO Mobility-তে আমরা আপনার অংশীদারিত্বকে মূল্য দিই। আপনার মতামত আমাদের আস্থা দৃঢ় করতে, পরিষেবা উন্নত করতে এবং আরও ভালো সম্পর্ক গড়ে তুলতে সাহায্য করবে।",
+  start: "সমীক্ষা শুরু করুন", time: "প্রায় ২ মিনিট", qs: "৮টি ছোট প্রশ্ন", choose: "আপনার ভাষা বেছে নিন",
+  scale: ["সম্পূর্ণ অসম্মত", "অসম্মত", "নিরপেক্ষ", "সম্মত", "সম্পূর্ণ সম্মত"],
+  q: [
+    ["বিশ্বাসযোগ্যতা – আস্থা ও স্বচ্ছতা", "ECO Mobility সময়মতো পেমেন্ট করে এবং বিলিং ও পেমেন্ট প্রক্রিয়ায় স্বচ্ছতা বজায় রাখে।"],
+    ["সম্মান – অংশীদারদের মূল্য দেওয়া", "আমার সমস্যা ও পরামর্শ ECO Mobility শোনে, সমাধান করে এবং গুরুত্ব দেয়।"],
+    ["ন্যায্যতা – সমান সুযোগ", "ECO Mobility গাড়ির ব্যবসার সুযোগ ন্যায্য ও স্বচ্ছভাবে বণ্টন করে।"],
+    ["গর্ব – ECO-র সঙ্গে যুক্ত থাকা", "গাড়ির অংশীদার হিসেবে ECO Mobility-র সঙ্গে যুক্ত থাকতে পেরে আমি গর্বিত।"],
+    ["সৌহার্দ্য – কাজের সম্পর্ক", "আমি আমার ECO Mobility ব্রাঞ্চ টিমের কাছ থেকে সহযোগিতা ও সমর্থন পাই।"],
+    ["চালক প্রশিক্ষণ ও উন্নয়ন", "চালকদের দক্ষতা ও পরিষেবার মান উন্নত করতে ECO Mobility-র চালক প্রশিক্ষণ কর্মসূচিগুলি কতটা উপযোগী?"],
+    ["সামগ্রিক সুপারিশ", "অন্য গাড়ির মালিকদের তাঁদের গাড়ি যুক্ত করার জন্য ECO Mobility-র সুপারিশ করার সম্ভাবনা আপনার কতটা?"],
+  ],
+  rateAgree: "একটি বেছে নিন: আপনি কতটা সম্মত?", notUseful: "উপযোগী নয়", veryUseful: "খুব উপযোগী", notAttended: "প্রশিক্ষণে অংশ নিইনি", notSure: "নিশ্চিত নই", or: "অথবা",
+  npsLow: "0 – একেবারেই সম্ভাবনা নেই", npsHigh: "10 – খুব বেশি সম্ভাবনা",
+  sugTitle: "আপনার পরামর্শ", optional: "ঐচ্ছিক", sugQ: "ECO Mobility-র কোন একটি বিষয়ে উন্নতি করা উচিত?", sugPh: "এখানে লিখুন…",
+  next: "পরবর্তী", back: "পিছনে", submit: "জমা দিন", skip: "বাদ দিয়ে জমা দিন", progress: "প্রশ্ন {n} / {t}", pick: "এগিয়ে যেতে অনুগ্রহ করে একটি উত্তর বেছে নিন",
+  thanks: "আপনার মূল্যবান মতামতের জন্য ধন্যবাদ!", footer: "ECO Mobility – একসাথে এগিয়ে চলি।",
+  sendTitle: "শেষ ধাপ: আপনার উত্তর পাঠান", sendBody: "সবুজ বোতাম টিপে আপনার উত্তর WhatsApp-এ পাঠান।",
+  wa: "WhatsApp-এ পাঠান", copy: "উত্তর কপি করুন", copied: "কপি হয়েছে", edit: "উত্তর বদলান",
+},
+pa: {
+  title: "ਵੈਂਡਰ ਅਨੁਭਵ ਸਰਵੇਖਣ", tagline: "ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ। ਤੁਹਾਡੀ ਆਵਾਜ਼।", greet: "ਪਿਆਰੇ ਸਤਿਕਾਰਯੋਗ ਸਾਥੀ,",
+  intro: "ECO Mobility ਵਿੱਚ ਅਸੀਂ ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ। ਤੁਹਾਡੀ ਰਾਏ ਸਾਨੂੰ ਭਰੋਸਾ ਮਜ਼ਬੂਤ ਕਰਨ, ਆਪਣੀਆਂ ਸੇਵਾਵਾਂ ਸੁਧਾਰਨ ਅਤੇ ਬਿਹਤਰ ਰਿਸ਼ਤੇ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੇਗੀ।",
+  start: "ਸਰਵੇ ਸ਼ੁਰੂ ਕਰੋ", time: "ਲਗਭਗ 2 ਮਿੰਟ", qs: "8 ਛੋਟੇ ਸਵਾਲ", choose: "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+  scale: ["ਬਿਲਕੁਲ ਅਸਹਿਮਤ", "ਅਸਹਿਮਤ", "ਨਿਰਪੱਖ", "ਸਹਿਮਤ", "ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਹਿਮਤ"],
+  q: [
+    ["ਭਰੋਸੇਯੋਗਤਾ – ਭਰੋਸਾ ਅਤੇ ਪਾਰਦਰਸ਼ਤਾ", "ECO Mobility ਸਮੇਂ ਸਿਰ ਭੁਗਤਾਨ ਕਰਦੀ ਹੈ ਅਤੇ ਬਿਲਿੰਗ ਤੇ ਭੁਗਤਾਨ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ ਪਾਰਦਰਸ਼ਤਾ ਰੱਖਦੀ ਹੈ।"],
+    ["ਸਤਿਕਾਰ – ਸਾਥੀਆਂ ਦੀ ਕਦਰ", "ਮੇਰੀਆਂ ਸਮੱਸਿਆਵਾਂ ਅਤੇ ਸੁਝਾਵਾਂ ਨੂੰ ECO Mobility ਸੁਣਦੀ ਹੈ, ਹੱਲ ਕਰਦੀ ਹੈ ਅਤੇ ਉਹਨਾਂ ਦੀ ਕਦਰ ਕਰਦੀ ਹੈ।"],
+    ["ਨਿਰਪੱਖਤਾ – ਬਰਾਬਰ ਮੌਕੇ", "ECO Mobility ਗੱਡੀ ਕਾਰੋਬਾਰ ਦੇ ਮੌਕੇ ਨਿਰਪੱਖ ਅਤੇ ਪਾਰਦਰਸ਼ੀ ਢੰਗ ਨਾਲ ਵੰਡਦੀ ਹੈ।"],
+    ["ਮਾਣ – ECO ਨਾਲ ਜੁੜਾਅ", "ਮੈਨੂੰ ਗੱਡੀ ਸਾਥੀ ਵਜੋਂ ECO Mobility ਨਾਲ ਜੁੜੇ ਹੋਣ 'ਤੇ ਮਾਣ ਹੈ।"],
+    ["ਭਾਈਚਾਰਾ – ਕੰਮਕਾਜੀ ਰਿਸ਼ਤੇ", "ਮੈਨੂੰ ਆਪਣੀ ECO Mobility ਬ੍ਰਾਂਚ ਟੀਮ ਤੋਂ ਸਹਿਯੋਗ ਅਤੇ ਸਹਾਇਤਾ ਮਿਲਦੀ ਹੈ।"],
+    ["ਡਰਾਈਵਰ ਸਿਖਲਾਈ ਅਤੇ ਵਿਕਾਸ", "ECO Mobility ਵੱਲੋਂ ਕਰਵਾਏ ਜਾਂਦੇ ਡਰਾਈਵਰ ਸਿਖਲਾਈ ਪ੍ਰੋਗਰਾਮ ਡਰਾਈਵਰਾਂ ਦੇ ਹੁਨਰ ਅਤੇ ਸੇਵਾ ਦੀ ਗੁਣਵੱਤਾ ਸੁਧਾਰਨ ਵਿੱਚ ਕਿੰਨੇ ਲਾਭਦਾਇਕ ਹਨ?"],
+    ["ਕੁੱਲ ਸਿਫ਼ਾਰਸ਼", "ਤੁਸੀਂ ਹੋਰ ਗੱਡੀ ਮਾਲਕਾਂ ਨੂੰ ਆਪਣੀਆਂ ਗੱਡੀਆਂ ECO Mobility ਨਾਲ ਜੋੜਨ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਕਰਨ ਦੀ ਕਿੰਨੀ ਸੰਭਾਵਨਾ ਰੱਖਦੇ ਹੋ?"],
+  ],
+  rateAgree: "ਇੱਕ ਚੁਣੋ: ਤੁਸੀਂ ਕਿੰਨੇ ਸਹਿਮਤ ਹੋ?", notUseful: "ਲਾਭਦਾਇਕ ਨਹੀਂ", veryUseful: "ਬਹੁਤ ਲਾਭਦਾਇਕ", notAttended: "ਸਿਖਲਾਈ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਇਆ", notSure: "ਪੱਕਾ ਨਹੀਂ ਪਤਾ", or: "ਜਾਂ",
+  npsLow: "0 – ਬਿਲਕੁਲ ਸੰਭਾਵਨਾ ਨਹੀਂ", npsHigh: "10 – ਬਹੁਤ ਜ਼ਿਆਦਾ ਸੰਭਾਵਨਾ",
+  sugTitle: "ਤੁਹਾਡੇ ਸੁਝਾਅ", optional: "ਵਿਕਲਪਿਕ", sugQ: "ECO Mobility ਨੂੰ ਕਿਹੜੀ ਇੱਕ ਚੀਜ਼ ਵਿੱਚ ਸੁਧਾਰ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ?", sugPh: "ਇੱਥੇ ਲਿਖੋ…",
+  next: "ਅੱਗੇ", back: "ਪਿੱਛੇ", submit: "ਜਮ੍ਹਾਂ ਕਰੋ", skip: "ਛੱਡੋ ਅਤੇ ਜਮ੍ਹਾਂ ਕਰੋ", progress: "ਸਵਾਲ {n} / {t}", pick: "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਜਵਾਬ ਚੁਣੋ",
+  thanks: "ਤੁਹਾਡੀ ਕੀਮਤੀ ਰਾਏ ਲਈ ਧੰਨਵਾਦ!", footer: "ECO Mobility – ਮਿਲ ਕੇ ਅੱਗੇ ਵਧੀਏ।",
+  sendTitle: "ਆਖਰੀ ਕਦਮ: ਆਪਣੇ ਜਵਾਬ ਭੇਜੋ", sendBody: "ਹਰਾ ਬਟਨ ਦਬਾ ਕੇ ਆਪਣੇ ਜਵਾਬ WhatsApp 'ਤੇ ਭੇਜੋ।",
+  wa: "WhatsApp 'ਤੇ ਭੇਜੋ", copy: "ਜਵਾਬ ਕਾਪੀ ਕਰੋ", copied: "ਕਾਪੀ ਹੋ ਗਿਆ", edit: "ਜਵਾਬ ਬਦਲੋ",
+},
+as: {
+  title: "ভেণ্ডৰ অভিজ্ঞতা সমীক্ষা", tagline: "আপোনাৰ অংশীদাৰিত্ব। আপোনাৰ মাত।", greet: "মৰমৰ সন্মানীয় অংশীদাৰ,",
+  intro: "ECO Mobility-ত আমি আপোনাৰ অংশীদাৰিত্বক মূল্য দিওঁ। আপোনাৰ মতামতে আমাক বিশ্বাস দৃঢ় কৰাত, আমাৰ সেৱা উন্নত কৰাত আৰু উত্তম সম্পৰ্ক গঢ়াত সহায় কৰিব।",
+  start: "সমীক্ষা আৰম্ভ কৰক", time: "প্ৰায় ২ মিনিট", qs: "৮টা চুটি প্ৰশ্ন", choose: "আপোনাৰ ভাষা বাছক",
+  scale: ["সম্পূৰ্ণ অসন্মত", "অসন্মত", "নিৰপেক্ষ", "সন্মত", "সম্পূৰ্ণ সন্মত"],
+  q: [
+    ["বিশ্বাসযোগ্যতা – বিশ্বাস আৰু স্বচ্ছতা", "ECO Mobility-এ সময়মতে পেমেণ্ট কৰে আৰু বিলিং তথা পেমেণ্ট প্ৰক্ৰিয়াত স্বচ্ছতা বজাই ৰাখে।"],
+    ["সন্মান – অংশীদাৰক মূল্য দিয়া", "মোৰ সমস্যা আৰু পৰামৰ্শসমূহ ECO Mobility-এ শুনে, সমাধান কৰে আৰু গুৰুত্ব দিয়ে।"],
+    ["ন্যায্যতা – সমান সুযোগ", "ECO Mobility-এ গাড়ীৰ ব্যৱসায়ৰ সুযোগ ন্যায্য আৰু স্বচ্ছভাৱে বিতৰণ কৰে।"],
+    ["গৌৰৱ – ECO-ৰ সৈতে সম্পৰ্ক", "গাড়ীৰ অংশীদাৰ হিচাপে ECO Mobility-ৰ সৈতে জড়িত হৈ মই গৌৰৱ অনুভৱ কৰোঁ।"],
+    ["সৌহাৰ্দ্য – কামৰ সম্পৰ্ক", "মই মোৰ ECO Mobility শাখা দলৰ পৰা সহযোগিতা আৰু সমৰ্থন পাওঁ।"],
+    ["চালক প্ৰশিক্ষণ আৰু বিকাশ", "চালকৰ দক্ষতা আৰু সেৱাৰ মান উন্নত কৰাত ECO Mobility-এ আয়োজন কৰা চালক প্ৰশিক্ষণ কাৰ্যসূচীসমূহ কিমান উপযোগী?"],
+    ["সামগ্ৰিক পৰামৰ্শ", "আন গাড়ীৰ মালিকক তেওঁলোকৰ গাড়ী সংযুক্ত কৰিবলৈ ECO Mobility-ৰ পৰামৰ্শ দিয়াৰ সম্ভাৱনা আপোনাৰ কিমান?"],
+  ],
+  rateAgree: "এটা বাছক: আপুনি কিমান সন্মত?", notUseful: "উপযোগী নহয়", veryUseful: "অতি উপযোগী", notAttended: "প্ৰশিক্ষণত অংশ লোৱা নাই", notSure: "নিশ্চিত নহয়", or: "অথবা",
+  npsLow: "0 – একেবাৰে সম্ভাৱনা নাই", npsHigh: "10 – অতি বেছি সম্ভাৱনা",
+  sugTitle: "আপোনাৰ পৰামৰ্শ", optional: "ঐচ্ছিক", sugQ: "ECO Mobility-এ কোনটো এটা বিষয়ত উন্নতি কৰা উচিত?", sugPh: "ইয়াত লিখক…",
+  next: "পৰৱৰ্তী", back: "পিছলৈ", submit: "দাখিল কৰক", skip: "এৰি দাখিল কৰক", progress: "প্ৰশ্ন {n} / {t}", pick: "আগবাঢ়িবলৈ অনুগ্ৰহ কৰি এটা উত্তৰ বাছক",
+  thanks: "আপোনাৰ মূল্যবান মতামতৰ বাবে ধন্যবাদ!", footer: "ECO Mobility – একেলগে আগবাঢ়োঁ।",
+  sendTitle: "শেষ পদক্ষেপ: আপোনাৰ উত্তৰ পঠিয়াওক", sendBody: "সেউজীয়া বুটাম টিপি আপোনাৰ উত্তৰ WhatsApp-ত পঠিয়াওক।",
+  wa: "WhatsApp-ত পঠিয়াওক", copy: "উত্তৰ কপি কৰক", copied: "কপি হ'ল", edit: "উত্তৰ সলনি কৰক",
+},
+or: {
+  title: "ଭେଣ୍ଡର ଅଭିଜ୍ଞତା ସର୍ଭେ", tagline: "ଆପଣଙ୍କ ଭାଗିଦାରୀ। ଆପଣଙ୍କ ସ୍ୱର।", greet: "ପ୍ରିୟ ସମ୍ମାନିତ ଭାଗିଦାର,",
+  intro: "ECO Mobility ରେ ଆମେ ଆପଣଙ୍କ ଭାଗିଦାରୀକୁ ମୂଲ୍ୟ ଦେଉ। ଆପଣଙ୍କ ମତାମତ ଆମକୁ ବିଶ୍ୱାସ ଦୃଢ଼ କରିବାରେ, ଆମ ସେବାରେ ଉନ୍ନତି ଆଣିବାରେ ଏବଂ ଉତ୍ତମ ସମ୍ପର୍କ ଗଢ଼ିବାରେ ସାହାଯ୍ୟ କରିବ।",
+  start: "ସର୍ଭେ ଆରମ୍ଭ କରନ୍ତୁ", time: "ପ୍ରାୟ 2 ମିନିଟ୍", qs: "8ଟି ଛୋଟ ପ୍ରଶ୍ନ", choose: "ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",
+  scale: ["ସମ୍ପୂର୍ଣ୍ଣ ଅସହମତ", "ଅସହମତ", "ନିରପେକ୍ଷ", "ସହମତ", "ସମ୍ପୂର୍ଣ୍ଣ ସହମତ"],
+  q: [
+    ["ବିଶ୍ୱସନୀୟତା – ବିଶ୍ୱାସ ଓ ସ୍ୱଚ୍ଛତା", "ECO Mobility ସମୟରେ ପେମେଣ୍ଟ କରେ ଏବଂ ବିଲିଂ ଓ ପେମେଣ୍ଟ ପ୍ରକ୍ରିୟାରେ ସ୍ୱଚ୍ଛତା ବଜାୟ ରଖେ।"],
+    ["ସମ୍ମାନ – ଭାଗିଦାରଙ୍କୁ ମୂଲ୍ୟ", "ମୋର ସମସ୍ୟା ଓ ପରାମର୍ଶକୁ ECO Mobility ଶୁଣେ, ସମାଧାନ କରେ ଏବଂ ଗୁରୁତ୍ୱ ଦିଏ।"],
+    ["ନିରପେକ୍ଷତା – ସମାନ ସୁଯୋଗ", "ECO Mobility ଗାଡ଼ି ବ୍ୟବସାୟର ସୁଯୋଗ ନିରପେକ୍ଷ ଓ ସ୍ୱଚ୍ଛ ଭାବରେ ବଣ୍ଟନ କରେ।"],
+    ["ଗର୍ବ – ECO ସହ ସମ୍ପର୍କ", "ଗାଡ଼ି ଭାଗିଦାର ଭାବରେ ECO Mobility ସହ ଯୋଡ଼ି ହୋଇଥିବାରୁ ମୁଁ ଗର୍ବିତ।"],
+    ["ସୌହାର୍ଦ୍ଦ୍ୟ – କାର୍ଯ୍ୟ ସମ୍ପର୍କ", "ମୋ ECO Mobility ଶାଖା ଟିମ୍ ଠାରୁ ମୁଁ ସହଯୋଗ ଓ ସମର୍ଥନ ପାଏ।"],
+    ["ଚାଳକ ପ୍ରଶିକ୍ଷଣ ଓ ବିକାଶ", "ଚାଳକଙ୍କ ଦକ୍ଷତା ଓ ସେବାର ଗୁଣବତ୍ତା ବୃଦ୍ଧି କରିବାରେ ECO Mobility ଦ୍ୱାରା ଆୟୋଜିତ ଚାଳକ ପ୍ରଶିକ୍ଷଣ କାର୍ଯ୍ୟକ୍ରମ କେତେ ଉପଯୋଗୀ?"],
+    ["ସାମଗ୍ରିକ ସୁପାରିଶ", "ଅନ୍ୟ ଗାଡ଼ି ମାଲିକଙ୍କୁ ସେମାନଙ୍କ ଗାଡ଼ି ଯୋଡ଼ିବା ପାଇଁ ECO Mobility ସୁପାରିଶ କରିବାର ସମ୍ଭାବନା କେତେ?"],
+  ],
+  rateAgree: "ଗୋଟିଏ ବାଛନ୍ତୁ: ଆପଣ କେତେ ସହମତ?", notUseful: "ଉପଯୋଗୀ ନୁହେଁ", veryUseful: "ବହୁତ ଉପଯୋଗୀ", notAttended: "ପ୍ରଶିକ୍ଷଣରେ ଯୋଗ ଦେଇନାହିଁ", notSure: "ନିଶ୍ଚିତ ନୁହେଁ", or: "କିମ୍ବା",
+  npsLow: "0 – ଆଦୌ ସମ୍ଭାବନା ନାହିଁ", npsHigh: "10 – ଅତ୍ୟଧିକ ସମ୍ଭାବନା",
+  sugTitle: "ଆପଣଙ୍କ ପରାମର୍ଶ", optional: "ଇଚ୍ଛାଧୀନ", sugQ: "ECO Mobility କେଉଁ ଗୋଟିଏ ବିଷୟରେ ଉନ୍ନତି କରିବା ଉଚିତ?", sugPh: "ଏଠାରେ ଲେଖନ୍ତୁ…",
+  next: "ଆଗକୁ", back: "ପଛକୁ", submit: "ଦାଖଲ କରନ୍ତୁ", skip: "ଛାଡ଼ି ଦାଖଲ କରନ୍ତୁ", progress: "ପ୍ରଶ୍ନ {n} / {t}", pick: "ଆଗକୁ ଯିବା ପାଇଁ ଦୟାକରି ଗୋଟିଏ ଉତ୍ତର ବାଛନ୍ତୁ",
+  thanks: "ଆପଣଙ୍କ ମୂଲ୍ୟବାନ ମତାମତ ପାଇଁ ଧନ୍ୟବାଦ!", footer: "ECO Mobility – ଏକାଠି ଆଗକୁ।",
+  sendTitle: "ଶେଷ ପଦକ୍ଷେପ: ଆପଣଙ୍କ ଉତ୍ତର ପଠାନ୍ତୁ", sendBody: "ସବୁଜ ବଟନ୍ ଦବାଇ ଆପଣଙ୍କ ଉତ୍ତର WhatsApp ରେ ପଠାନ୍ତୁ।",
+  wa: "WhatsApp ରେ ପଠାନ୍ତୁ", copy: "ଉତ୍ତର କପି କରନ୍ତୁ", copied: "କପି ହୋଇଗଲା", edit: "ଉତ୍ତର ବଦଳାନ୍ତୁ",
+},
+ml: {
+  title: "വെണ്ടർ അനുഭവ സർവേ", tagline: "നിങ്ങളുടെ പങ്കാളിത്തം. നിങ്ങളുടെ ശബ്ദം.", greet: "പ്രിയ ബഹുമാന്യ പങ്കാളി,",
+  intro: "ECO Mobility-യിൽ ഞങ്ങൾ നിങ്ങളുടെ പങ്കാളിത്തത്തെ വിലമതിക്കുന്നു. വിശ്വാസം ദൃഢമാക്കാനും ഞങ്ങളുടെ സേവനങ്ങൾ മെച്ചപ്പെടുത്താനും മികച്ച ബന്ധങ്ങൾ കെട്ടിപ്പടുക്കാനും നിങ്ങളുടെ അഭിപ്രായം ഞങ്ങളെ സഹായിക്കും.",
+  start: "സർവേ ആരംഭിക്കുക", time: "ഏകദേശം 2 മിനിറ്റ്", qs: "8 ചെറിയ ചോദ്യങ്ങൾ", choose: "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",
+  scale: ["പൂർണ്ണമായും വിയോജിക്കുന്നു", "വിയോജിക്കുന്നു", "നിഷ്പക്ഷം", "യോജിക്കുന്നു", "പൂർണ്ണമായും യോജിക്കുന്നു"],
+  q: [
+    ["വിശ്വാസ്യത – വിശ്വാസവും സുതാര്യതയും", "ECO Mobility കൃത്യസമയത്ത് പേയ്‌മെന്റ് നൽകുകയും ബില്ലിംഗിലും പേയ്‌മെന്റ് പ്രക്രിയകളിലും സുതാര്യത പാലിക്കുകയും ചെയ്യുന്നു."],
+    ["ബഹുമാനം – പങ്കാളികളെ വിലമതിക്കൽ", "എന്റെ പ്രശ്നങ്ങളും നിർദ്ദേശങ്ങളും ECO Mobility കേൾക്കുകയും പരിഹരിക്കുകയും വിലമതിക്കുകയും ചെയ്യുന്നു."],
+    ["നീതി – തുല്യ അവസരങ്ങൾ", "ECO Mobility വാഹന ബിസിനസ് അവസരങ്ങൾ നീതിപൂർവ്വമായും സുതാര്യമായും നൽകുന്നു."],
+    ["അഭിമാനം – ECO-യുമായുള്ള ബന്ധം", "വാഹന പങ്കാളിയായി ECO Mobility-യുമായി ബന്ധപ്പെട്ടിരിക്കുന്നതിൽ എനിക്ക് അഭിമാനമുണ്ട്."],
+    ["സൗഹൃദം – പ്രവർത്തന ബന്ധങ്ങൾ", "എന്റെ ECO Mobility ബ്രാഞ്ച് ടീമിൽ നിന്ന് എനിക്ക് സഹകരണവും പിന്തുണയും ലഭിക്കുന്നു."],
+    ["ഡ്രൈവർ പരിശീലനവും വികസനവും", "ഡ്രൈവർമാരുടെ കഴിവുകളും സേവന നിലവാരവും മെച്ചപ്പെടുത്തുന്നതിൽ ECO Mobility നടത്തുന്ന ഡ്രൈവർ പരിശീലന പരിപാടികൾ എത്രത്തോളം ഉപകാരപ്രദമാണ്?"],
+    ["മൊത്തത്തിലുള്ള ശുപാർശ", "മറ്റ് വാഹന ഉടമകൾക്ക് അവരുടെ വാഹനങ്ങൾ ചേർക്കാൻ ECO Mobility ശുപാർശ ചെയ്യാനുള്ള സാധ്യത എത്രയാണ്?"],
+  ],
+  rateAgree: "ഒന്ന് തിരഞ്ഞെടുക്കുക: നിങ്ങൾ എത്രത്തോളം യോജിക്കുന്നു?", notUseful: "ഉപകാരപ്രദമല്ല", veryUseful: "വളരെ ഉപകാരപ്രദം", notAttended: "പരിശീലനത്തിൽ പങ്കെടുത്തിട്ടില്ല", notSure: "ഉറപ്പില്ല", or: "അല്ലെങ്കിൽ",
+  npsLow: "0 – ഒട്ടും സാധ്യതയില്ല", npsHigh: "10 – വളരെ ഉയർന്ന സാധ്യത",
+  sugTitle: "നിങ്ങളുടെ നിർദ്ദേശങ്ങൾ", optional: "ഐച്ഛികം", sugQ: "ECO Mobility മെച്ചപ്പെടുത്തേണ്ട ഒരു കാര്യം എന്താണ്?", sugPh: "ഇവിടെ എഴുതുക…",
+  next: "അടുത്തത്", back: "പിന്നോട്ട്", submit: "സമർപ്പിക്കുക", skip: "ഒഴിവാക്കി സമർപ്പിക്കുക", progress: "ചോദ്യം {n} / {t}", pick: "തുടരാൻ ദയവായി ഒരു ഉത്തരം തിരഞ്ഞെടുക്കുക",
+  thanks: "നിങ്ങളുടെ വിലപ്പെട്ട അഭിപ്രായത്തിന് നന്ദി!", footer: "ECO Mobility – ഒരുമിച്ച് മുന്നോട്ട്.",
+  sendTitle: "അവസാന ഘട്ടം: നിങ്ങളുടെ ഉത്തരങ്ങൾ അയയ്ക്കുക", sendBody: "പച്ച ബട്ടൺ അമർത്തി നിങ്ങളുടെ ഉത്തരങ്ങൾ WhatsApp-ൽ അയയ്ക്കുക.",
+  wa: "WhatsApp-ൽ അയയ്ക്കുക", copy: "ഉത്തരങ്ങൾ കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു", edit: "ഉത്തരങ്ങൾ മാറ്റുക",
+},
+};
+
+// "Your details" step: [title, note, name label, ID label, mobile label, required error, bad-mobile error]
+const DETAIL_KEYS = ["detTitle", "detNote", "fName", "fId", "fPhone", "req", "badPhone"];
+const DETAILS = {
+  en: ["Your Details", "We need these to follow up on your feedback.", "Full name", "Chauffeur ID", "Mobile number", "Please fill this in", "Enter a valid 10-digit mobile number"],
+  hi: ["आपकी जानकारी", "आपकी राय पर आगे संपर्क करने के लिए यह जानकारी ज़रूरी है।", "पूरा नाम", "चालक (शोफ़र) आईडी", "मोबाइल नंबर", "कृपया यह भरें", "सही 10 अंकों का मोबाइल नंबर डालें"],
+  mr: ["तुमची माहिती", "तुमच्या अभिप्रायावर पुढे संपर्क साधण्यासाठी ही माहिती आवश्यक आहे.", "पूर्ण नाव", "चालक (शोफर) आयडी", "मोबाइल नंबर", "कृपया हे भरा", "योग्य 10 अंकी मोबाइल नंबर टाका"],
+  pa: ["ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ", "ਤੁਹਾਡੀ ਰਾਏ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਇਹ ਜਾਣਕਾਰੀ ਜ਼ਰੂਰੀ ਹੈ।", "ਪੂਰਾ ਨਾਮ", "ਡਰਾਈਵਰ (ਸ਼ੋਫ਼ਰ) ਆਈਡੀ", "ਮੋਬਾਈਲ ਨੰਬਰ", "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਭਰੋ", "ਸਹੀ 10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਭਰੋ"],
+  bn: ["আপনার তথ্য", "আপনার মতামত নিয়ে পরে যোগাযোগের জন্য এই তথ্য প্রয়োজন।", "পুরো নাম", "চালক (শোফার) আইডি", "মোবাইল নম্বর", "অনুগ্রহ করে এটি পূরণ করুন", "সঠিক ১০ সংখ্যার মোবাইল নম্বর দিন"],
+  as: ["আপোনাৰ তথ্য", "আপোনাৰ মতামতৰ বিষয়ে পিছত যোগাযোগ কৰিবলৈ এই তথ্য প্ৰয়োজন।", "সম্পূৰ্ণ নাম", "চালক (শ্বফাৰ) আইডি", "মোবাইল নম্বৰ", "অনুগ্ৰহ কৰি এইটো পূৰণ কৰক", "শুদ্ধ ১০ অংকৰ মোবাইল নম্বৰ দিয়ক"],
+  or: ["ଆପଣଙ୍କ ବିବରଣୀ", "ଆପଣଙ୍କ ମତାମତ ଉପରେ ପରେ ଯୋଗାଯୋଗ କରିବା ପାଇଁ ଏହି ବିବରଣୀ ଆବଶ୍ୟକ।", "ପୂରା ନାମ", "ଚାଳକ (ଶୋଫର) ଆଇଡି", "ମୋବାଇଲ୍ ନମ୍ବର", "ଦୟାକରି ଏହା ପୂରଣ କରନ୍ତୁ", "ସଠିକ୍ 10 ଅଙ୍କର ମୋବାଇଲ୍ ନମ୍ବର ଦିଅନ୍ତୁ"],
+  ta: ["உங்கள் விவரங்கள்", "உங்கள் கருத்து குறித்து பின்னர் தொடர்புகொள்ள இந்த விவரங்கள் தேவை.", "முழுப் பெயர்", "ஓட்டுநர் (சாஃபர்) ஐடி", "மொபைல் எண்", "இதை நிரப்பவும்", "சரியான 10 இலக்க மொபைல் எண்ணை உள்ளிடவும்"],
+  te: ["మీ వివరాలు", "మీ అభిప్రాయంపై తర్వాత సంప్రదించడానికి ఈ వివరాలు అవసరం.", "పూర్తి పేరు", "డ్రైవర్ (షోఫర్) ఐడి", "మొబైల్ నంబర్", "దయచేసి దీన్ని నింపండి", "సరైన 10 అంకెల మొబైల్ నంబర్ నమోదు చేయండి"],
+  kn: ["ನಿಮ್ಮ ವಿವರಗಳು", "ನಿಮ್ಮ ಅಭಿಪ್ರಾಯದ ಬಗ್ಗೆ ನಂತರ ಸಂಪರ್ಕಿಸಲು ಈ ವಿವರಗಳು ಅಗತ್ಯ.", "ಪೂರ್ಣ ಹೆಸರು", "ಚಾಲಕ (ಶೋಫರ್) ಐಡಿ", "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", "ದಯವಿಟ್ಟು ಇದನ್ನು ಭರ್ತಿ ಮಾಡಿ", "ಸರಿಯಾದ 10 ಅಂಕಿಯ ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ"],
+  ml: ["നിങ്ങളുടെ വിവരങ്ങൾ", "നിങ്ങളുടെ അഭിപ്രായത്തെക്കുറിച്ച് പിന്നീട് ബന്ധപ്പെടാൻ ഈ വിവരങ്ങൾ ആവശ്യമാണ്.", "മുഴുവൻ പേര്", "ഡ്രൈവർ (ഷോഫർ) ഐഡി", "മൊബൈൽ നമ്പർ", "ദയവായി ഇത് പൂരിപ്പിക്കുക", "ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക"],
+};
+for (const k in DETAILS) DETAIL_KEYS.forEach((key, i) => { T[k][key] = DETAILS[k][i]; });
+
+// Indian mobile: accepts +91 / 0 prefixes, returns the 10 digits or null.
+function cleanPhone(p) {
+  let n = String(p || "").replace(/\D/g, "");
+  if (n.length === 12 && n.startsWith("91")) n = n.slice(2);
+  if (n.length === 11 && n[0] === "0") n = n.slice(1);
+  return /^[6-9]\d{9}$/.test(n) ? n : null;
+}
+
+// English short keys for the WhatsApp report, so every reply reads the same whatever language was used.
+const REPORT_KEYS = ["Q1 Credibility", "Q2 Respect", "Q3 Fairness", "Q4 Pride", "Q5 Camaraderie", "Q6 Training", "Q7 NPS"];
+const TOTAL = 8; // 7 questions + suggestion
+
+const S = load() || { lang: null, screen: "lang", step: 0, a: {}, sug: "" };
+S.d = S.d || { name: "", id: "", phone: "" };
+let showHint = false, showErrs = false;
+
+function load() { try { return JSON.parse(localStorage.getItem("eco-survey") || "null"); } catch (e) { return null; } }
+function save() { try { localStorage.setItem("eco-survey", JSON.stringify(S)); } catch (e) {} }
+const t = () => T[S.lang || "en"];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const $view = document.getElementById("view");
+const $actions = document.getElementById("actions");
+
+function agreeColor(v) { return ["var(--bad)", "var(--bad)", "var(--mid)", "var(--good)", "var(--good)"][v - 1]; }
+function npsColor(v) { return v <= 6 ? "var(--bad)" : v <= 8 ? "var(--mid)" : "var(--good)"; }
+
+function render() {
+  const L = t();
+  document.documentElement.lang = S.lang || "en";
+  document.getElementById("barSub").textContent = L.title;
+  document.getElementById("langBtn").hidden = S.screen === "lang";
+  const inQ = S.screen === "q";
+  document.getElementById("prog").hidden = !inQ;
+  if (inQ) {
+    document.getElementById("progFill").style.width = ((S.step + 1) / TOTAL * 100) + "%";
+    document.getElementById("stepTxt").textContent = L.progress.replace("{n}", S.step + 1).replace("{t}", TOTAL);
+  }
+  ({ lang: renderLang, welcome: renderWelcome, details: renderDetails, q: renderQ, done: renderDone })[S.screen]();
+  window.scrollTo(0, 0);
+}
+
+function renderLang() {
+  $view.innerHTML = `
+    <h1>${LANGS.map(l => T[l[0]].choose).slice(0, 2).join(" / ")}</h1>
+    <div class="langs" role="group">
+      ${LANGS.map(([k, n, e]) => `<button type="button" class="lang" data-lang="${k}" aria-pressed="${S.lang === k}"><b>${n}</b><span>${e}</span></button>`).join("")}
+    </div>`;
+  $view.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => {
+    S.lang = b.dataset.lang;
+    S.screen = Object.keys(S.a).length ? "q" : S.d.name ? "details" : "welcome";
+    save(); render();
+  });
+  $actions.hidden = true;
+}
+
+function renderWelcome() {
+  const L = t();
+  $view.innerHTML = `
+    <section class="welcome">
+      <div class="tag">${L.tagline}</div>
+      <p><b>${L.greet}</b></p>
+      <p>${L.intro}</p>
+      <div class="facts"><span class="chip">${L.qs}</span><span class="chip">${L.time}</span></div>
+    </section>`;
+  setActions([{ label: L.start, primary: true, on: () => { S.screen = "details"; save(); render(); } }]);
+}
+
+function detailErrors() {
+  const L = t();
+  return {
+    name: S.d.name.trim() ? "" : L.req,
+    id: S.d.id.trim() ? "" : L.req,
+    phone: !S.d.phone.trim() ? L.req : cleanPhone(S.d.phone) ? "" : L.badPhone,
+  };
+}
+
+function renderDetails() {
+  const L = t();
+  const fields = [
+    ["name", L.fName, "text", "name", "text", ""],
+    ["id", L.fId, "text", "off", "text", ""],
+    ["phone", L.fPhone, "tel", "tel", "numeric", 'maxlength="18" placeholder="98XXXXXXXX"'],
+  ];
+  $view.innerHTML = `<h2>${L.detTitle}</h2><p class="muted">${L.detNote}</p>
+    <div class="fields">
+      ${fields.map(([k, label, type, ac, im, extra]) => `<label class="field" for="d-${k}"><span>${label}</span>
+        <input id="d-${k}" type="${type}" autocomplete="${ac}" inputmode="${im}" value="${esc(S.d[k])}" ${extra}>
+        <em class="err" id="e-${k}" hidden></em></label>`).join("")}
+    </div>`;
+  const paint = () => {
+    const errs = detailErrors();
+    for (const k in errs) {
+      const show = showErrs && errs[k];
+      const e = document.getElementById("e-" + k);
+      e.hidden = !show; e.textContent = show || "";
+      document.getElementById("d-" + k).setAttribute("aria-invalid", show ? "true" : "false");
+    }
+    return errs;
+  };
+  fields.forEach(([k]) => {
+    document.getElementById("d-" + k).oninput = ev => { S.d[k] = ev.target.value; save(); if (showErrs) paint(); };
+  });
+  paint();
+  setActions([
+    { label: L.back, on: () => { S.screen = "welcome"; save(); render(); } },
+    { label: L.next, primary: true, on: () => {
+      showErrs = true;
+      const errs = paint();
+      const bad = Object.keys(errs).find(k => errs[k]);
+      if (bad) { document.getElementById("d-" + bad).focus(); return; }
+      showErrs = false; S.screen = "q"; S.step = 0; save(); render();
+    } },
+  ]);
+}
+
+function renderQ() {
+  const L = t(), i = S.step;
+  let body = "";
+  if (i < 5) {
+    body = `<p class="muted">${L.rateAgree}</p>
+      <div class="opts" role="radiogroup">
+        ${[1, 2, 3, 4, 5].map(v => `<button type="button" role="radio" class="opt" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}"><span class="n">${v}</span><span class="l">${L.scale[v - 1]}</span></button>`).join("")}
+      </div>`;
+  } else if (i === 5) {
+    body = `<div class="row5" role="radiogroup">
+        ${[1, 2, 3, 4, 5].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+      </div>
+      <div class="ends"><span>1 – ${L.notUseful}</span><span>5 – ${L.veryUseful}</span></div>
+      <div class="or">${L.or}</div>
+      <div class="alt" role="radiogroup">
+        <button type="button" role="radio" class="opt" data-v="NA" aria-checked="${S.a[i] === "NA"}"><span class="l">${L.notAttended}</span></button>
+        <button type="button" role="radio" class="opt" data-v="NS" aria-checked="${S.a[i] === "NS"}"><span class="l">${L.notSure}</span></button>
+      </div>`;
+  } else if (i === 6) {
+    body = `<div class="nps" role="radiogroup">
+        ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${npsColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+      </div>
+      <div class="ends"><span>${L.npsLow}</span><span>${L.npsHigh}</span></div>`;
+  }
+
+  if (i < 7) {
+    $view.innerHTML = `<h2>${L.q[i][0]}</h2><p class="qtext">${L.q[i][1]}</p>${body}
+      <p class="hint" id="hint" ${showHint ? "" : "hidden"}>${L.pick}</p>`;
+    $view.querySelectorAll("[data-v]").forEach(b => b.onclick = () => {
+      const raw = b.dataset.v;
+      S.a[i] = isNaN(+raw) ? raw : +raw;
+      showHint = false; save(); render();
+      setTimeout(() => { if (S.screen === "q" && S.step === i) go(1); }, 380);
+    });
+    setActions([
+      { label: L.back, on: () => go(-1) },
+      { label: L.next, primary: true, on: () => go(1) },
+    ]);
+  } else {
+    $view.innerHTML = `<h2>${L.sugTitle} · ${L.optional}</h2><p class="qtext">${L.sugQ}</p>
+      <textarea id="sug" placeholder="${esc(L.sugPh)}" maxlength="1000">${esc(S.sug)}</textarea>`;
+    const ta = document.getElementById("sug");
+    ta.oninput = () => { S.sug = ta.value; save(); setActions(qActions()); };
+    setActions(qActions());
+  }
+}
+
+function qActions() {
+  const L = t();
+  return [
+    { label: L.back, on: () => go(-1) },
+    { label: S.sug.trim() ? L.submit : L.skip, primary: true, on: submit },
+  ];
+}
+
+function go(d) {
+  if (d > 0 && S.step < 7 && S.a[S.step] === undefined) {
+    showHint = true;
+    const h = document.getElementById("hint"); if (h) h.hidden = false;
+    return;
+  }
+  showHint = false;
+  if (S.step === 0 && d < 0) S.screen = "details";
+  else S.step = Math.min(TOTAL - 1, S.step + d);
+  save(); render();
+}
+
+// Status strings for sending: [sending, error, retry]
+const SEND_TEXT = {
+  en: ["Sending…", "Could not send. Check your internet connection and try again.", "Try again"],
+  hi: ["भेजा जा रहा है…", "भेजा नहीं जा सका। इंटरनेट कनेक्शन जाँचें और फिर से कोशिश करें।", "फिर से कोशिश करें"],
+  mr: ["पाठवत आहे…", "पाठवता आले नाही. इंटरनेट कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.", "पुन्हा प्रयत्न करा"],
+  pa: ["ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…", "ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।", "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ"],
+  bn: ["পাঠানো হচ্ছে…", "পাঠানো যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।", "আবার চেষ্টা করুন"],
+  as: ["পঠিয়া হৈছে…", "পঠিয়াব পৰা নগ'ল। ইণ্টাৰনেট সংযোগ পৰীক্ষা কৰি পুনৰ চেষ্টা কৰক।", "পুনৰ চেষ্টা কৰক"],
+  or: ["ପଠାଯାଉଛି…", "ପଠାଯାଇପାରିଲା ନାହିଁ। ଇଣ୍ଟରନେଟ୍ ସଂଯୋଗ ଯାଞ୍ଚ କରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।", "ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ"],
+  ta: ["அனுப்பப்படுகிறது…", "அனுப்ப முடியவில்லை. இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.", "மீண்டும் முயற்சி"],
+  te: ["పంపుతోంది…", "పంపడం సాధ్యం కాలేదు. ఇంటర్నెట్ కనెక్షన్ చూసి మళ్లీ ప్రయత్నించండి.", "మళ్లీ ప్రయత్నించండి"],
+  kn: ["ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…", "ಕಳುಹಿಸಲು ಆಗಲಿಲ್ಲ. ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"],
+  ml: ["അയയ്ക്കുന്നു…", "അയയ്ക്കാനായില്ല. ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.", "വീണ്ടും ശ്രമിക്കുക"],
+};
+
+function payload() {
+  const lang = LANGS.find(l => l[0] === S.lang)[2];
+  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), language: lang, suggestion: S.sug.trim() };
+  for (let i = 0; i < 7; i++) out["q" + (i + 1)] = S.a[i];
+  return out;
+}
+
+let sending = false;
+async function submit() {
+  if (sending) return;
+  const [msgSending, msgErr, msgRetry] = SEND_TEXT[S.lang] || SEND_TEXT.en;
+  sending = true;
+  setActions([{ label: msgSending, primary: true, on: () => {} }]);
+  $actions.querySelector("button").disabled = true;
+  try {
+    const r = await fetch("/api/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload()) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || !j.ok) throw new Error(j.error || "HTTP " + r.status);
+    // Clear answers so the phone can be handed to the next chauffeur; keep the language.
+    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "" } });
+    save(); render();
+  } catch (e) {
+    $view.querySelector(".hint")?.remove();
+    const p = document.createElement("p");
+    p.className = "hint"; p.textContent = msgErr;
+    $view.appendChild(p);
+    setActions([{ label: L_back(), on: () => go(-1) }, { label: msgRetry, primary: true, on: submit }]);
+  } finally {
+    sending = false;
+  }
+}
+const L_back = () => t().back;
+
+function renderDone() {
+  const L = t();
+  $view.innerHTML = `
+    <div class="done">
+      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sel)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h1>${L.thanks}</h1>
+      <p class="foot">${L.footer}</p>
+    </div>`;
+  $actions.hidden = true;
+}
+
+function setActions(list) {
+  $actions.hidden = false;
+  $actions.innerHTML = "";
+  list.forEach(a => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn" + (a.primary ? " primary" : ""); b.textContent = a.label; b.onclick = a.on;
+    $actions.appendChild(b);
+  });
+}
+
+document.getElementById("langBtn").onclick = () => { S.screen = "lang"; save(); render(); };
+render();
+</script>
+</body>
+</html>
