@@ -33,7 +33,49 @@ function validate(b) {
   return [null, row];
 }
 
+// POST to the sheet and read its JSON reply. Returns { status, result, preview }.
+async function callSheet(url, payload) {
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+  });
+  const raw = await r.text();
+  let result = null;
+  try { result = JSON.parse(raw); } catch {}
+  return { status: r.status, result, preview: raw.slice(0, 200) };
+}
+
+function explain(result, preview) {
+  if (result && result.error === "forbidden") return "Sheet rejected the secret: SHEET_SECRET on Vercel does not match SECRET in the Apps Script";
+  if (!result && /<html|<!DOCTYPE/i.test(preview)) return "Sheet returned a web page instead of data: set the Apps Script web app's 'Who has access' to 'Anyone' and check SHEET_WEBHOOK_URL";
+  return "Sheet did not confirm the save";
+}
+
+// GET /api/submit?check=1 reports whether the sheet connection is set up, without saving anything.
+async function check(res) {
+  const url = process.env.SHEET_WEBHOOK_URL || "";
+  const secret = process.env.SHEET_SECRET || "";
+  const report = {
+    SHEET_WEBHOOK_URL: !url ? "missing" : /^https:\/\/script\.google\.com\/.+\/exec$/.test(url.trim()) ? "looks right" : "set, but should start with https://script.google.com/ and end with /exec",
+    SHEET_SECRET: !secret ? "missing" : secret !== secret.trim() ? "has spaces at the start or end" : `set (${secret.length} characters)`,
+  };
+  if (url) {
+    try {
+      // A deliberately wrong secret: a working sheet answers "forbidden" and writes nothing.
+      const { status, result, preview } = await callSheet(url.trim(), { secret: "connection-check" });
+      report.sheet = result && result.error === "forbidden"
+        ? "reachable (Apps Script is public and answering)"
+        : `${explain(result, preview)} (HTTP ${status})`;
+    } catch (e) {
+      report.sheet = "could not connect: " + e.message;
+    }
+  }
+  return res.status(200).json(report);
+}
+
 module.exports = async (req, res) => {
+  if (req.method === "GET" && req.query && req.query.check) return check(res);
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ ok: false, error: "Use POST" });
@@ -54,15 +96,10 @@ module.exports = async (req, res) => {
 
   try {
     // Apps Script answers with a redirect to the result; fetch follows it.
-    const r = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ secret, ...row }),
-    });
-    const result = await r.json().catch(() => null);
+    const { status, result, preview } = await callSheet(url.trim(), { secret: secret.trim(), ...row });
     if (!result || !result.ok) {
-      console.error("Sheet rejected the response", r.status, result);
-      return res.status(502).json({ ok: false, error: "Could not save to the sheet" });
+      console.error("Sheet rejected the response", status, result, preview);
+      return res.status(502).json({ ok: false, error: explain(result, preview) });
     }
     return res.status(200).json({ ok: true });
   } catch (e) {

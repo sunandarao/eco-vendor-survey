@@ -648,10 +648,14 @@ async function submit() {
     Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "" } });
     save(); render();
   } catch (e) {
-    $view.querySelector(".hint")?.remove();
+    $view.querySelectorAll(".hint").forEach(n => n.remove());
     const p = document.createElement("p");
     p.className = "hint"; p.textContent = msgErr;
     $view.appendChild(p);
+    // Technical reason, for whoever is setting the survey up.
+    const why = document.createElement("p");
+    why.className = "muted"; why.textContent = e.message;
+    p.appendChild(document.createElement("br")); p.appendChild(why);
     setActions([{ label: L_back(), on: () => go(-1) }, { label: msgRetry, primary: true, on: submit }]);
   } finally {
     sending = false;
