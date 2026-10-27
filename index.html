@@ -550,13 +550,13 @@ function renderQ() {
   if (i < 5) {
     body = `<p class="muted">${L.rateAgree}</p>
       <div class="opts" role="radiogroup">
-        ${[1, 2, 3, 4, 5].map(v => `<button type="button" role="radio" class="opt" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}"><span class="n">${v}</span><span class="l">${L.scale[v - 1]}</span></button>`).join("")}
+        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="opt" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}"><span class="n">${v}</span><span class="l">${L.scale[v - 1]}</span></button>`).join("")}
       </div>`;
   } else if (i === 5) {
     body = `<div class="row5" role="radiogroup">
-        ${[1, 2, 3, 4, 5].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}" aria-label="${v}">${v}</button>`).join("")}
       </div>
-      <div class="ends"><span>1 – ${L.notUseful}</span><span>5 – ${L.veryUseful}</span></div>
+      <div class="ends"><span>5 – ${L.veryUseful}</span><span>1 – ${L.notUseful}</span></div>
       <div class="or">${L.or}</div>
       <div class="alt" role="radiogroup">
         <button type="button" role="radio" class="opt" data-v="NA" aria-checked="${S.a[i] === "NA"}"><span class="l">${L.notAttended}</span></button>
@@ -564,9 +564,9 @@ function renderQ() {
       </div>`;
   } else if (i === 6) {
     body = `<div class="nps" role="radiogroup">
-        ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${npsColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+        ${[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${npsColor(v)}" aria-label="${v}">${v}</button>`).join("")}
       </div>
-      <div class="ends"><span>${L.npsLow}</span><span>${L.npsHigh}</span></div>`;
+      <div class="ends"><span>${L.npsHigh}</span><span>${L.npsLow}</span></div>`;
   }
 
   if (i < 7) {
