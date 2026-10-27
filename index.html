@@ -84,10 +84,10 @@ p { margin: 0; }
 .lang[aria-pressed="true"] { border-color: var(--sel); background: var(--brand-soft); }
 
 .welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.intro h1 { font-size: 22px; }
-.intro .hi { border-top: 1px solid var(--line); padding-top: 12px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
-.intro .hi b { color: var(--fg); font-size: 17px; }
-.pick { font-size: 17px; font-weight: 700; margin: 4px 0 0; }
+.intro { display: flex; flex-direction: column; gap: 2px; }
+.pick { font-size: 19px; font-weight: 700; margin: 0; }
+.pick span { font-size: 16px; font-weight: 600; color: var(--muted); }
+.welcome h1 { font-size: 21px; }
 .tag { font-size: 24px; font-weight: 700; color: var(--brand); line-height: 1.2; }
 :root:not([data-theme="light"]) .tag { color: var(--sel); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) h2, :root:not([data-theme="dark"]) .tag { color: var(--brand); } }
@@ -432,6 +432,22 @@ const DETAILS = {
 };
 for (const k in DETAILS) DETAIL_KEYS.forEach((key, i) => { T[k][key] = DETAILS[k][i]; });
 
+// Welcome screen: [heading, why we are running the survey]
+const WELCOME = {
+  en: ["Welcome to the ECO Mobility Vendor Experience Survey", "This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you."],
+  hi: ["ECO Mobility वेंडर अनुभव सर्वे में आपका स्वागत है", "यह छोटा सर्वे भुगतान, सम्मान, व्यवसाय के निष्पक्ष बंटवारे, ब्रांच सहयोग और चालक प्रशिक्षण पर आपकी राय जानने के लिए है। आपके सच्चे जवाब हमें वही सुधारने में मदद करेंगे जो आपके लिए सबसे ज़रूरी है।"],
+  mr: ["ECO Mobility व्हेंडर अनुभव सर्वेक्षणात आपले स्वागत आहे", "हे छोटे सर्वेक्षण पेमेंट, आदर, व्यवसायाचे निष्पक्ष वाटप, शाखेचे सहकार्य आणि चालक प्रशिक्षण याबद्दल तुमचे मत जाणून घेण्यासाठी आहे. तुमची प्रामाणिक उत्तरे आम्हाला तुमच्यासाठी सर्वात महत्त्वाच्या गोष्टी सुधारण्यास मदत करतील."],
+  pa: ["ECO Mobility ਵੈਂਡਰ ਅਨੁਭਵ ਸਰਵੇਖਣ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ", "ਇਹ ਛੋਟਾ ਸਰਵੇ ਭੁਗਤਾਨ, ਸਤਿਕਾਰ, ਕਾਰੋਬਾਰ ਦੀ ਨਿਰਪੱਖ ਵੰਡ, ਬ੍ਰਾਂਚ ਸਹਿਯੋਗ ਅਤੇ ਡਰਾਈਵਰ ਸਿਖਲਾਈ ਬਾਰੇ ਤੁਹਾਡੀ ਰਾਏ ਜਾਣਨ ਲਈ ਹੈ। ਤੁਹਾਡੇ ਸੱਚੇ ਜਵਾਬ ਸਾਨੂੰ ਉਹ ਸੁਧਾਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨਗੇ ਜੋ ਤੁਹਾਡੇ ਲਈ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਹੈ।"],
+  bn: ["ECO Mobility ভেন্ডর অভিজ্ঞতা সমীক্ষায় আপনাকে স্বাগত", "এই ছোট সমীক্ষায় পেমেন্ট, সম্মান, ব্যবসার ন্যায্য বণ্টন, ব্রাঞ্চের সহযোগিতা এবং চালক প্রশিক্ষণ নিয়ে আপনার মতামত জানতে চাওয়া হয়েছে। আপনার সৎ উত্তর আমাদের সেই বিষয়গুলি উন্নত করতে সাহায্য করবে যা আপনার কাছে সবচেয়ে গুরুত্বপূর্ণ।"],
+  as: ["ECO Mobility ভেণ্ডৰ অভিজ্ঞতা সমীক্ষালৈ আপোনাক স্বাগতম", "এই চুটি সমীক্ষাত পেমেণ্ট, সন্মান, ব্যৱসায়ৰ ন্যায্য বিতৰণ, শাখাৰ সহযোগিতা আৰু চালক প্ৰশিক্ষণৰ বিষয়ে আপোনাৰ মতামত বিচৰা হৈছে। আপোনাৰ সঁচা উত্তৰে আমাক আপোনাৰ বাবে আটাইতকৈ গুৰুত্বপূৰ্ণ বিষয়সমূহ উন্নত কৰাত সহায় কৰিব।"],
+  or: ["ECO Mobility ଭେଣ୍ଡର ଅଭିଜ୍ଞତା ସର୍ଭେକୁ ଆପଣଙ୍କୁ ସ୍ୱାଗତ", "ଏହି ଛୋଟ ସର୍ଭେ ପେମେଣ୍ଟ, ସମ୍ମାନ, ବ୍ୟବସାୟର ନିରପେକ୍ଷ ବଣ୍ଟନ, ଶାଖା ସହଯୋଗ ଏବଂ ଚାଳକ ପ୍ରଶିକ୍ଷଣ ବିଷୟରେ ଆପଣଙ୍କ ମତାମତ ଜାଣିବା ପାଇଁ। ଆପଣଙ୍କ ସଚ୍ଚୋଟ ଉତ୍ତର ଆମକୁ ଆପଣଙ୍କ ପାଇଁ ସବୁଠାରୁ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ବିଷୟଗୁଡ଼ିକରେ ଉନ୍ନତି ଆଣିବାରେ ସାହାଯ୍ୟ କରିବ।"],
+  ta: ["ECO Mobility வெண்டர் அனுபவ கணக்கெடுப்புக்கு வரவேற்கிறோம்", "இந்தச் சிறிய கணக்கெடுப்பு பணம் செலுத்துதல், மரியாதை, வணிக வாய்ப்புகளின் நியாயமான ஒதுக்கீடு, கிளை ஆதரவு மற்றும் ஓட்டுநர் பயிற்சி குறித்த உங்கள் கருத்தை அறிவதற்கானது. உங்கள் நேர்மையான பதில்கள் உங்களுக்கு மிக முக்கியமானவற்றை மேம்படுத்த எங்களுக்கு உதவும்."],
+  te: ["ECO Mobility వెండర్ అనుభవ సర్వేకు స్వాగతం", "ఈ చిన్న సర్వే చెల్లింపులు, గౌరవం, వ్యాపారం న్యాయమైన కేటాయింపు, బ్రాంచ్ సహకారం మరియు డ్రైవర్ శిక్షణపై మీ అభిప్రాయం తెలుసుకోవడానికి. మీ నిజాయితీ సమాధానాలు మీకు అత్యంత ముఖ్యమైన విషయాలను మెరుగుపరచడంలో మాకు సహాయపడతాయి."],
+  kn: ["ECO Mobility ವೆಂಡರ್ ಅನುಭವ ಸಮೀಕ್ಷೆಗೆ ಸ್ವಾಗತ", "ಈ ಚಿಕ್ಕ ಸಮೀಕ್ಷೆಯು ಪಾವತಿ, ಗೌರವ, ವ್ಯವಹಾರದ ನ್ಯಾಯಯುತ ಹಂಚಿಕೆ, ಶಾಖಾ ಬೆಂಬಲ ಮತ್ತು ಚಾಲಕ ತರಬೇತಿಯ ಬಗ್ಗೆ ನಿಮ್ಮ ಅಭಿಪ್ರಾಯ ತಿಳಿಯಲು. ನಿಮ್ಮ ಪ್ರಾಮಾಣಿಕ ಉತ್ತರಗಳು ನಿಮಗೆ ಅತ್ಯಂತ ಮುಖ್ಯವಾದ ವಿಷಯಗಳನ್ನು ಸುಧಾರಿಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತವೆ."],
+  ml: ["ECO Mobility വെണ്ടർ അനുഭവ സർവേയിലേക്ക് സ്വാഗതം", "പേയ്‌മെന്റ്, ബഹുമാനം, ബിസിനസിന്റെ നീതിപൂർവ്വമായ വിതരണം, ബ്രാഞ്ച് പിന്തുണ, ഡ്രൈവർ പരിശീലനം എന്നിവയെക്കുറിച്ചുള്ള നിങ്ങളുടെ അഭിപ്രായം അറിയാനാണ് ഈ ചെറിയ സർവേ. നിങ്ങളുടെ സത്യസന്ധമായ ഉത്തരങ്ങൾ നിങ്ങൾക്ക് ഏറ്റവും പ്രധാനപ്പെട്ട കാര്യങ്ങൾ മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കും."],
+};
+for (const k in WELCOME) { T[k].welcome = WELCOME[k][0]; T[k].why = WELCOME[k][1]; }
+
 // Indian mobile: accepts +91 / 0 prefixes, returns the 10 digits or null.
 function cleanPhone(p) {
   let n = String(p || "").replace(/\D/g, "");
@@ -476,17 +492,11 @@ function render() {
 
 function renderLang() {
   $view.innerHTML = `
-    <section class="welcome intro">
+    <section class="intro">
       <div class="tag">${T.en.tagline}</div>
-      <h1>Welcome to the ECO Mobility Vendor Experience Survey</h1>
-      <p>At ECO Mobility, we value our partnership with you. This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you.</p>
-      <div class="hi" lang="hi">
-        <b>ECO Mobility वेंडर अनुभव सर्वे में आपका स्वागत है</b>
-        <p>ECO Mobility आपकी साझेदारी को महत्व देता है। यह छोटा सर्वे भुगतान, सम्मान, व्यवसाय के निष्पक्ष बंटवारे, ब्रांच सहयोग और चालक प्रशिक्षण पर आपकी राय जानने के लिए है। आपके सच्चे जवाब हमें वही सुधारने में मदद करेंगे जो आपके लिए सबसे ज़रूरी है।</p>
-      </div>
-      <div class="facts"><span class="chip">2 min · 2 मिनट</span><span class="chip">8 questions · 8 प्रश्न</span></div>
+      <p class="muted">${T.hi.tagline}</p>
     </section>
-    <h2 class="pick">${LANGS.map(l => T[l[0]].choose).slice(0, 2).join(" / ")}</h2>
+    <h1 class="pick">Choose your language to begin<br><span lang="hi">शुरू करने के लिए अपनी भाषा चुनें</span></h1>
     <div class="langs" role="group" aria-label="Language">
       ${LANGS.map(([k, n, e]) => `<button type="button" class="lang" data-lang="${k}" aria-pressed="${S.lang === k}"><b>${n}</b><span>${e}</span></button>`).join("")}
     </div>`;
@@ -503,8 +513,10 @@ function renderWelcome() {
   $view.innerHTML = `
     <section class="welcome">
       <div class="tag">${L.tagline}</div>
+      <h1>${L.welcome}</h1>
       <p><b>${L.greet}</b></p>
       <p>${L.intro}</p>
+      <p>${L.why}</p>
       <div class="facts"><span class="chip">${L.qs}</span><span class="chip">${L.time}</span></div>
     </section>`;
   setActions([{ label: L.start, primary: true, on: () => { S.screen = "details"; save(); render(); } }]);
