@@ -8,7 +8,7 @@
 <title>ECO Mobility – Vendor Experience Survey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: single-column phone app — ECO red app bar with wordmark, one question per screen, sticky bottom action bar */
 :root {
@@ -26,7 +26,7 @@
   --mid: #c98a12;
   --good: #1f8a4c;
   --wa: #1fa855;
-  --font-body: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-body: "Poppins", "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", system-ui, sans-serif;
   --font-brand: "Archivo Black", "Arial Black", "Noto Sans", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -82,21 +82,44 @@ p { margin: 0; }
 .select select:focus { outline: none; border-color: var(--sel); }
 .select::after { content: ""; position: absolute; right: 20px; top: 50%; width: 10px; height: 10px; border-right: 2.5px solid var(--muted); border-bottom: 2.5px solid var(--muted); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
 
-/* First page: pink banner with the square logo, then title, facts and language choice */
+/* First page, styled like ECO's Safety 365 app: red hero, info tiles, why cards */
 body.splash .bar { display: none; }
-body.splash, body.splash .actions { background: var(--surface); }
-body.splash .actions { border-top-color: transparent; }
-.splash-banner { background: var(--blush); display: flex; justify-content: center; padding-block: 44px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.sq-logo { width: 168px; max-width: 100%; aspect-ratio: 1; background: #d50019; color: #fff; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; line-height: 1; box-shadow: 0 10px 28px rgba(213, 0, 25, .22); }
-.sq-logo .logo { display: flex; align-items: center; gap: 4px; }
-.sq-logo .bird { width: 40px; height: 29px; }
-.sq-logo .eco { font-family: var(--font-brand); font-size: 40px; letter-spacing: .5px; }
-.sq-logo .mob { font-family: Arial, "Helvetica Neue", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .78em; padding-left: .78em; }
-body.splash main { text-align: center; gap: 26px; padding-block: 32px 24px; }
-.splash-title { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.splash-title h1 { font-size: 28px; line-height: 1.2; }
-.splash-title .facts { justify-content: center; }
-body.splash .field { text-align: left; }
+body.splash .actions { flex-direction: column; align-items: stretch; gap: 8px; }
+body.splash .actions .btn.primary { text-transform: uppercase; letter-spacing: .04em; font-weight: 800; box-shadow: 0 10px 24px rgba(213, 0, 25, .28); }
+.hero { position: relative; overflow: hidden; color: #fff; background: linear-gradient(160deg, #d80017 0%, #c00019 70%, #a80016 100%);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 0; }
+.hero::after { content: ""; position: absolute; right: -80px; top: -60px; width: 260px; height: 260px; background: rgba(255,255,255,.07); transform: rotate(35deg); border-radius: 40px; pointer-events: none; }
+.hero > * { position: relative; z-index: 1; }
+.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo-tile { width: 64px; height: 64px; border-radius: 14px; overflow: hidden; box-shadow: 0 0 0 2px rgba(255,255,255,.4); flex: none; }
+.logo-tile img { width: 100%; height: 100%; display: block; }
+.lang-chip { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.55); background: rgba(0,0,0,.12); font-size: 15px; font-weight: 600; }
+.lang-chip svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.lang-chip .caret { width: 12px; height: 12px; }
+.lang-chip select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; }
+.lang-chip:focus-within { outline: 3px solid #ffb400; outline-offset: 2px; }
+.hero-title { margin: 24px 0 0; font-size: clamp(30px, 9.5vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: .01em; color: #fff; text-wrap: balance; }
+.hero-title span { display: inline-block; background: #fff; color: #d80017; padding: 0 .18em; border-radius: 10px; margin-top: 6px; }
+.hero-sub { margin: 14px 0 0; font-weight: 700; letter-spacing: .14em; font-size: 14px; }
+.hero-intro { margin: 10px 0 18px; font-size: 15.5px; opacity: .95; max-width: 34ch; }
+.feature-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.feature { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: 14px; padding: 10px 6px; text-align: center; font-size: 13px; font-weight: 600; line-height: 1.25; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.feature i { font-style: normal; font-size: 20px; }
+.road { display: flex; gap: 14px; justify-content: center; padding: 20px 0 14px; }
+.road i { width: 26px; height: 5px; background: rgba(255,255,255,.75); border-radius: 3px; animation: dash 1.6s linear infinite; }
+.road i:nth-child(2n) { animation-delay: .2s; }
+@keyframes dash { 50% { opacity: .35; } }
+body.splash main { gap: 14px; padding-block: 20px 16px; }
+.scan-line { margin: 0 0 8px; padding: 12px 14px; border-radius: 14px; text-align: center; font-weight: 700; background: #1e2227; color: #fff; font-size: 15px; }
+.section-title { margin: 0; font-size: 20px; font-weight: 800; color: var(--fg); }
+.section-lead { margin: -8px 0 4px; color: var(--muted); font-size: 15px; }
+.why-list { display: grid; gap: 10px; }
+.why-card { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border-radius: 18px; padding: 14px; border: 1px solid var(--line); border-left: 5px solid #d80017; }
+.why-card i { font-style: normal; font-size: 26px; line-height: 1; margin-top: 2px; }
+.why-card h3 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: .02em; }
+.why-card p { margin: 2px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.45; }
+html:not([lang="en"]) .hero-sub, html:not([lang="en"]) body.splash .actions .btn.primary { letter-spacing: 0; }
+.cta-note { margin: 0; text-align: center; font-size: 13px; font-weight: 600; color: var(--muted); }
 
 .welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
 .field > span > span[lang] { color: var(--muted); }
@@ -163,7 +186,7 @@ textarea:focus { border-color: var(--sel); outline: none; }
       <div class="step" id="stepTxt"></div>
     </div>
   </header>
-  <div class="splash-banner" id="splashBanner" hidden></div>
+  <header class="hero" id="splashBanner" hidden></header>
   <main id="view" aria-live="polite"></main>
   <div class="actions" id="actions"></div>
 </div>
@@ -462,6 +485,22 @@ const WELCOME = {
 };
 for (const k in WELCOME) { T[k].welcome = WELCOME[k][0]; T[k].why = WELCOME[k][1]; }
 
+// First page: [why heading, language count]
+const FRONT = {
+  en: ["Why this survey?", "11 languages"],
+  hi: ["यह सर्वे क्यों?", "11 भाषाएँ"],
+  mr: ["हे सर्वेक्षण का?", "11 भाषा"],
+  pa: ["ਇਹ ਸਰਵੇ ਕਿਉਂ?", "11 ਭਾਸ਼ਾਵਾਂ"],
+  bn: ["এই সমীক্ষা কেন?", "১১টি ভাষা"],
+  as: ["এই সমীক্ষা কিয়?", "১১টা ভাষা"],
+  or: ["ଏହି ସର୍ଭେ କାହିଁକି?", "11ଟି ଭାଷା"],
+  ta: ["இந்தக் கணக்கெடுப்பு ஏன்?", "11 மொழிகள்"],
+  te: ["ఈ సర్వే ఎందుకు?", "11 భాషలు"],
+  kn: ["ಈ ಸಮೀಕ್ಷೆ ಏಕೆ?", "11 ಭಾಷೆಗಳು"],
+  ml: ["ഈ സർവേ എന്തിന്?", "11 ഭാഷകൾ"],
+};
+for (const k in FRONT) { T[k].whyTitle = FRONT[k][0]; T[k].langCount = FRONT[k][1]; }
+
 // Indian mobile: accepts +91 / 0 prefixes, returns the 10 digits or null.
 function cleanPhone(p) {
   let n = String(p || "").replace(/\D/g, "");
@@ -476,6 +515,7 @@ const TOTAL = 8; // 7 questions + suggestion
 
 const S = load() || { lang: null, screen: "lang", step: 0, a: {}, sug: "" };
 S.d = S.d || { name: "", id: "", phone: "" };
+if (S.screen === "welcome") S.screen = "lang";
 let showHint = false, showErrs = false;
 
 function load() { try { return JSON.parse(localStorage.getItem("eco-survey") || "null"); } catch (e) { return null; } }
@@ -502,35 +542,56 @@ function render() {
     document.getElementById("progFill").style.width = ((S.step + 1) / TOTAL * 100) + "%";
     document.getElementById("stepTxt").textContent = L.progress.replace("{n}", S.step + 1).replace("{t}", TOTAL);
   }
-  ({ lang: renderLang, welcome: renderWelcome, details: renderDetails, q: renderQ, done: renderDone })[S.screen]();
+  ({ lang: renderLang, details: renderDetails, q: renderQ, done: renderDone })[S.screen]();
   window.scrollTo(0, 0);
 }
 
+const GLOBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-3a15.7 15.7 0 00-1.4-3.6A8 8 0 0118.9 8zM12 4a13.9 13.9 0 011.9 4h-3.8A13.9 13.9 0 0112 4zM4.3 14a8.2 8.2 0 010-4h3.4a16.5 16.5 0 000 4H4.3zm.8 2h3a15.7 15.7 0 001.4 3.6A8 8 0 015.1 16zm3-8h-3a8 8 0 014.4-3.6A15.7 15.7 0 008.1 8zM12 20a13.9 13.9 0 01-1.9-4h3.8A13.9 13.9 0 0112 20zm2.3-6H9.7a14.7 14.7 0 010-4h4.6a14.7 14.7 0 010 4zm.2 5.6a15.7 15.7 0 001.4-3.6h3a8 8 0 01-4.4 3.6zm1.8-5.6a16.5 16.5 0 000-4h3.4a8.2 8.2 0 010 4h-3.4z"/></svg>';
+
+// Splits a heading like "Credibility – Trust & Transparency" into its two parts.
+const splitHead = h => { const i = h.indexOf(" – "); return i < 0 ? [h, ""] : [h.slice(0, i), h.slice(i + 3)]; };
+
 function renderLang() {
-  const chosen = S.lang || deviceLang();
-  const bird = document.querySelector(".bar .bird").outerHTML;
-  document.getElementById("splashBanner").innerHTML =
-    `<div class="sq-logo" role="img" aria-label="ECO Mobility"><span class="logo">${bird}<span class="eco">ECO</span></span><span class="mob">MOBILITY</span></div>`;
-  $view.innerHTML = `
-    <div class="splash-title">
-      <h1>Vendor Experience Survey</h1>
-      <div class="facts"><span class="chip">8 questions</span><span class="chip">2 minutes</span></div>
+  if (!S.lang) S.lang = deviceLang();
+  const L = t();
+  const words = L.title.split(" ");
+  const last = words.pop();
+  const caps = s => S.lang === "en" ? s.toUpperCase() : s;
+  document.getElementById("splashBanner").innerHTML = `
+    <div class="hero-top">
+      <div class="logo-tile"><img src="assets/logo.png" alt="ECO Mobility" width="64" height="64"></div>
+      <label class="lang-chip">${GLOBE}<span>${LANGS.find(l => l[0] === S.lang)[1]}</span>
+        <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <select id="langSel" aria-label="Language">
+          ${LANGS.map(([k, n, e]) => `<option value="${k}" ${k === S.lang ? "selected" : ""}>${k === "en" ? n : `${n} – ${e}`}</option>`).join("")}
+        </select>
+      </label>
     </div>
-    <label class="field" for="langSel">
-      <span>Choose your language</span>
-      <span class="select"><select id="langSel">
-        ${LANGS.map(([k, n, e]) => `<option value="${k}" ${k === chosen ? "selected" : ""}>${k === "en" ? n : `${n} – ${e}`}</option>`).join("")}
-      </select></span>
-    </label>`;
-  const sel = document.getElementById("langSel");
-  const start = () => {
-    S.lang = sel.value;
-    S.screen = Object.keys(S.a).length ? "q" : S.d.name ? "details" : "welcome";
+    <h1 class="hero-title">${caps(words.join(" "))} <span>${caps(last)}</span></h1>
+    <p class="hero-sub">${caps(L.tagline)}</p>
+    <p class="hero-intro">${L.intro}</p>
+    <div class="feature-row">
+      <div class="feature"><i aria-hidden="true">❓</i><span>${L.qs}</span></div>
+      <div class="feature"><i aria-hidden="true">⏱️</i><span>${L.time}</span></div>
+      <div class="feature"><i aria-hidden="true">🌐</i><span>${L.langCount}</span></div>
+    </div>
+    <div class="road" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>`;
+  const cards = [[0, "💳"], [1, "🤝"], [5, "🎓"]];
+  $view.innerHTML = `
+    <p class="scan-line">${L.footer}</p>
+    <h2 class="section-title">${L.whyTitle}</h2>
+    <p class="section-lead">${L.why}</p>
+    <div class="why-list">
+      ${cards.map(([i, ico]) => { const [h, d] = splitHead(L.q[i][0]); return `<article class="why-card"><i aria-hidden="true">${ico}</i><div><h3>${caps(h)}</h3><p>${d}</p></div></article>`; }).join("")}
+    </div>`;
+  document.getElementById("langSel").onchange = e => { S.lang = e.target.value; save(); render(); };
+  setActions([{ label: L.start + "  →", primary: true, on: () => {
+    S.screen = Object.keys(S.a).length ? "q" : "details";
     save(); render();
-  };
-  const paint = () => setActions([{ label: T[sel.value].start, primary: true, on: start }]);
-  sel.onchange = paint;
-  paint();
+  } }]);
+  const note = document.createElement("p");
+  note.className = "cta-note"; note.textContent = L.tagline;
+  $actions.appendChild(note);
 }
 
 // Picks the phone's language when it is one of ours, else English.
@@ -540,20 +601,6 @@ function deviceLang() {
     if (LANGS.some(([k]) => k === code)) return code;
   }
   return "en";
-}
-
-function renderWelcome() {
-  const L = t();
-  $view.innerHTML = `
-    <section class="welcome">
-      <div class="tag">${L.tagline}</div>
-      <h1>${L.welcome}</h1>
-      <p><b>${L.greet}</b></p>
-      <p>${L.intro}</p>
-      <p>${L.why}</p>
-      <div class="facts"><span class="chip">${L.qs}</span><span class="chip">${L.time}</span></div>
-    </section>`;
-  setActions([{ label: L.start, primary: true, on: () => { S.screen = "details"; save(); render(); } }]);
 }
 
 function detailErrors() {
@@ -593,7 +640,7 @@ function renderDetails() {
   });
   paint();
   setActions([
-    { label: L.back, on: () => { S.screen = "welcome"; save(); render(); } },
+    { label: L.back, on: () => { S.screen = "lang"; save(); render(); } },
     { label: L.next, primary: true, on: () => {
       showErrs = true;
       const errs = paint();
