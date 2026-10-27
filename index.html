@@ -157,6 +157,7 @@ textarea:focus { border-color: var(--sel); outline: none; }
 
 .actions { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); display: flex; gap: 10px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
+.actions.inline { position: static; background: transparent; border-top: 0; padding: 4px 0 0; }
 .btn { flex: 1; min-height: 54px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-weight: 700; font-size: 17px; cursor: pointer; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
 .btn.primary { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); flex: 2; }
 .btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
@@ -553,6 +554,8 @@ function npsColor(v) { return v <= 6 ? "var(--bad)" : v <= 8 ? "var(--mid)" : "v
 
 function render() {
   const L = t();
+  $actions.classList.remove("inline");
+  document.querySelector(".app").appendChild($actions);
   document.documentElement.lang = S.lang || "en";
   document.getElementById("barSub").textContent = L.title;
   document.getElementById("langBtn").hidden = S.screen === "lang";
@@ -718,6 +721,9 @@ function renderQ() {
       <textarea id="sug" placeholder="${esc(L.sugPh)}" maxlength="1000">${esc(S.sug)}</textarea>`;
     const ta = document.getElementById("sug");
     ta.oninput = () => { S.sug = ta.value; save(); setActions(qActions()); };
+    // On the last page the buttons sit right under the box instead of at the screen bottom.
+    $actions.classList.add("inline");
+    $view.appendChild($actions);
     setActions(qActions());
   }
 }
@@ -782,7 +788,7 @@ async function submit() {
     $view.querySelectorAll(".hint").forEach(n => n.remove());
     const p = document.createElement("p");
     p.className = "hint"; p.textContent = msgErr;
-    $view.appendChild(p);
+    $view.insertBefore(p, $actions.parentNode === $view ? $actions : null);
     // Technical reason, for whoever is setting the survey up.
     const why = document.createElement("p");
     why.className = "muted"; why.textContent = e.message;
