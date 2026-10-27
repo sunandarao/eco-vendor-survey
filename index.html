@@ -82,31 +82,20 @@ p { margin: 0; }
 .select select:focus { outline: none; border-color: var(--sel); }
 .select::after { content: ""; position: absolute; right: 20px; top: 50%; width: 10px; height: 10px; border-right: 2.5px solid var(--muted); border-bottom: 2.5px solid var(--muted); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
 
-/* First page: full-screen light pink with the logo centred */
-body.splash, body.splash .actions { background: var(--blush); }
+/* First page: pink banner with the square logo, then title, facts and language choice */
 body.splash .bar { display: none; }
+body.splash, body.splash .actions { background: var(--surface); }
 body.splash .actions { border-top-color: transparent; }
-body.splash main { justify-content: center; text-align: center; gap: 22px; padding-block: 40px 24px; }
-body.splash .chip { background: var(--surface); }
-.splash-logo { align-self: center; display: flex; flex-direction: column; align-items: stretch; color: var(--brand); line-height: 1; }
-:root:not([data-theme="light"]) .splash-logo { color: var(--sel); }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .splash-logo { color: var(--brand); } }
-:root[data-theme="light"] .splash-logo { color: var(--brand); }
-.splash-logo .logo { display: flex; align-items: center; gap: 8px; }
-.splash-logo .bird { width: 86px; height: 62px; }
-.splash-logo .eco { font-family: var(--font-brand); font-size: 64px; letter-spacing: 1px; }
-.splash-logo .mob { font-family: Arial, "Helvetica Neue", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .62em; margin-top: 10px; padding-left: .3em; text-align: center; }
-.hello { margin: 0 auto; font-size: 15px; line-height: 1.8; font-weight: 600; color: var(--muted); max-width: 26em; }
-.hello span { white-space: nowrap; }
-.hello span:not(:last-child)::after { content: " ·"; opacity: .55; }
+.splash-banner { background: var(--blush); display: flex; justify-content: center; padding-block: 44px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.sq-logo { width: 168px; max-width: 100%; aspect-ratio: 1; background: #d50019; color: #fff; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; line-height: 1; box-shadow: 0 10px 28px rgba(213, 0, 25, .22); }
+.sq-logo .logo { display: flex; align-items: center; gap: 4px; }
+.sq-logo .bird { width: 40px; height: 29px; }
+.sq-logo .eco { font-family: var(--font-brand); font-size: 40px; letter-spacing: .5px; }
+.sq-logo .mob { font-family: Arial, "Helvetica Neue", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .78em; padding-left: .78em; }
+body.splash main { text-align: center; gap: 26px; padding-block: 32px 24px; }
+.splash-title { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .splash-title h1 { font-size: 28px; line-height: 1.2; }
-.splash-title p { margin: 6px 0 0; color: var(--brand); font-weight: 600; }
-:root:not([data-theme="light"]) .splash-title p { color: var(--sel); }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .splash-title p { color: var(--brand); } }
-:root[data-theme="light"] .splash-title p { color: var(--brand); }
-.lede { display: flex; flex-direction: column; gap: 4px; align-items: center; }
-.lede p { margin: 0; max-width: 28em; }
-.lede .facts { margin-top: 10px; justify-content: center; }
+.splash-title .facts { justify-content: center; }
 body.splash .field { text-align: left; }
 
 .welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
@@ -174,6 +163,7 @@ textarea:focus { border-color: var(--sel); outline: none; }
       <div class="step" id="stepTxt"></div>
     </div>
   </header>
+  <div class="splash-banner" id="splashBanner" hidden></div>
   <main id="view" aria-live="polite"></main>
   <div class="actions" id="actions"></div>
 </div>
@@ -505,6 +495,7 @@ function render() {
   document.getElementById("barSub").textContent = L.title;
   document.getElementById("langBtn").hidden = S.screen === "lang";
   document.body.classList.toggle("splash", S.screen === "lang");
+  document.getElementById("splashBanner").hidden = S.screen !== "lang";
   const inQ = S.screen === "q";
   document.getElementById("prog").hidden = !inQ;
   if (inQ) {
@@ -515,26 +506,18 @@ function render() {
   window.scrollTo(0, 0);
 }
 
-// "Welcome" in each survey language, for the first-page banner.
-const HELLO = ["Welcome", "स्वागत", "ਜੀ ਆਇਆਂ ਨੂੰ", "স্বাগতম", "আদৰণি", "ସ୍ୱାଗତ", "வணக்கம்", "స్వాగతం", "ಸ್ವಾಗತ", "സ്വാഗതം"];
-
 function renderLang() {
   const chosen = S.lang || deviceLang();
   const bird = document.querySelector(".bar .bird").outerHTML;
+  document.getElementById("splashBanner").innerHTML =
+    `<div class="sq-logo" role="img" aria-label="ECO Mobility"><span class="logo">${bird}<span class="eco">ECO</span></span><span class="mob">MOBILITY</span></div>`;
   $view.innerHTML = `
-    <div class="splash-logo" role="img" aria-label="ECO Mobility"><span class="logo">${bird}<span class="eco">ECO</span></span><span class="mob">MOBILITY</span></div>
-    <p class="hello">${HELLO.map(w => `<span>${w}</span>`).join(" ")}</p>
     <div class="splash-title">
       <h1>Vendor Experience Survey</h1>
-      <p>${T.en.tagline}</p>
+      <div class="facts"><span class="chip">8 questions</span><span class="chip">2 minutes</span></div>
     </div>
-    <section class="lede">
-      <p><b>Help us serve you better.</b> Tell us how we are doing on payments, support and training.</p>
-      <p class="muted" lang="hi">हमें बेहतर सेवा देने में मदद करें। भुगतान, सहयोग और प्रशिक्षण पर अपनी राय दें।</p>
-      <div class="facts"><span class="chip">2 min · 2 मिनट</span><span class="chip">8 questions · 8 प्रश्न</span></div>
-    </section>
     <label class="field" for="langSel">
-      <span>Choose your language · <span lang="hi">अपनी भाषा चुनें</span></span>
+      <span>Choose your language</span>
       <span class="select"><select id="langSel">
         ${LANGS.map(([k, n, e]) => `<option value="${k}" ${k === chosen ? "selected" : ""}>${k === "en" ? n : `${n} – ${e}`}</option>`).join("")}
       </select></span>
