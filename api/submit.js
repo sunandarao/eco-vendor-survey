@@ -22,7 +22,11 @@ function validate(b) {
   if (!row.name) return ["name is required"];
   if (!row.chauffeurId) return ["chauffeurId is required"];
   if (!/^[6-9]\d{9}$/.test(row.mobile)) return ["mobile must be a 10-digit Indian mobile number"];
-  if (!/^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{1,4}|\d{2}BH\d{4}[A-Z]{1,2})$/.test(row.vehicleNumber)) return ["vehicleNumber must be a vehicle registration number like MH12AB1234"];
+  if (row.vehicleNumber && !/^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{1,4}|\d{2}BH\d{4}[A-Z]{1,2})$/.test(row.vehicleNumber)) return ["vehicleNumber must be empty or a registration number like MH12AB1234"];
+  // DPDP Act: personal data is stored only with the chauffeur's recorded consent.
+  if (b.consent !== true) return ["consent is required"];
+  const consentAt = new Date(typeof b.consentAt === "string" ? b.consentAt : "");
+  row.consentAt = (isNaN(consentAt) ? new Date() : consentAt).toISOString();
   if (!LANGUAGES.includes(row.language)) return ["unknown language"];
   for (let i = 1; i <= 5; i++) {
     if (!isInt(b["q" + i], 1, 5)) return [`q${i} must be 1-5`];

@@ -80,6 +80,12 @@ button:focus-visible, textarea:focus-visible { outline: 3px solid var(--sel); ou
 .field input:focus { border-color: var(--sel); outline: none; }
 .field input[aria-invalid="true"] { border-color: var(--bad); }
 .err { color: var(--bad); font-style: normal; font-size: 14px; }
+.notice { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+.notice h3 { margin: 0; font-size: 15px; color: var(--fg); }
+.notice p { margin: 0; }
+.notice a { color: var(--sel); font-weight: 600; overflow-wrap: anywhere; }
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; font-weight: 600; color: var(--fg); cursor: pointer; }
+.consent input { flex: none; width: 24px; height: 24px; margin: 1px 0 0; accent-color: #d50019; cursor: pointer; }
 .brand small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 12px; opacity: .9; margin-top: 6px; letter-spacing: .3px; }
 .lang-btn { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); color: var(--brand-ink); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .progress { margin-top: 12px; height: 6px; background: rgba(255,255,255,.22); border-radius: 99px; overflow: hidden; }
@@ -503,6 +509,25 @@ const VEHICLE = {
 };
 for (const k in VEHICLE) { T[k].fVehicle = VEHICLE[k][0]; T[k].badVehicle = VEHICLE[k][1]; }
 
+
+// Privacy notice and consent (DPDP Act, 2023): [heading, notice, consent label, consent error]
+const PRIVACY_EMAIL = "peoplehotline@ecosmobility.com";
+const PRIVACY_PHONE = "+91 73035 86357";
+const PRIVACY = {
+  en: ["Privacy notice", "ECO Mobility collects your name, chauffeur ID, mobile number and (if you give it) vehicle number only to understand your feedback and follow up on it. Taking part is voluntary and will not affect your business with ECO Mobility. Your responses are kept for 12 months and then deleted. To see, correct or delete your data, withdraw consent or raise a complaint, contact {email} or {phone}. You can also complain to the Data Protection Board of India.", "I have read this notice and agree to share my details for this survey.", "Please tick the box to continue."],
+  hi: ["गोपनीयता सूचना", "ECO Mobility आपका नाम, चालक आईडी, मोबाइल नंबर और (यदि आप दें तो) वाहन नंबर केवल आपकी राय समझने और उस पर आगे संपर्क करने के लिए लेता है। इसमें भाग लेना आपकी इच्छा पर है और इससे ECO Mobility के साथ आपके व्यवसाय पर कोई असर नहीं पड़ेगा। आपके जवाब 12 महीने तक रखे जाएँगे और फिर हटा दिए जाएँगे। अपना डेटा देखने, सुधारने या हटवाने, सहमति वापस लेने या शिकायत करने के लिए {email} या {phone} पर संपर्क करें। आप भारतीय डेटा संरक्षण बोर्ड से भी शिकायत कर सकते हैं।", "मैंने यह सूचना पढ़ ली है और इस सर्वे के लिए अपनी जानकारी देने के लिए सहमत हूँ।", "आगे बढ़ने के लिए कृपया बॉक्स पर टिक करें।"],
+  mr: ["गोपनीयता सूचना", "ECO Mobility तुमचे नाव, चालक आयडी, मोबाइल नंबर आणि (तुम्ही दिल्यास) वाहन क्रमांक फक्त तुमचा अभिप्राय समजून घेण्यासाठी आणि त्यावर पुढे संपर्क साधण्यासाठी घेते. यात सहभागी होणे ऐच्छिक आहे आणि त्याचा ECO Mobility सोबतच्या तुमच्या व्यवसायावर कोणताही परिणाम होणार नाही. तुमची उत्तरे 12 महिने ठेवली जातील आणि नंतर हटवली जातील. तुमचा डेटा पाहण्यासाठी, दुरुस्त करण्यासाठी किंवा हटवण्यासाठी, संमती मागे घेण्यासाठी किंवा तक्रार करण्यासाठी {email} किंवा {phone} वर संपर्क साधा. तुम्ही भारतीय डेटा संरक्षण मंडळाकडेही तक्रार करू शकता.", "मी ही सूचना वाचली आहे आणि या सर्वेक्षणासाठी माझी माहिती देण्यास संमती देतो/देते.", "पुढे जाण्यासाठी कृपया बॉक्सवर टिक करा."],
+  pa: ["ਗੋਪਨੀਯਤਾ ਸੂਚਨਾ", "ECO Mobility ਤੁਹਾਡਾ ਨਾਮ, ਡਰਾਈਵਰ ਆਈਡੀ, ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ (ਜੇ ਤੁਸੀਂ ਦਿਓ) ਗੱਡੀ ਨੰਬਰ ਸਿਰਫ਼ ਤੁਹਾਡੀ ਰਾਏ ਸਮਝਣ ਅਤੇ ਉਸ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਲੈਂਦੀ ਹੈ। ਇਸ ਵਿੱਚ ਹਿੱਸਾ ਲੈਣਾ ਤੁਹਾਡੀ ਮਰਜ਼ੀ ਹੈ ਅਤੇ ਇਸ ਨਾਲ ECO Mobility ਨਾਲ ਤੁਹਾਡੇ ਕਾਰੋਬਾਰ 'ਤੇ ਕੋਈ ਅਸਰ ਨਹੀਂ ਪਵੇਗਾ। ਤੁਹਾਡੇ ਜਵਾਬ 12 ਮਹੀਨਿਆਂ ਤੱਕ ਰੱਖੇ ਜਾਣਗੇ ਅਤੇ ਫਿਰ ਮਿਟਾ ਦਿੱਤੇ ਜਾਣਗੇ। ਆਪਣਾ ਡੇਟਾ ਦੇਖਣ, ਠੀਕ ਕਰਵਾਉਣ ਜਾਂ ਮਿਟਵਾਉਣ, ਸਹਿਮਤੀ ਵਾਪਸ ਲੈਣ ਜਾਂ ਸ਼ਿਕਾਇਤ ਕਰਨ ਲਈ {email} ਜਾਂ {phone} 'ਤੇ ਸੰਪਰਕ ਕਰੋ। ਤੁਸੀਂ ਭਾਰਤੀ ਡੇਟਾ ਸੁਰੱਖਿਆ ਬੋਰਡ ਕੋਲ ਵੀ ਸ਼ਿਕਾਇਤ ਕਰ ਸਕਦੇ ਹੋ।", "ਮੈਂ ਇਹ ਸੂਚਨਾ ਪੜ੍ਹ ਲਈ ਹੈ ਅਤੇ ਇਸ ਸਰਵੇ ਲਈ ਆਪਣੀ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਸਹਿਮਤ ਹਾਂ।", "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਬਾਕਸ 'ਤੇ ਟਿੱਕ ਕਰੋ।"],
+  bn: ["গোপনীয়তা বিজ্ঞপ্তি", "ECO Mobility আপনার নাম, চালক আইডি, মোবাইল নম্বর এবং (আপনি দিলে) গাড়ির নম্বর শুধুমাত্র আপনার মতামত বুঝতে ও সে বিষয়ে পরে যোগাযোগ করতে সংগ্রহ করে। অংশগ্রহণ সম্পূর্ণ ঐচ্ছিক এবং এতে ECO Mobility-র সঙ্গে আপনার ব্যবসায় কোনো প্রভাব পড়বে না। আপনার উত্তর ১২ মাস রাখা হবে, তারপর মুছে ফেলা হবে। আপনার তথ্য দেখতে, সংশোধন বা মুছতে, সম্মতি প্রত্যাহার করতে বা অভিযোগ জানাতে {email} বা {phone}-এ যোগাযোগ করুন। আপনি ভারতের ডেটা সুরক্ষা বোর্ডেও অভিযোগ করতে পারেন।", "আমি এই বিজ্ঞপ্তি পড়েছি এবং এই সমীক্ষার জন্য আমার তথ্য দিতে সম্মত।", "এগিয়ে যেতে অনুগ্রহ করে বাক্সে টিক দিন।"],
+  as: ["গোপনীয়তা জাননী", "ECO Mobility-এ আপোনাৰ নাম, চালক আইডি, মোবাইল নম্বৰ আৰু (আপুনি দিলে) গাড়ীৰ নম্বৰ কেৱল আপোনাৰ মতামত বুজিবলৈ আৰু সেই বিষয়ে পিছত যোগাযোগ কৰিবলৈ সংগ্ৰহ কৰে। অংশগ্ৰহণ সম্পূৰ্ণ ঐচ্ছিক আৰু ইয়াৰ ফলত ECO Mobility-ৰ সৈতে আপোনাৰ ব্যৱসায়ত কোনো প্ৰভাৱ নপৰে। আপোনাৰ উত্তৰ ১২ মাহ ৰখা হ'ব আৰু তাৰ পিছত মচি পেলোৱা হ'ব। আপোনাৰ তথ্য চাবলৈ, শুধৰাবলৈ বা মচিবলৈ, সন্মতি উঠাই ল'বলৈ বা অভিযোগ দিবলৈ {email} বা {phone}-ত যোগাযোগ কৰক। আপুনি ভাৰতৰ ডেটা সুৰক্ষা বৰ্ডতো অভিযোগ দিব পাৰে।", "মই এই জাননী পঢ়িছোঁ আৰু এই সমীক্ষাৰ বাবে মোৰ তথ্য দিবলৈ সন্মত।", "আগবাঢ়িবলৈ অনুগ্ৰহ কৰি বাকচত টিক দিয়ক।"],
+  or: ["ଗୋପନୀୟତା ସୂଚନା", "ECO Mobility ଆପଣଙ୍କ ନାମ, ଚାଳକ ଆଇଡି, ମୋବାଇଲ୍ ନମ୍ବର ଏବଂ (ଆପଣ ଦେଲେ) ଗାଡ଼ି ନମ୍ବର କେବଳ ଆପଣଙ୍କ ମତାମତ ବୁଝିବା ଓ ସେ ବିଷୟରେ ପରେ ଯୋଗାଯୋଗ କରିବା ପାଇଁ ସଂଗ୍ରହ କରେ। ଅଂଶଗ୍ରହଣ ସମ୍ପୂର୍ଣ୍ଣ ଇଚ୍ଛାଧୀନ ଏବଂ ଏହା ECO Mobility ସହ ଆପଣଙ୍କ ବ୍ୟବସାୟ ଉପରେ କୌଣସି ପ୍ରଭାବ ପକାଇବ ନାହିଁ। ଆପଣଙ୍କ ଉତ୍ତର 12 ମାସ ରଖାଯିବ ଏବଂ ତାପରେ ବିଲୋପ କରାଯିବ। ଆପଣଙ୍କ ତଥ୍ୟ ଦେଖିବା, ସଂଶୋଧନ ବା ବିଲୋପ କରିବା, ସମ୍ମତି ପ୍ରତ୍ୟାହାର କରିବା କିମ୍ବା ଅଭିଯୋଗ କରିବା ପାଇଁ {email} କିମ୍ବା {phone}ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ। ଆପଣ ଭାରତର ଡାଟା ସୁରକ୍ଷା ବୋର୍ଡରେ ମଧ୍ୟ ଅଭିଯୋଗ କରିପାରିବେ।", "ମୁଁ ଏହି ସୂଚନା ପଢ଼ିଛି ଏବଂ ଏହି ସର୍ଭେ ପାଇଁ ମୋର ବିବରଣୀ ଦେବାକୁ ସମ୍ମତ।", "ଆଗକୁ ଯିବା ପାଇଁ ଦୟାକରି ବାକ୍ସରେ ଟିକ୍ ଦିଅନ୍ତୁ।"],
+  ta: ["தனியுரிமை அறிவிப்பு", "உங்கள் கருத்தைப் புரிந்துகொள்ளவும் அதைப் பற்றிப் பின்னர் தொடர்புகொள்ளவும் மட்டுமே ECO Mobility உங்கள் பெயர், ஓட்டுநர் ஐடி, மொபைல் எண் மற்றும் (நீங்கள் கொடுத்தால்) வாகன எண்ணைச் சேகரிக்கிறது. பங்கேற்பது முழுக்க உங்கள் விருப்பம்; இது ECO Mobility உடனான உங்கள் வணிகத்தைப் பாதிக்காது. உங்கள் பதில்கள் 12 மாதங்கள் வைக்கப்பட்டு, பின்னர் நீக்கப்படும். உங்கள் தரவைப் பார்க்க, திருத்த அல்லது நீக்க, ஒப்புதலைத் திரும்பப் பெற அல்லது புகார் அளிக்க {email} அல்லது {phone} ஐத் தொடர்புகொள்ளவும். இந்திய தரவுப் பாதுகாப்பு வாரியத்திடமும் நீங்கள் புகார் அளிக்கலாம்.", "இந்த அறிவிப்பைப் படித்தேன்; இந்தக் கணக்கெடுப்புக்காக என் விவரங்களைப் பகிர ஒப்புக்கொள்கிறேன்.", "தொடர, பெட்டியில் டிக் செய்யவும்."],
+  te: ["గోప్యతా నోటీసు", "మీ అభిప్రాయాన్ని అర్థం చేసుకోవడానికి, దానిపై తర్వాత సంప్రదించడానికి మాత్రమే ECO Mobility మీ పేరు, డ్రైవర్ ఐడి, మొబైల్ నంబర్ మరియు (మీరు ఇస్తే) వాహన నంబర్‌ను సేకరిస్తుంది. పాల్గొనడం పూర్తిగా మీ ఇష్టం; ఇది ECO Mobilityతో మీ వ్యాపారాన్ని ప్రభావితం చేయదు. మీ సమాధానాలు 12 నెలలు ఉంచబడి, ఆ తర్వాత తొలగించబడతాయి. మీ డేటాను చూడటానికి, సరిదిద్దటానికి లేదా తొలగించడానికి, సమ్మతిని ఉపసంహరించుకోవడానికి లేదా ఫిర్యాదు చేయడానికి {email} లేదా {phone}ను సంప్రదించండి. మీరు భారత డేటా రక్షణ బోర్డుకు కూడా ఫిర్యాదు చేయవచ్చు.", "నేను ఈ నోటీసు చదివాను మరియు ఈ సర్వే కోసం నా వివరాలు ఇవ్వడానికి అంగీకరిస్తున్నాను.", "కొనసాగడానికి దయచేసి బాక్స్‌ను టిక్ చేయండి."],
+  kn: ["ಗೌಪ್ಯತಾ ಸೂಚನೆ", "ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಮತ್ತು ಅದರ ಬಗ್ಗೆ ನಂತರ ಸಂಪರ್ಕಿಸಲು ಮಾತ್ರ ECO Mobility ನಿಮ್ಮ ಹೆಸರು, ಚಾಲಕ ಐಡಿ, ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ಮತ್ತು (ನೀವು ನೀಡಿದರೆ) ವಾಹನ ಸಂಖ್ಯೆಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ. ಭಾಗವಹಿಸುವುದು ಸಂಪೂರ್ಣ ಐಚ್ಛಿಕ; ಇದು ECO Mobility ಜೊತೆಗಿನ ನಿಮ್ಮ ವ್ಯವಹಾರದ ಮೇಲೆ ಯಾವುದೇ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ. ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು 12 ತಿಂಗಳು ಇರಿಸಿ, ನಂತರ ಅಳಿಸಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಡೇಟಾ ನೋಡಲು, ತಿದ್ದಲು ಅಥವಾ ಅಳಿಸಲು, ಸಮ್ಮತಿ ಹಿಂಪಡೆಯಲು ಅಥವಾ ದೂರು ನೀಡಲು {email} ಅಥವಾ {phone} ಅನ್ನು ಸಂಪರ್ಕಿಸಿ. ನೀವು ಭಾರತದ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಮಂಡಳಿಗೂ ದೂರು ನೀಡಬಹುದು.", "ನಾನು ಈ ಸೂಚನೆಯನ್ನು ಓದಿದ್ದೇನೆ ಮತ್ತು ಈ ಸಮೀಕ್ಷೆಗಾಗಿ ನನ್ನ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಒಪ್ಪುತ್ತೇನೆ.", "ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಬಾಕ್ಸ್ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ."],
+  ml: ["സ്വകാര്യതാ അറിയിപ്പ്", "നിങ്ങളുടെ അഭിപ്രായം മനസ്സിലാക്കാനും അതിനെക്കുറിച്ച് പിന്നീട് ബന്ധപ്പെടാനും മാത്രമാണ് ECO Mobility നിങ്ങളുടെ പേര്, ഡ്രൈവർ ഐഡി, മൊബൈൽ നമ്പർ, (നിങ്ങൾ നൽകിയാൽ) വാഹന നമ്പർ എന്നിവ ശേഖരിക്കുന്നത്. പങ്കെടുക്കുന്നത് പൂർണ്ണമായും നിങ്ങളുടെ ഇഷ്ടമാണ്; ഇത് ECO Mobility-യുമായുള്ള നിങ്ങളുടെ ബിസിനസിനെ ബാധിക്കില്ല. നിങ്ങളുടെ ഉത്തരങ്ങൾ 12 മാസം സൂക്ഷിക്കുകയും തുടർന്ന് ഇല്ലാതാക്കുകയും ചെയ്യും. നിങ്ങളുടെ ഡാറ്റ കാണാനോ തിരുത്താനോ ഇല്ലാതാക്കാനോ, സമ്മതം പിൻവലിക്കാനോ, പരാതി നൽകാനോ {email} അല്ലെങ്കിൽ {phone} എന്നതിൽ ബന്ധപ്പെടുക. ഇന്ത്യയുടെ ഡാറ്റ സംരക്ഷണ ബോർഡിലും നിങ്ങൾക്ക് പരാതി നൽകാം.", "ഞാൻ ഈ അറിയിപ്പ് വായിച്ചു, ഈ സർവേയ്ക്കായി എന്റെ വിവരങ്ങൾ നൽകാൻ സമ്മതിക്കുന്നു.", "തുടരാൻ ദയവായി ബോക്സിൽ ടിക്ക് ചെയ്യുക."],
+};
+for (const k in PRIVACY) { [T[k].privTitle, T[k].privText, T[k].consent, T[k].needConsent] = PRIVACY[k]; }
+
 // Indian registration number, e.g. MH12AB1234 or 22BH1234AA: returns it without spaces, or null.
 function cleanVehicle(v) {
   const n = String(v || "").toUpperCase().replace(/[\s.\-]/g, "");
@@ -554,7 +579,7 @@ const REPORT_KEYS = ["Q1 Credibility", "Q2 Respect", "Q3 Fairness", "Q4 Pride", 
 const TOTAL = 8; // 7 questions + suggestion
 
 const S = load() || { lang: null, screen: "lang", step: 0, a: {}, sug: "" };
-S.d = Object.assign({ name: "", id: "", phone: "", vehicle: "" }, S.d);
+S.d = Object.assign({ name: "", id: "", phone: "", vehicle: "", consent: false, consentAt: "" }, S.d);
 if (S.screen === "welcome") S.screen = "lang";
 let showHint = false, showErrs = false;
 
@@ -651,7 +676,8 @@ function detailErrors() {
     name: S.d.name.trim() ? "" : L.req,
     id: S.d.id.trim() ? "" : L.req,
     phone: !S.d.phone.trim() ? L.req : cleanPhone(S.d.phone) ? "" : L.badPhone,
-    vehicle: !S.d.vehicle.trim() ? L.req : cleanVehicle(S.d.vehicle) ? "" : L.badVehicle,
+    vehicle: !S.d.vehicle.trim() || cleanVehicle(S.d.vehicle) ? "" : L.badVehicle,
+    consent: S.d.consent ? "" : L.needConsent,
   };
 }
 
@@ -661,14 +687,25 @@ function renderDetails() {
     ["name", L.fName, "text", "name", "text", ""],
     ["id", L.fId, "text", "off", "text", ""],
     ["phone", L.fPhone, "tel", "tel", "numeric", 'maxlength="18" placeholder="98XXXXXXXX"'],
-    ["vehicle", L.fVehicle, "text", "off", "text", 'maxlength="16" autocapitalize="characters" spellcheck="false" placeholder="MH 12 AB 1234" style="text-transform: uppercase"'],
+    ["vehicle", `${L.fVehicle} (${L.optional})`, "text", "off", "text", 'maxlength="16" autocapitalize="characters" spellcheck="false" placeholder="MH 12 AB 1234" style="text-transform: uppercase"'],
   ];
   $view.innerHTML = `<h2>${L.detTitle}</h2><p class="muted">${L.detNote}</p>
     <div class="fields">
       ${fields.map(([k, label, type, ac, im, extra]) => `<label class="field" for="d-${k}"><span>${label}</span>
         <input id="d-${k}" type="${type}" autocomplete="${ac}" inputmode="${im}" value="${esc(S.d[k])}" ${extra}>
         <em class="err" id="e-${k}" hidden></em></label>`).join("")}
-    </div>`;
+    </div>
+    <section class="notice" aria-labelledby="privTitle">
+      <h3 id="privTitle">${L.privTitle}</h3>
+      <p>${esc(L.privText).replace("{email}", `<a href="mailto:${PRIVACY_EMAIL}">${PRIVACY_EMAIL}</a>`).replace("{phone}", `<a href="tel:${PRIVACY_PHONE.replace(/\s/g, "")}">${PRIVACY_PHONE}</a>`)}</p>
+      <label class="consent" for="d-consent"><input type="checkbox" id="d-consent" ${S.d.consent ? "checked" : ""}><span>${L.consent}</span></label>
+      <em class="err" id="e-consent" hidden></em>
+    </section>`;
+  document.getElementById("d-consent").onchange = ev => {
+    S.d.consent = ev.target.checked;
+    S.d.consentAt = ev.target.checked ? new Date().toISOString() : "";
+    save(); if (showErrs) paint();
+  };
   const paint = () => {
     const errs = detailErrors();
     for (const k in errs) {
@@ -782,7 +819,7 @@ const SEND_TEXT = {
 
 function payload() {
   const lang = LANGS.find(l => l[0] === S.lang)[2];
-  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), vehicleNumber: cleanVehicle(S.d.vehicle), language: lang, suggestion: S.sug.trim() };
+  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), vehicleNumber: cleanVehicle(S.d.vehicle) || "", consent: S.d.consent === true, consentAt: S.d.consentAt, language: lang, suggestion: S.sug.trim() };
   for (let i = 0; i < 7; i++) out["q" + (i + 1)] = S.a[i];
   return out;
 }
@@ -799,7 +836,7 @@ async function submit() {
     const j = await r.json().catch(() => ({}));
     if (!r.ok || !j.ok) throw new Error(j.error || "HTTP " + r.status);
     // Clear answers so the phone can be handed to the next chauffeur; keep the language.
-    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "", vehicle: "" } });
+    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "", vehicle: "", consent: false, consentAt: "" } });
     save(); render();
   } catch (e) {
     $view.querySelectorAll(".hint").forEach(n => n.remove());

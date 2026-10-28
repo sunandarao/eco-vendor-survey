@@ -8,7 +8,7 @@ const SHEET_NAME = "Responses";
 const HEADERS = [
   "Submitted at", "Name", "Chauffeur ID", "Mobile", "Vehicle Number", "Language",
   "Q1 Credibility (1-5)", "Q2 Respect (1-5)", "Q3 Fairness (1-5)", "Q4 Pride (1-5)", "Q5 Camaraderie (1-5)",
-  "Q6 Training (1-5)", "Q7 NPS (0-10)", "Suggestion",
+  "Q6 Training (1-5)", "Q7 NPS (0-10)", "Suggestion", "Consent given at",
 ];
 
 function doPost(e) {
@@ -34,6 +34,7 @@ function doPost(e) {
     sheet.getRange(row, 1, 1, HEADERS.length).setValues([[
       new Date(), body.name, body.chauffeurId, body.mobile, body.vehicleNumber || "", body.language,
       body.q1, body.q2, body.q3, body.q4, body.q5, body.q6, body.q7, body.suggestion || "",
+      body.consentAt ? new Date(body.consentAt) : "",
     ]]);
   } finally {
     lock.releaseLock();
