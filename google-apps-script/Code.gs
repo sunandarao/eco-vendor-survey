@@ -7,11 +7,11 @@ const SHEET_NAME = "Responses";
 
 const HEADERS = [
   "Submitted at", "Name", "Chauffeur ID", "Mobile", "Vehicle Number", "Language",
-  "Q1. Credibility – Trust & Transparency: ECO Mobility ensures timely payments and maintains transparency in billing and payment processes. (1 = Strongly Disagree, 5 = Strongly Agree)",
-  "Q2. Respect – Valuing Partners: My concerns and suggestions are heard, addressed and valued by ECO Mobility. (1–5)",
-  "Q3. Fairness – Equal Opportunities: ECO Mobility allocates vehicle business opportunities fairly and transparently. (1–5)",
-  "Q4. Pride – Association with ECO: I feel proud to be associated with ECO Mobility as a vehicle partner. (1–5)",
-  "Q5. Camaraderie – Working Relationships: I receive cooperation and support from my ECO Mobility Branch Team. (1–5)",
+  "Q1. Credibility - Trust & Transparency: ECO Mobility ensures timely payments and maintains transparency in billing and payment processes. (1 = Strongly Disagree, 5 = Strongly Agree)",
+  "Q2. Respect - Valuing Partners: My concerns and suggestions are heard, addressed and valued by ECO Mobility. (1-5)",
+  "Q3. Fairness - Equal Opportunities: ECO Mobility allocates vehicle business opportunities fairly and transparently. (1-5)",
+  "Q4. Pride - Association with ECO: I feel proud to be associated with ECO Mobility as a vehicle partner. (1-5)",
+  "Q5. Camaraderie - Working Relationships: I receive cooperation and support from my ECO Mobility Branch Team. (1-5)",
   "Q6. Chauffeur Training & Development: How useful are the chauffeur training programmes conducted by ECO Mobility in improving chauffeur skills and service quality? (1 = Not Useful, 5 = Very Useful)",
   "Q7. Overall Recommendation: How likely are you to recommend ECO Mobility to other vehicle owners as a company to attach their vehicles with? (0 = Not at All Likely, 10 = Extremely Likely)",
   "Suggestion: What is one thing ECO Mobility should improve?",
@@ -30,11 +30,8 @@ function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
-    // Row 1 always holds the current headings, so added columns show up.
-    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight("bold").setWrap(true).setVerticalAlignment("top");
-    sheet.setFrozenRows(1);
+    const sheet = getSheet();
+    writeHeaders(sheet);
     const row = Math.max(sheet.getLastRow() + 1, 2);
     // Keep Chauffeur ID, Mobile and Vehicle Number as text so leading zeros survive.
     sheet.getRange(row, 3, 1, 3).setNumberFormat("@");
@@ -47,6 +44,22 @@ function doPost(e) {
     lock.releaseLock();
   }
   return json({ ok: true });
+}
+
+// Run this once from the editor to rewrite the heading row immediately.
+function fixHeaders() {
+  writeHeaders(getSheet());
+}
+
+function getSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  return ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+}
+
+function writeHeaders(sheet) {
+  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS])
+    .setFontWeight("bold").setWrap(true).setVerticalAlignment("top");
+  sheet.setFrozenRows(1);
 }
 
 function json(obj) {
