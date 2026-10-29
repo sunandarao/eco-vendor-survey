@@ -5,194 +5,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#d50019">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>ECO Mobility – Vendor Experience Survey</title>
-<meta name="description" content="Share your experience as an ECO Mobility vehicle partner. 8 questions, about 2 minutes, in 12 Indian languages.">
+<title>ECO Mobility – Business Partner Survey</title>
+<meta name="description" content="Share your experience as an ECO Mobility business partner. 8 questions, about 2 minutes, in 12 Indian languages.">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ECO Mobility">
 <meta property="og:url" content="https://eco-vendor-survey.vercel.app/">
-<meta property="og:title" content="ECO Mobility – Vendor Experience Survey">
+<meta property="og:title" content="ECO Mobility – Business Partner Survey">
 <meta property="og:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 12 languages.">
-<meta property="og:image" content="https://eco-vendor-survey.vercel.app/assets/og-card.jpg">
+<meta property="og:image" content="https://eco-vendor-survey.vercel.app/assets/og-partner.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ECO Mobility Vendor Experience Survey">
+<meta property="og:image:alt" content="ECO Mobility Business Partner Survey">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ECO Mobility – Vendor Experience Survey">
+<meta name="twitter:title" content="ECO Mobility – Business Partner Survey">
 <meta name="twitter:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 12 languages.">
-<meta name="twitter:image" content="https://eco-vendor-survey.vercel.app/assets/og-card.jpg">
+<meta name="twitter:image" content="https://eco-vendor-survey.vercel.app/assets/og-partner.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: single-column phone app — ECO red app bar with wordmark, one question per screen, sticky bottom action bar */
+/* Layout: ECOS brand – white pages, navy headings, flat colours, red only on the main button. One question per screen. */
 :root {
-  --bg: #f7f4f4;
+  --bg: #ffffff;
+  --soft: #f4f6f9;
   --surface: #ffffff;
-  --fg: #1d1213;
-  --muted: #6b5d5e;
-  --line: #e6dcdc;
-  --brand: #d50019;
-  --brand-ink: #ffffff;
-  --brand-soft: #fde8ea;
-  --blush: #fdeef0;
-  --sel: #d50019;
-  --bad: #c2412d;
-  --mid: #c98a12;
-  --good: #1f8a4c;
-  --wa: #1fa855;
-  --font-body: "Poppins", "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", "Noto Sans Gujarati", system-ui, sans-serif;
-  --font-brand: "Archivo Black", "Arial Black", "Noto Sans", system-ui, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #151011; --surface: #201819; --fg: #f3eaea; --muted: #b3a2a3; --line: #3a2c2d;
-    --brand: #c00017; --brand-ink: #ffffff; --brand-soft: #3a1a1d; --blush: #22141a; --sel: #ff5a69;
-    --bad: #e36a55; --mid: #e0a83a; --good: #45b876; --wa: #25c264; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #151011; --surface: #201819; --fg: #f3eaea; --muted: #b3a2a3; --line: #3a2c2d;
-  --brand: #c00017; --brand-ink: #ffffff; --brand-soft: #3a1a1d; --blush: #22141a; --sel: #ff5a69;
-  --bad: #e36a55; --mid: #e0a83a; --good: #45b876; --wa: #25c264; color-scheme: dark;
+  --navy: #14213d;
+  --navy-soft: #e8edf5;
+  --fg: #1f2937;
+  --muted: #5b6472;
+  --line: #dde2ea;
+  --red: #d50019;
+  --red-ink: #ffffff;
+  --error: #b42318;
+  --font-head: "Montserrat", "Noto Sans Devanagari", "Noto Sans Gujarati", "Noto Sans Gurmukhi", "Noto Sans Bengali", "Noto Sans Oriya", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Noto Sans Devanagari", "Noto Sans Gujarati", "Noto Sans Gurmukhi", "Noto Sans Bengali", "Noto Sans Oriya", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Malayalam", system-ui, sans-serif;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html, body { min-height: 100%; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.5; -webkit-tap-highlight-color: transparent; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--brand); }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 17px; line-height: 1.5; -webkit-tap-highlight-color: transparent; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
 button { font: inherit; color: inherit; }
-button:focus-visible, textarea:focus-visible { outline: 3px solid var(--sel); outline-offset: 2px; }
-
-.app { max-width: 520px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--brand); color: var(--brand-ink);
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px; }
-.bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; flex-direction: column; line-height: 1; min-width: 0; }
-.brand .logo { display: flex; align-items: center; gap: 4px; }
-.brand .bird { width: 34px; height: 25px; flex: none; }
-.brand .eco { font-family: var(--font-brand); font-size: 26px; letter-spacing: .5px; }
-.brand .mob { font-family: Arial, "Helvetica Neue", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 6.2px; margin-top: 4px; }
-.fields { display: flex; flex-direction: column; gap: 16px; }
-.field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 15px; }
-.field input { width: 100%; min-height: 54px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); padding: 0 14px; font: inherit; font-size: 18px; font-weight: 500; }
-.field input:focus { border-color: var(--sel); outline: none; }
-.field input[aria-invalid="true"] { border-color: var(--bad); }
-.err { color: var(--bad); font-style: normal; font-size: 14px; }
-.notice { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
-.notice h3 { margin: 0; font-size: 15px; color: var(--fg); }
-.notice p { margin: 0; }
-.notice a { color: var(--sel); font-weight: 600; overflow-wrap: anywhere; }
-.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; font-weight: 600; color: var(--fg); cursor: pointer; }
-.consent input { flex: none; width: 24px; height: 24px; margin: 1px 0 0; accent-color: #d50019; cursor: pointer; }
-.brand small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 12px; opacity: .9; margin-top: 6px; letter-spacing: .3px; }
-.lang-btn { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35); color: var(--brand-ink); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
-.progress { margin-top: 12px; height: 6px; background: rgba(255,255,255,.22); border-radius: 99px; overflow: hidden; }
-.progress > i { display: block; height: 100%; background: var(--brand-ink); border-radius: 99px; transition: width .3s ease; }
-.step { font-size: 13px; margin-top: 6px; opacity: .9; font-variant-numeric: tabular-nums; }
-
-main { flex: 1; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 24px; display: flex; flex-direction: column; gap: 18px; }
-h1 { font-size: 24px; line-height: 1.3; margin: 0; text-wrap: balance; }
-h2 { font-size: 15px; margin: 0; color: var(--brand); font-weight: 700; letter-spacing: .2px; }
-:root:not([data-theme="light"]) h2 { color: var(--sel); }
-.qtext { font-size: 20px; font-weight: 600; line-height: 1.45; margin: 0; text-wrap: pretty; }
-.muted { color: var(--muted); font-size: 14px; margin: 0; }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+h1, h2, h3, .qtext, .btn { font-family: var(--font-head); }
 p { margin: 0; }
 
-.select { position: relative; display: block; }
-.select select { width: 100%; min-height: 56px; appearance: none; -webkit-appearance: none; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); padding: 0 48px 0 16px; font: inherit; font-size: 18px; font-weight: 600; cursor: pointer; }
-.select select:focus { outline: none; border-color: var(--sel); }
-.select::after { content: ""; position: absolute; right: 20px; top: 50%; width: 10px; height: 10px; border-right: 2.5px solid var(--muted); border-bottom: 2.5px solid var(--muted); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.app { max-width: 520px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; background: var(--bg); }
+main { flex: 1; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 24px; display: flex; flex-direction: column; gap: 18px; }
 
-/* First page, styled like ECO's Safety 365 app: red hero, info tiles, why cards */
+/* Header on inner pages */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); color: var(--navy); border-bottom: 1px solid var(--line);
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 12px; }
+.bar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-logo { width: 44px; height: 44px; flex: none; display: block; }
+.brand small { font-family: var(--font-head); font-weight: 600; font-size: 14px; color: var(--navy); }
+.lang-btn { background: var(--bg); border: 1.5px solid var(--line); color: var(--navy); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.progress { margin-top: 12px; height: 6px; background: var(--soft); border-radius: 99px; overflow: hidden; }
+.progress > i { display: block; height: 100%; background: var(--navy); border-radius: 99px; transition: width .3s ease; }
+.step { font-size: 13px; margin-top: 6px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+h1 { font-size: 24px; line-height: 1.3; margin: 0; color: var(--navy); font-weight: 700; text-wrap: balance; }
+h2 { font-size: 14px; margin: 0; color: var(--navy); font-weight: 600; }
+.qtext { font-size: 20px; font-weight: 600; line-height: 1.45; margin: 0; color: var(--navy); text-wrap: pretty; }
+.muted { color: var(--muted); font-size: 15px; margin: 0; }
+.hint, .err { color: var(--error); font-style: normal; font-size: 14px; font-weight: 600; }
+
+/* First page */
 body.splash .bar { display: none; }
+body.splash main { gap: 16px; padding-block: 8px 16px; }
 body.splash .actions { flex-direction: column; align-items: stretch; gap: 8px; }
-body.splash .actions .btn.primary { text-transform: uppercase; letter-spacing: .04em; font-weight: 800; box-shadow: 0 10px 24px rgba(213, 0, 25, .28); }
-.hero { position: relative; overflow: hidden; color: #fff; background: linear-gradient(160deg, #d80017 0%, #c00019 70%, #a80016 100%);
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 0; }
-.hero::after { content: ""; position: absolute; right: -80px; top: -60px; width: 260px; height: 260px; background: rgba(255,255,255,.07); transform: rotate(35deg); border-radius: 40px; pointer-events: none; }
-.hero > * { position: relative; z-index: 1; }
-.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.logo-tile { width: 64px; height: 64px; border-radius: 0; overflow: hidden; box-shadow: 0 0 0 2px rgba(255,255,255,.4); flex: none; }
-.logo-tile img { width: 100%; height: 100%; display: block; }
-.lang-chip { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.55); background: rgba(0,0,0,.12); font-size: 15px; font-weight: 600; }
+.hero { background: var(--bg); padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 20px 8px; }
+.hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.hero-logo { width: 72px; height: 72px; display: block; margin: 4px; flex: none; }
+.lang-chip { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); color: var(--navy); font-size: 15px; font-weight: 600; }
 .lang-chip svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
 .lang-chip .caret { width: 12px; height: 12px; }
 .lang-chip select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; }
-.lang-chip:focus-within { outline: 3px solid #ffb400; outline-offset: 2px; }
-.hero-title { margin: 24px 0 0; font-size: clamp(30px, 9.5vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: .01em; color: #fff; text-wrap: balance; }
-.hero-title span { display: inline-block; background: #fff; color: #d80017; padding: 0 .18em; border-radius: 10px; margin-top: 6px; }
-.hero-sub { margin: 14px 0 0; font-weight: 700; letter-spacing: .14em; font-size: 14px; }
-.hero-intro { margin: 10px 0 18px; font-size: 15.5px; opacity: .95; max-width: 34ch; }
+.lang-chip:focus-within { outline: 3px solid var(--navy); outline-offset: 2px; }
+.hero-title { margin: 28px 0 0; font-size: clamp(28px, 8vw, 34px); line-height: 1.2; font-weight: 700; color: var(--navy); }
+.hero-sub { margin: 8px 0 0; font-family: var(--font-head); font-weight: 600; font-size: 16px; color: var(--muted); }
+.hero-intro { margin: 14px 0 20px; font-size: 17px; color: var(--fg); }
 .feature-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.feature { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: 14px; padding: 10px 6px; text-align: center; font-size: 13px; font-weight: 600; line-height: 1.25; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.feature i { font-style: normal; font-size: 20px; }
-.road { display: flex; gap: 14px; justify-content: center; padding: 20px 0 14px; }
-.road i { width: 26px; height: 5px; background: rgba(255,255,255,.75); border-radius: 3px; animation: dash 1.6s linear infinite; }
-.road i:nth-child(2n) { animation-delay: .2s; }
-@keyframes dash { 50% { opacity: .35; } }
-body.splash main { gap: 14px; padding-block: 20px 16px; }
-.scan-line { margin: 0 0 8px; padding: 12px 14px; border-radius: 14px; text-align: center; font-weight: 700; background: #1e2227; color: #fff; font-size: 15px; }
-.section-title { margin: 0; font-size: 20px; font-weight: 800; color: var(--fg); }
-.section-lead { margin: -8px 0 4px; color: var(--muted); font-size: 15px; }
+.feature { background: var(--soft); border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--navy); display: flex; align-items: center; justify-content: center; }
+.scan-line { margin: 4px 0; padding: 12px 14px; border-radius: 10px; text-align: center; font-family: var(--font-head); font-weight: 600; font-size: 15px; background: var(--navy-soft); color: var(--navy); }
+.section-title { margin: 8px 0 0; font-size: 19px; font-weight: 700; color: var(--navy); }
+.section-lead { margin: -6px 0 4px; color: var(--muted); font-size: 16px; }
 .why-list { display: grid; gap: 10px; }
-.why-card { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border-radius: 18px; padding: 14px; border: 1px solid var(--line); border-left: 5px solid #d80017; }
-.why-card i { font-style: normal; font-size: 26px; line-height: 1; margin-top: 2px; }
-.why-card h3 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: .02em; }
-.why-card p { margin: 2px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.45; }
-html:not([lang="en"]) .hero-sub, html:not([lang="en"]) body.splash .actions .btn.primary { letter-spacing: 0; }
-.cta-note { margin: 0; text-align: center; font-size: 13px; font-weight: 600; color: var(--muted); }
-
-.welcome { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
-.field > span > span[lang] { color: var(--muted); }
-.welcome h1 { font-size: 21px; }
-.tag { font-size: 24px; font-weight: 700; color: var(--brand); line-height: 1.2; }
-:root:not([data-theme="light"]) .tag { color: var(--sel); }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) h2, :root:not([data-theme="dark"]) .tag { color: var(--brand); } }
-:root[data-theme="light"] h2, :root[data-theme="light"] .tag { color: var(--brand); }
+.why-card { background: var(--soft); border-radius: 10px; padding: 14px 16px; border-left: 4px solid var(--navy); }
+.why-card h3 { margin: 0; font-size: 15px; font-weight: 700; color: var(--navy); }
+.why-card p { margin: 2px 0 0; font-size: 15px; color: var(--muted); line-height: 1.45; }
+.cta-note { margin: 0; text-align: center; font-size: 14px; color: var(--muted); }
 .facts { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { background: var(--brand-soft); border-radius: 99px; padding: 4px 12px; font-size: 13px; font-weight: 600; }
+.chip { background: var(--soft); color: var(--navy); border-radius: 99px; padding: 4px 12px; font-size: 14px; font-weight: 600; }
 
+/* Details page */
+.fields { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 16px; color: var(--navy); }
+.field input { width: 100%; min-height: 54px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); padding: 0 14px; font: inherit; font-size: 18px; font-weight: 400; }
+.field input:focus { border-color: var(--navy); outline: none; }
+.field input[aria-invalid="true"] { border-color: var(--error); }
+.select { position: relative; display: block; }
+.select select { width: 100%; min-height: 54px; appearance: none; -webkit-appearance: none; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); padding: 0 44px 0 14px; font: inherit; font-size: 18px; font-weight: 400; cursor: pointer; }
+.select select:focus { outline: none; border-color: var(--navy); }
+.select select[aria-invalid="true"] { border-color: var(--error); }
+.select::after { content: ""; position: absolute; right: 18px; top: 50%; width: 9px; height: 9px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.notice { background: var(--soft); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.notice h3 { margin: 0; font-size: 15px; color: var(--navy); }
+.notice a { color: var(--navy); font-weight: 600; overflow-wrap: anywhere; }
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; font-weight: 600; color: var(--navy); cursor: pointer; }
+.consent input { flex: none; width: 24px; height: 24px; margin: 1px 0 0; accent-color: var(--navy); cursor: pointer; }
+
+/* Questions */
 .opts { display: flex; flex-direction: column; gap: 10px; }
-.opt { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; cursor: pointer; text-align: left; min-height: 60px; transition: border-color .15s, background .15s; }
-.opt .n { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 18px; border: 2px solid var(--c, var(--line)); color: var(--c, var(--fg)); font-family: "Noto Sans", system-ui, sans-serif; }
-.opt .l { font-size: 17px; font-weight: 500; }
-.opt[aria-checked="true"] { border-color: var(--sel); background: var(--brand-soft); }
-.opt[aria-checked="true"] .n { background: var(--c); color: #fff; border-color: var(--c); }
-
+.opt { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; min-height: 60px; transition: border-color .15s, background .15s; }
+.opt .n { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 18px; border: 1.5px solid var(--line); color: var(--navy); font-family: var(--font-head); }
+.opt .l { font-size: 17px; color: var(--fg); }
+.opt[aria-checked="true"] { border-color: var(--navy); background: var(--navy-soft); }
+.opt[aria-checked="true"] .n { background: var(--navy); color: #fff; border-color: var(--navy); }
 .row5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
 .nps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-.sq { aspect-ratio: 1; max-width: 100%; border-radius: 12px; border: 2px solid var(--line); background: var(--surface); font-weight: 700; font-size: 20px; cursor: pointer; font-family: "Noto Sans", system-ui, sans-serif; color: var(--c, var(--fg)); }
-.sq[aria-checked="true"] { background: var(--c); border-color: var(--c); color: #fff; }
-.ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); font-weight: 500; }
+.sq { aspect-ratio: 1; max-width: 100%; border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); font-family: var(--font-head); font-weight: 700; font-size: 20px; cursor: pointer; color: var(--navy); }
+.sq[aria-checked="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+.ends { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--muted); }
 .ends span:last-child { text-align: right; }
-.or { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+.or { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
 .or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .alt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .alt .opt { justify-content: center; text-align: center; padding: 12px 10px; }
 .alt .opt .l { font-size: 15px; }
+textarea { width: 100%; min-height: 150px; resize: vertical; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); padding: 14px; font: inherit; font-size: 17px; }
+textarea:focus { border-color: var(--navy); outline: none; }
 
-textarea { width: 100%; min-height: 150px; resize: vertical; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); padding: 14px; font: inherit; font-size: 17px; }
-textarea:focus { border-color: var(--sel); outline: none; }
-
-.hint { color: var(--bad); font-size: 14px; font-weight: 600; }
-
+/* Buttons */
 .actions { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); display: flex; gap: 10px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px)); }
 .actions.inline { position: static; background: transparent; border-top: 0; padding: 4px 0 0; }
-.btn { flex: 1; min-height: 54px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-weight: 700; font-size: 17px; cursor: pointer; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
-.btn.primary { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); flex: 2; }
-.btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+.btn { flex: 1; min-height: 54px; border-radius: 10px; border: 1.5px solid var(--navy); background: var(--bg); color: var(--navy); font-weight: 600; font-size: 17px; cursor: pointer; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.btn.primary { background: var(--red); border-color: var(--red); color: var(--red-ink); flex: 2; }
 .btn[disabled] { opacity: .45; cursor: default; }
 
-.done { text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center; padding-top: 8px; }
-.tick { width: 72px; height: 72px; border-radius: 50%; background: var(--brand-soft); display: grid; place-items: center; }
+/* Thank-you page */
+.done { text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center; padding-top: 24px; }
+.tick { width: 72px; height: 72px; border-radius: 50%; background: var(--navy-soft); display: grid; place-items: center; }
 .tick svg { width: 40px; height: 40px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; width: 100%; text-align: left; }
-.summary { margin: 0; white-space: pre-wrap; font-size: 13px; line-height: 1.55; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 12px; font-family: ui-monospace, Menlo, monospace; overflow-wrap: anywhere; user-select: text; }
-.stack { display: flex; flex-direction: column; gap: 10px; }
-.foot { text-align: center; font-weight: 700; color: var(--muted); font-size: 15px; }
+.tick path { stroke: var(--navy); }
+.foot { text-align: center; font-family: var(--font-head); font-weight: 600; color: var(--muted); font-size: 15px; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -202,7 +163,7 @@ textarea:focus { border-color: var(--sel); outline: none; }
 <div class="app">
   <header class="bar">
     <div class="bar-row">
-      <div class="brand" aria-label="ECO Mobility"><span class="logo"><svg class="bird" viewBox="90 630 540 390" aria-hidden="true"><path fill="currentColor" d="M98 875C110 855 118 838 122 825C135 790 160 775 190 790C200 795 205 808 220 815C232 820 245 818 240 812C225 800 210 793 200 788C175 775 168 755 172 740C180 690 250 642 350 642C430 642 500 660 540 672C470 668 360 672 330 720C305 760 340 822 405 822C450 822 520 805 572 780C500 840 420 900 360 920C300 942 260 945 230 940C200 935 178 915 157 885C150 875 135 873 125 874Z"/><path fill="currentColor" d="M276 958C320 948 360 935 382 918C410 945 440 957 470 956C520 955 590 935 622 921C580 965 510 1008 440 1010C400 1011 360 1012 330 1003C310 996 295 975 276 958Z"/></svg><span class="eco">ECO</span></span><span class="mob">MOBILITY</span><small id="barSub">Vendor Experience Survey</small></div>
+      <div class="brand"><img class="brand-logo" src="/assets/logo.png" alt="ECO Mobility" width="44" height="44"><small id="barSub">Business Partner Survey</small></div>
       <button class="lang-btn" id="langBtn" type="button" hidden>अ / A</button>
     </div>
     <div id="prog" hidden>
@@ -234,9 +195,9 @@ const LANGS = [
 // Each language: ui strings, agree scale, and q[] = [heading, statement] for Q1–Q7.
 const T = {
 en: {
-  title: "Vendor Experience Survey", tagline: "Your Partnership. Your Voice.", greet: "Dear Valued Partner,",
+  title: "Business Partner Survey", tagline: "Your partnership. Your voice.", greet: "Dear valued partner,",
   intro: "At ECO Mobility, we value your partnership. Your feedback will help us strengthen trust, improve our services and build better relationships.",
-  start: "Start Survey", time: "About 2 minutes", qs: "8 short questions", choose: "Choose your language",
+  start: "Start survey", time: "About 2 minutes", qs: "8 short questions", choose: "Choose your language",
   scale: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
   q: [
     ["Credibility – Trust & Transparency", "ECO Mobility ensures timely payments and maintains transparency in billing and payment processes."],
@@ -247,16 +208,16 @@ en: {
     ["Chauffeur Training & Development", "How useful are the chauffeur training programmes conducted by ECO Mobility in improving chauffeur skills and service quality?"],
     ["Overall Recommendation", "How likely are you to recommend ECO Mobility to other vehicle owners as a company to attach their vehicles with?"],
   ],
-  rateAgree: "Tap one: how much do you agree?", notUseful: "Not Useful", veryUseful: "Very Useful", notAttended: "Have Not Attended Training", notSure: "Not Sure", or: "or",
+  rateAgree: "Tap one: how much do you agree?", notUseful: "Not useful", veryUseful: "Very useful", notAttended: "Have not attended training", notSure: "Not sure", or: "or",
   npsLow: "0 – Not at all likely", npsHigh: "10 – Extremely likely",
-  sugTitle: "Your Suggestions", optional: "Optional", sugQ: "What is one thing ECO Mobility should improve?", sugPh: "Type here…",
-  next: "Next", back: "Back", submit: "Submit", skip: "Skip & Submit", progress: "Question {n} of {t}", pick: "Please select an answer to continue",
-  thanks: "Thank you for your valuable feedback!", footer: "ECO Mobility – Moving Forward, Together.",
+  sugTitle: "Your suggestions", optional: "Optional", sugQ: "What is one thing ECO Mobility should improve?", sugPh: "Type here…",
+  next: "Next", back: "Back", submit: "Submit", skip: "Skip and submit", progress: "Question {n} of {t}", pick: "Please select an answer to continue",
+  thanks: "Thank you for your valuable feedback!", footer: "ECO Mobility – Moving forward, together.",
   sendTitle: "One last step: send your answers", sendBody: "Tap the green button to send your answers on WhatsApp.",
   wa: "Send on WhatsApp", copy: "Copy answers", copied: "Copied", edit: "Change answers",
 },
 hi: {
-  title: "वेंडर अनुभव सर्वेक्षण", tagline: "आपकी साझेदारी। आपकी आवाज़।", greet: "प्रिय सम्मानित साझेदार,",
+  title: "बिज़नेस पार्टनर सर्वे", tagline: "आपकी साझेदारी। आपकी आवाज़।", greet: "प्रिय सम्मानित साझेदार,",
   intro: "ECO Mobility में हम आपकी साझेदारी को महत्व देते हैं। आपकी राय से हमें भरोसा मज़बूत करने, अपनी सेवाएँ बेहतर बनाने और बेहतर संबंध बनाने में मदद मिलेगी।",
   start: "सर्वे शुरू करें", time: "लगभग 2 मिनट", qs: "8 छोटे प्रश्न", choose: "अपनी भाषा चुनें",
   scale: ["पूरी तरह असहमत", "असहमत", "तटस्थ", "सहमत", "पूरी तरह सहमत"],
@@ -278,7 +239,7 @@ hi: {
   wa: "WhatsApp पर भेजें", copy: "उत्तर कॉपी करें", copied: "कॉपी हो गया", edit: "उत्तर बदलें",
 },
 mr: {
-  title: "व्हेंडर अनुभव सर्वेक्षण", tagline: "तुमची भागीदारी. तुमचा आवाज.", greet: "प्रिय सन्माननीय भागीदार,",
+  title: "बिझनेस पार्टनर सर्वेक्षण", tagline: "तुमची भागीदारी. तुमचा आवाज.", greet: "प्रिय सन्माननीय भागीदार,",
   intro: "ECO Mobility मध्ये आम्ही तुमच्या भागीदारीला महत्त्व देतो. तुमच्या अभिप्रायामुळे आम्हाला विश्वास दृढ करण्यास, आमच्या सेवा सुधारण्यास आणि अधिक चांगले संबंध निर्माण करण्यास मदत होईल.",
   start: "सर्वेक्षण सुरू करा", time: "सुमारे 2 मिनिटे", qs: "8 छोटे प्रश्न", choose: "तुमची भाषा निवडा",
   scale: ["पूर्णपणे असहमत", "असहमत", "तटस्थ", "सहमत", "पूर्णपणे सहमत"],
@@ -300,7 +261,7 @@ mr: {
   wa: "WhatsApp वर पाठवा", copy: "उत्तरे कॉपी करा", copied: "कॉपी झाले", edit: "उत्तरे बदला",
 },
 ta: {
-  title: "வெண்டர் அனுபவ கணக்கெடுப்பு", tagline: "உங்கள் கூட்டாண்மை. உங்கள் குரல்.", greet: "மதிப்பிற்குரிய கூட்டாளரே,",
+  title: "வணிகக் கூட்டாளர் கணக்கெடுப்பு", tagline: "உங்கள் கூட்டாண்மை. உங்கள் குரல்.", greet: "மதிப்பிற்குரிய கூட்டாளரே,",
   intro: "ECO Mobility-யில் உங்கள் கூட்டாண்மையை நாங்கள் மதிக்கிறோம். உங்கள் கருத்துகள் நம்பிக்கையை வலுப்படுத்தவும், எங்கள் சேவைகளை மேம்படுத்தவும், சிறந்த உறவுகளை உருவாக்கவும் எங்களுக்கு உதவும்.",
   start: "கணக்கெடுப்பைத் தொடங்கு", time: "சுமார் 2 நிமிடங்கள்", qs: "8 சிறிய கேள்விகள்", choose: "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்",
   scale: ["முற்றிலும் உடன்படவில்லை", "உடன்படவில்லை", "நடுநிலை", "உடன்படுகிறேன்", "முற்றிலும் உடன்படுகிறேன்"],
@@ -322,7 +283,7 @@ ta: {
   wa: "WhatsApp-இல் அனுப்பு", copy: "பதில்களை நகலெடு", copied: "நகலெடுக்கப்பட்டது", edit: "பதில்களை மாற்று",
 },
 te: {
-  title: "వెండర్ అనుభవ సర్వే", tagline: "మీ భాగస్వామ్యం. మీ గొంతు.", greet: "గౌరవనీయ భాగస్వామి,",
+  title: "బిజినెస్ పార్ట్‌నర్ సర్వే", tagline: "మీ భాగస్వామ్యం. మీ గొంతు.", greet: "గౌరవనీయ భాగస్వామి,",
   intro: "ECO Mobilityలో మేము మీ భాగస్వామ్యానికి విలువ ఇస్తాము. మీ అభిప్రాయం నమ్మకాన్ని బలపరచడానికి, మా సేవలను మెరుగుపరచడానికి మరియు మంచి సంబంధాలను ఏర్పరచుకోవడానికి మాకు సహాయపడుతుంది.",
   start: "సర్వే ప్రారంభించండి", time: "సుమారు 2 నిమిషాలు", qs: "8 చిన్న ప్రశ్నలు", choose: "మీ భాషను ఎంచుకోండి",
   scale: ["పూర్తిగా అంగీకరించను", "అంగీకరించను", "తటస్థం", "అంగీకరిస్తాను", "పూర్తిగా అంగీకరిస్తాను"],
@@ -344,7 +305,7 @@ te: {
   wa: "WhatsAppలో పంపండి", copy: "సమాధానాలను కాపీ చేయండి", copied: "కాపీ అయింది", edit: "సమాధానాలు మార్చండి",
 },
 kn: {
-  title: "ವೆಂಡರ್ ಅನುಭವ ಸಮೀಕ್ಷೆ", tagline: "ನಿಮ್ಮ ಪಾಲುದಾರಿಕೆ. ನಿಮ್ಮ ಧ್ವನಿ.", greet: "ಗೌರವಾನ್ವಿತ ಪಾಲುದಾರರೇ,",
+  title: "ಬಿಸಿನೆಸ್ ಪಾರ್ಟ್‌ನರ್ ಸಮೀಕ್ಷೆ", tagline: "ನಿಮ್ಮ ಪಾಲುದಾರಿಕೆ. ನಿಮ್ಮ ಧ್ವನಿ.", greet: "ಗೌರವಾನ್ವಿತ ಪಾಲುದಾರರೇ,",
   intro: "ECO Mobility ನಲ್ಲಿ ನಾವು ನಿಮ್ಮ ಪಾಲುದಾರಿಕೆಯನ್ನು ಗೌರವಿಸುತ್ತೇವೆ. ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವು ನಂಬಿಕೆಯನ್ನು ಬಲಪಡಿಸಲು, ನಮ್ಮ ಸೇವೆಗಳನ್ನು ಸುಧಾರಿಸಲು ಮತ್ತು ಉತ್ತಮ ಸಂಬಂಧಗಳನ್ನು ಬೆಳೆಸಲು ನಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
   start: "ಸಮೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ", time: "ಸುಮಾರು 2 ನಿಮಿಷ", qs: "8 ಚಿಕ್ಕ ಪ್ರಶ್ನೆಗಳು", choose: "ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
   scale: ["ಸಂಪೂರ್ಣವಾಗಿ ಒಪ್ಪುವುದಿಲ್ಲ", "ಒಪ್ಪುವುದಿಲ್ಲ", "ತಟಸ್ಥ", "ಒಪ್ಪುತ್ತೇನೆ", "ಸಂಪೂರ್ಣವಾಗಿ ಒಪ್ಪುತ್ತೇನೆ"],
@@ -366,7 +327,7 @@ kn: {
   wa: "WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ", copy: "ಉತ್ತರಗಳನ್ನು ನಕಲಿಸಿ", copied: "ನಕಲಿಸಲಾಗಿದೆ", edit: "ಉತ್ತರಗಳನ್ನು ಬದಲಿಸಿ",
 },
 bn: {
-  title: "ভেন্ডর অভিজ্ঞতা সমীক্ষা", tagline: "আপনার অংশীদারিত্ব। আপনার কণ্ঠস্বর।", greet: "প্রিয় সম্মানিত অংশীদার,",
+  title: "বিজনেস পার্টনার সমীক্ষা", tagline: "আপনার অংশীদারিত্ব। আপনার কণ্ঠস্বর।", greet: "প্রিয় সম্মানিত অংশীদার,",
   intro: "ECO Mobility-তে আমরা আপনার অংশীদারিত্বকে মূল্য দিই। আপনার মতামত আমাদের আস্থা দৃঢ় করতে, পরিষেবা উন্নত করতে এবং আরও ভালো সম্পর্ক গড়ে তুলতে সাহায্য করবে।",
   start: "সমীক্ষা শুরু করুন", time: "প্রায় ২ মিনিট", qs: "৮টি ছোট প্রশ্ন", choose: "আপনার ভাষা বেছে নিন",
   scale: ["সম্পূর্ণ অসম্মত", "অসম্মত", "নিরপেক্ষ", "সম্মত", "সম্পূর্ণ সম্মত"],
@@ -388,7 +349,7 @@ bn: {
   wa: "WhatsApp-এ পাঠান", copy: "উত্তর কপি করুন", copied: "কপি হয়েছে", edit: "উত্তর বদলান",
 },
 gu: {
-  title: "વેન્ડર અનુભવ સર્વેક્ષણ", tagline: "તમારી ભાગીદારી. તમારો અવાજ.", greet: "પ્રિય માનનીય ભાગીદાર,",
+  title: "બિઝનેસ પાર્ટનર સર્વે", tagline: "તમારી ભાગીદારી. તમારો અવાજ.", greet: "પ્રિય માનનીય ભાગીદાર,",
   intro: "ECO Mobility માં અમે તમારી ભાગીદારીને મહત્વ આપીએ છીએ. તમારો પ્રતિસાદ અમને વિશ્વાસ મજબૂત કરવામાં, અમારી સેવાઓ સુધારવામાં અને વધુ સારા સંબંધો બાંધવામાં મદદ કરશે.",
   start: "સર્વે શરૂ કરો", time: "લગભગ 2 મિનિટ", qs: "8 ટૂંકા પ્રશ્નો", choose: "તમારી ભાષા પસંદ કરો",
   scale: ["સંપૂર્ણ અસંમત", "અસંમત", "તટસ્થ", "સંમત", "સંપૂર્ણ સંમત"],
@@ -410,7 +371,7 @@ gu: {
   wa: "WhatsApp પર મોકલો", copy: "જવાબો કૉપિ કરો", copied: "કૉપિ થયું", edit: "જવાબો બદલો",
 },
 pa: {
-  title: "ਵੈਂਡਰ ਅਨੁਭਵ ਸਰਵੇਖਣ", tagline: "ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ। ਤੁਹਾਡੀ ਆਵਾਜ਼।", greet: "ਪਿਆਰੇ ਸਤਿਕਾਰਯੋਗ ਸਾਥੀ,",
+  title: "ਬਿਜ਼ਨਸ ਪਾਰਟਨਰ ਸਰਵੇ", tagline: "ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ। ਤੁਹਾਡੀ ਆਵਾਜ਼।", greet: "ਪਿਆਰੇ ਸਤਿਕਾਰਯੋਗ ਸਾਥੀ,",
   intro: "ECO Mobility ਵਿੱਚ ਅਸੀਂ ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ। ਤੁਹਾਡੀ ਰਾਏ ਸਾਨੂੰ ਭਰੋਸਾ ਮਜ਼ਬੂਤ ਕਰਨ, ਆਪਣੀਆਂ ਸੇਵਾਵਾਂ ਸੁਧਾਰਨ ਅਤੇ ਬਿਹਤਰ ਰਿਸ਼ਤੇ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੇਗੀ।",
   start: "ਸਰਵੇ ਸ਼ੁਰੂ ਕਰੋ", time: "ਲਗਭਗ 2 ਮਿੰਟ", qs: "8 ਛੋਟੇ ਸਵਾਲ", choose: "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
   scale: ["ਬਿਲਕੁਲ ਅਸਹਿਮਤ", "ਅਸਹਿਮਤ", "ਨਿਰਪੱਖ", "ਸਹਿਮਤ", "ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਹਿਮਤ"],
@@ -432,7 +393,7 @@ pa: {
   wa: "WhatsApp 'ਤੇ ਭੇਜੋ", copy: "ਜਵਾਬ ਕਾਪੀ ਕਰੋ", copied: "ਕਾਪੀ ਹੋ ਗਿਆ", edit: "ਜਵਾਬ ਬਦਲੋ",
 },
 as: {
-  title: "ভেণ্ডৰ অভিজ্ঞতা সমীক্ষা", tagline: "আপোনাৰ অংশীদাৰিত্ব। আপোনাৰ মাত।", greet: "মৰমৰ সন্মানীয় অংশীদাৰ,",
+  title: "বিজনেছ পাৰ্টনাৰ সমীক্ষা", tagline: "আপোনাৰ অংশীদাৰিত্ব। আপোনাৰ মাত।", greet: "মৰমৰ সন্মানীয় অংশীদাৰ,",
   intro: "ECO Mobility-ত আমি আপোনাৰ অংশীদাৰিত্বক মূল্য দিওঁ। আপোনাৰ মতামতে আমাক বিশ্বাস দৃঢ় কৰাত, আমাৰ সেৱা উন্নত কৰাত আৰু উত্তম সম্পৰ্ক গঢ়াত সহায় কৰিব।",
   start: "সমীক্ষা আৰম্ভ কৰক", time: "প্ৰায় ২ মিনিট", qs: "৮টা চুটি প্ৰশ্ন", choose: "আপোনাৰ ভাষা বাছক",
   scale: ["সম্পূৰ্ণ অসন্মত", "অসন্মত", "নিৰপেক্ষ", "সন্মত", "সম্পূৰ্ণ সন্মত"],
@@ -454,7 +415,7 @@ as: {
   wa: "WhatsApp-ত পঠিয়াওক", copy: "উত্তৰ কপি কৰক", copied: "কপি হ'ল", edit: "উত্তৰ সলনি কৰক",
 },
 or: {
-  title: "ଭେଣ୍ଡର ଅଭିଜ୍ଞତା ସର୍ଭେ", tagline: "ଆପଣଙ୍କ ଭାଗିଦାରୀ। ଆପଣଙ୍କ ସ୍ୱର।", greet: "ପ୍ରିୟ ସମ୍ମାନିତ ଭାଗିଦାର,",
+  title: "ବିଜନେସ୍ ପାର୍ଟନର ସର୍ଭେ", tagline: "ଆପଣଙ୍କ ଭାଗିଦାରୀ। ଆପଣଙ୍କ ସ୍ୱର।", greet: "ପ୍ରିୟ ସମ୍ମାନିତ ଭାଗିଦାର,",
   intro: "ECO Mobility ରେ ଆମେ ଆପଣଙ୍କ ଭାଗିଦାରୀକୁ ମୂଲ୍ୟ ଦେଉ। ଆପଣଙ୍କ ମତାମତ ଆମକୁ ବିଶ୍ୱାସ ଦୃଢ଼ କରିବାରେ, ଆମ ସେବାରେ ଉନ୍ନତି ଆଣିବାରେ ଏବଂ ଉତ୍ତମ ସମ୍ପର୍କ ଗଢ଼ିବାରେ ସାହାଯ୍ୟ କରିବ।",
   start: "ସର୍ଭେ ଆରମ୍ଭ କରନ୍ତୁ", time: "ପ୍ରାୟ 2 ମିନିଟ୍", qs: "8ଟି ଛୋଟ ପ୍ରଶ୍ନ", choose: "ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",
   scale: ["ସମ୍ପୂର୍ଣ୍ଣ ଅସହମତ", "ଅସହମତ", "ନିରପେକ୍ଷ", "ସହମତ", "ସମ୍ପୂର୍ଣ୍ଣ ସହମତ"],
@@ -476,7 +437,7 @@ or: {
   wa: "WhatsApp ରେ ପଠାନ୍ତୁ", copy: "ଉତ୍ତର କପି କରନ୍ତୁ", copied: "କପି ହୋଇଗଲା", edit: "ଉତ୍ତର ବଦଳାନ୍ତୁ",
 },
 ml: {
-  title: "വെണ്ടർ അനുഭവ സർവേ", tagline: "നിങ്ങളുടെ പങ്കാളിത്തം. നിങ്ങളുടെ ശബ്ദം.", greet: "പ്രിയ ബഹുമാന്യ പങ്കാളി,",
+  title: "ബിസിനസ് പാർട്ണർ സർവേ", tagline: "നിങ്ങളുടെ പങ്കാളിത്തം. നിങ്ങളുടെ ശബ്ദം.", greet: "പ്രിയ ബഹുമാന്യ പങ്കാളി,",
   intro: "ECO Mobility-യിൽ ഞങ്ങൾ നിങ്ങളുടെ പങ്കാളിത്തത്തെ വിലമതിക്കുന്നു. വിശ്വാസം ദൃഢമാക്കാനും ഞങ്ങളുടെ സേവനങ്ങൾ മെച്ചപ്പെടുത്താനും മികച്ച ബന്ധങ്ങൾ കെട്ടിപ്പടുക്കാനും നിങ്ങളുടെ അഭിപ്രായം ഞങ്ങളെ സഹായിക്കും.",
   start: "സർവേ ആരംഭിക്കുക", time: "ഏകദേശം 2 മിനിറ്റ്", qs: "8 ചെറിയ ചോദ്യങ്ങൾ", choose: "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",
   scale: ["പൂർണ്ണമായും വിയോജിക്കുന്നു", "വിയോജിക്കുന്നു", "നിഷ്പക്ഷം", "യോജിക്കുന്നു", "പൂർണ്ണമായും യോജിക്കുന്നു"],
@@ -502,7 +463,7 @@ ml: {
 // "Your details" step: [title, note, name label, ID label, mobile label, required error, bad-mobile error]
 const DETAIL_KEYS = ["detTitle", "detNote", "fName", "fId", "fPhone", "req", "badPhone"];
 const DETAILS = {
-  en: ["Your Details", "We need these to follow up on your feedback.", "Full name", "Chauffeur ID", "Mobile number", "Please fill this in", "Enter a valid 10-digit mobile number"],
+  en: ["Your details", "We need these to follow up on your feedback.", "Full name", "Chauffeur ID", "Mobile number", "Please fill this in", "Enter a valid 10-digit mobile number"],
   hi: ["आपकी जानकारी", "आपकी राय पर आगे संपर्क करने के लिए यह जानकारी ज़रूरी है।", "पूरा नाम", "चालक (शोफ़र) आईडी", "मोबाइल नंबर", "कृपया यह भरें", "सही 10 अंकों का मोबाइल नंबर डालें"],
   mr: ["तुमची माहिती", "तुमच्या अभिप्रायावर पुढे संपर्क साधण्यासाठी ही माहिती आवश्यक आहे.", "पूर्ण नाव", "चालक (शोफर) आयडी", "मोबाइल नंबर", "कृपया हे भरा", "योग्य 10 अंकी मोबाइल नंबर टाका"],
   gu: ["તમારી વિગતો", "તમારા પ્રતિસાદ પર આગળ સંપર્ક કરવા માટે આ વિગતો જરૂરી છે.", "પૂરું નામ", "ડ્રાઇવર (શોફર) આઈડી", "મોબાઇલ નંબર", "કૃપા કરીને આ ભરો", "સાચો 10 અંકનો મોબાઇલ નંબર દાખલ કરો"],
@@ -516,6 +477,24 @@ const DETAILS = {
   ml: ["നിങ്ങളുടെ വിവരങ്ങൾ", "നിങ്ങളുടെ അഭിപ്രായത്തെക്കുറിച്ച് പിന്നീട് ബന്ധപ്പെടാൻ ഈ വിവരങ്ങൾ ആവശ്യമാണ്.", "മുഴുവൻ പേര്", "ഡ്രൈവർ (ഷോഫർ) ഐഡി", "മൊബൈൽ നമ്പർ", "ദയവായി ഇത് പൂരിപ്പിക്കുക", "ശരിയായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക"],
 };
 for (const k in DETAILS) DETAIL_KEYS.forEach((key, i) => { T[k][key] = DETAILS[k][i]; });
+
+// Branch field: [label, placeholder]. Branch names stay in English, alphabetical, Other Cities last.
+const BRANCHES = ["Ahmedabad", "Bangalore", "Bhubaneswar", "Chakan", "Chandigarh", "Chennai", "Coimbatore & Cochin", "Gurgaon", "Guwahati", "Hyderabad", "Indore", "Jaipur", "Kapashera", "Kolkata", "Lucknow & Kanpur", "Mumbai", "Nagpur", "Noida", "Patna", "Pune", "Other Cities"];
+const BRANCH_TEXT = {
+  en: ["Branch", "Select your branch"],
+  hi: ["ब्रांच", "अपनी ब्रांच चुनें"],
+  mr: ["शाखा", "तुमची शाखा निवडा"],
+  gu: ["બ્રાન્ચ", "તમારી બ્રાન્ચ પસંદ કરો"],
+  pa: ["ਬ੍ਰਾਂਚ", "ਆਪਣੀ ਬ੍ਰਾਂਚ ਚੁਣੋ"],
+  bn: ["ব্রাঞ্চ", "আপনার ব্রাঞ্চ বেছে নিন"],
+  as: ["শাখা", "আপোনাৰ শাখা বাছক"],
+  or: ["ଶାଖା", "ଆପଣଙ୍କ ଶାଖା ବାଛନ୍ତୁ"],
+  ta: ["கிளை", "உங்கள் கிளையைத் தேர்ந்தெடுக்கவும்"],
+  te: ["బ్రాంచ్", "మీ బ్రాంచ్‌ను ఎంచుకోండి"],
+  kn: ["ಶಾಖೆ", "ನಿಮ್ಮ ಶಾಖೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"],
+  ml: ["ബ്രാഞ്ച്", "നിങ്ങളുടെ ബ്രാഞ്ച് തിരഞ്ഞെടുക്കുക"],
+};
+for (const k in BRANCH_TEXT) { [T[k].fBranch, T[k].pickBranch] = BRANCH_TEXT[k]; }
 
 // Vehicle number field: [label, error]
 const VEHICLE = {
@@ -539,18 +518,18 @@ for (const k in VEHICLE) { T[k].fVehicle = VEHICLE[k][0]; T[k].badVehicle = VEHI
 const PRIVACY_EMAIL = "peoplehotline@ecosmobility.com";
 const PRIVACY_PHONE = "+91 73035 86357";
 const PRIVACY = {
-  en: ["Privacy notice", "ECO Mobility collects your name, chauffeur ID, mobile number and (if you give it) vehicle number only to understand your feedback and follow up on it. Taking part is voluntary and will not affect your business with ECO Mobility. Your responses are kept for 12 months and then deleted. To see, correct or delete your data, withdraw consent or raise a complaint, contact {email} or {phone}. You can also complain to the Data Protection Board of India.", "I have read this notice and agree to share my details for this survey.", "Please tick the box to continue."],
-  hi: ["गोपनीयता सूचना", "ECO Mobility आपका नाम, चालक आईडी, मोबाइल नंबर और (यदि आप दें तो) वाहन नंबर केवल आपकी राय समझने और उस पर आगे संपर्क करने के लिए लेता है। इसमें भाग लेना आपकी इच्छा पर है और इससे ECO Mobility के साथ आपके व्यवसाय पर कोई असर नहीं पड़ेगा। आपके जवाब 12 महीने तक रखे जाएँगे और फिर हटा दिए जाएँगे। अपना डेटा देखने, सुधारने या हटवाने, सहमति वापस लेने या शिकायत करने के लिए {email} या {phone} पर संपर्क करें। आप भारतीय डेटा संरक्षण बोर्ड से भी शिकायत कर सकते हैं।", "मैंने यह सूचना पढ़ ली है और इस सर्वे के लिए अपनी जानकारी देने के लिए सहमत हूँ।", "आगे बढ़ने के लिए कृपया बॉक्स पर टिक करें।"],
-  mr: ["गोपनीयता सूचना", "ECO Mobility तुमचे नाव, चालक आयडी, मोबाइल नंबर आणि (तुम्ही दिल्यास) वाहन क्रमांक फक्त तुमचा अभिप्राय समजून घेण्यासाठी आणि त्यावर पुढे संपर्क साधण्यासाठी घेते. यात सहभागी होणे ऐच्छिक आहे आणि त्याचा ECO Mobility सोबतच्या तुमच्या व्यवसायावर कोणताही परिणाम होणार नाही. तुमची उत्तरे 12 महिने ठेवली जातील आणि नंतर हटवली जातील. तुमचा डेटा पाहण्यासाठी, दुरुस्त करण्यासाठी किंवा हटवण्यासाठी, संमती मागे घेण्यासाठी किंवा तक्रार करण्यासाठी {email} किंवा {phone} वर संपर्क साधा. तुम्ही भारतीय डेटा संरक्षण मंडळाकडेही तक्रार करू शकता.", "मी ही सूचना वाचली आहे आणि या सर्वेक्षणासाठी माझी माहिती देण्यास संमती देतो/देते.", "पुढे जाण्यासाठी कृपया बॉक्सवर टिक करा."],
-  gu: ["ગોપનીયતા સૂચના", "ECO Mobility તમારું નામ, ડ્રાઇવર આઈડી, મોબાઇલ નંબર અને (તમે આપો તો) વાહન નંબર ફક્ત તમારો પ્રતિસાદ સમજવા અને તેના પર આગળ સંપર્ક કરવા માટે લે છે. ભાગ લેવો સંપૂર્ણપણે તમારી મરજી પર છે અને તેનાથી ECO Mobility સાથેના તમારા વ્યવસાય પર કોઈ અસર નહીં થાય. તમારા જવાબો 12 મહિના સુધી રાખવામાં આવશે અને પછી કાઢી નાખવામાં આવશે. તમારો ડેટા જોવા, સુધારવા કે કાઢી નાખવા, સંમતિ પાછી ખેંચવા અથવા ફરિયાદ કરવા માટે {email} અથવા {phone} પર સંપર્ક કરો. તમે ભારતના ડેટા પ્રોટેક્શન બોર્ડને પણ ફરિયાદ કરી શકો છો.", "મેં આ સૂચના વાંચી છે અને આ સર્વે માટે મારી વિગતો આપવા સંમત છું.", "આગળ વધવા માટે કૃપા કરીને બોક્સમાં ટિક કરો."],
-  pa: ["ਗੋਪਨੀਯਤਾ ਸੂਚਨਾ", "ECO Mobility ਤੁਹਾਡਾ ਨਾਮ, ਡਰਾਈਵਰ ਆਈਡੀ, ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ (ਜੇ ਤੁਸੀਂ ਦਿਓ) ਗੱਡੀ ਨੰਬਰ ਸਿਰਫ਼ ਤੁਹਾਡੀ ਰਾਏ ਸਮਝਣ ਅਤੇ ਉਸ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਲੈਂਦੀ ਹੈ। ਇਸ ਵਿੱਚ ਹਿੱਸਾ ਲੈਣਾ ਤੁਹਾਡੀ ਮਰਜ਼ੀ ਹੈ ਅਤੇ ਇਸ ਨਾਲ ECO Mobility ਨਾਲ ਤੁਹਾਡੇ ਕਾਰੋਬਾਰ 'ਤੇ ਕੋਈ ਅਸਰ ਨਹੀਂ ਪਵੇਗਾ। ਤੁਹਾਡੇ ਜਵਾਬ 12 ਮਹੀਨਿਆਂ ਤੱਕ ਰੱਖੇ ਜਾਣਗੇ ਅਤੇ ਫਿਰ ਮਿਟਾ ਦਿੱਤੇ ਜਾਣਗੇ। ਆਪਣਾ ਡੇਟਾ ਦੇਖਣ, ਠੀਕ ਕਰਵਾਉਣ ਜਾਂ ਮਿਟਵਾਉਣ, ਸਹਿਮਤੀ ਵਾਪਸ ਲੈਣ ਜਾਂ ਸ਼ਿਕਾਇਤ ਕਰਨ ਲਈ {email} ਜਾਂ {phone} 'ਤੇ ਸੰਪਰਕ ਕਰੋ। ਤੁਸੀਂ ਭਾਰਤੀ ਡੇਟਾ ਸੁਰੱਖਿਆ ਬੋਰਡ ਕੋਲ ਵੀ ਸ਼ਿਕਾਇਤ ਕਰ ਸਕਦੇ ਹੋ।", "ਮੈਂ ਇਹ ਸੂਚਨਾ ਪੜ੍ਹ ਲਈ ਹੈ ਅਤੇ ਇਸ ਸਰਵੇ ਲਈ ਆਪਣੀ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਸਹਿਮਤ ਹਾਂ।", "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਬਾਕਸ 'ਤੇ ਟਿੱਕ ਕਰੋ।"],
-  bn: ["গোপনীয়তা বিজ্ঞপ্তি", "ECO Mobility আপনার নাম, চালক আইডি, মোবাইল নম্বর এবং (আপনি দিলে) গাড়ির নম্বর শুধুমাত্র আপনার মতামত বুঝতে ও সে বিষয়ে পরে যোগাযোগ করতে সংগ্রহ করে। অংশগ্রহণ সম্পূর্ণ ঐচ্ছিক এবং এতে ECO Mobility-র সঙ্গে আপনার ব্যবসায় কোনো প্রভাব পড়বে না। আপনার উত্তর ১২ মাস রাখা হবে, তারপর মুছে ফেলা হবে। আপনার তথ্য দেখতে, সংশোধন বা মুছতে, সম্মতি প্রত্যাহার করতে বা অভিযোগ জানাতে {email} বা {phone}-এ যোগাযোগ করুন। আপনি ভারতের ডেটা সুরক্ষা বোর্ডেও অভিযোগ করতে পারেন।", "আমি এই বিজ্ঞপ্তি পড়েছি এবং এই সমীক্ষার জন্য আমার তথ্য দিতে সম্মত।", "এগিয়ে যেতে অনুগ্রহ করে বাক্সে টিক দিন।"],
-  as: ["গোপনীয়তা জাননী", "ECO Mobility-এ আপোনাৰ নাম, চালক আইডি, মোবাইল নম্বৰ আৰু (আপুনি দিলে) গাড়ীৰ নম্বৰ কেৱল আপোনাৰ মতামত বুজিবলৈ আৰু সেই বিষয়ে পিছত যোগাযোগ কৰিবলৈ সংগ্ৰহ কৰে। অংশগ্ৰহণ সম্পূৰ্ণ ঐচ্ছিক আৰু ইয়াৰ ফলত ECO Mobility-ৰ সৈতে আপোনাৰ ব্যৱসায়ত কোনো প্ৰভাৱ নপৰে। আপোনাৰ উত্তৰ ১২ মাহ ৰখা হ'ব আৰু তাৰ পিছত মচি পেলোৱা হ'ব। আপোনাৰ তথ্য চাবলৈ, শুধৰাবলৈ বা মচিবলৈ, সন্মতি উঠাই ল'বলৈ বা অভিযোগ দিবলৈ {email} বা {phone}-ত যোগাযোগ কৰক। আপুনি ভাৰতৰ ডেটা সুৰক্ষা বৰ্ডতো অভিযোগ দিব পাৰে।", "মই এই জাননী পঢ়িছোঁ আৰু এই সমীক্ষাৰ বাবে মোৰ তথ্য দিবলৈ সন্মত।", "আগবাঢ়িবলৈ অনুগ্ৰহ কৰি বাকচত টিক দিয়ক।"],
-  or: ["ଗୋପନୀୟତା ସୂଚନା", "ECO Mobility ଆପଣଙ୍କ ନାମ, ଚାଳକ ଆଇଡି, ମୋବାଇଲ୍ ନମ୍ବର ଏବଂ (ଆପଣ ଦେଲେ) ଗାଡ଼ି ନମ୍ବର କେବଳ ଆପଣଙ୍କ ମତାମତ ବୁଝିବା ଓ ସେ ବିଷୟରେ ପରେ ଯୋଗାଯୋଗ କରିବା ପାଇଁ ସଂଗ୍ରହ କରେ। ଅଂଶଗ୍ରହଣ ସମ୍ପୂର୍ଣ୍ଣ ଇଚ୍ଛାଧୀନ ଏବଂ ଏହା ECO Mobility ସହ ଆପଣଙ୍କ ବ୍ୟବସାୟ ଉପରେ କୌଣସି ପ୍ରଭାବ ପକାଇବ ନାହିଁ। ଆପଣଙ୍କ ଉତ୍ତର 12 ମାସ ରଖାଯିବ ଏବଂ ତାପରେ ବିଲୋପ କରାଯିବ। ଆପଣଙ୍କ ତଥ୍ୟ ଦେଖିବା, ସଂଶୋଧନ ବା ବିଲୋପ କରିବା, ସମ୍ମତି ପ୍ରତ୍ୟାହାର କରିବା କିମ୍ବା ଅଭିଯୋଗ କରିବା ପାଇଁ {email} କିମ୍ବା {phone}ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ। ଆପଣ ଭାରତର ଡାଟା ସୁରକ୍ଷା ବୋର୍ଡରେ ମଧ୍ୟ ଅଭିଯୋଗ କରିପାରିବେ।", "ମୁଁ ଏହି ସୂଚନା ପଢ଼ିଛି ଏବଂ ଏହି ସର୍ଭେ ପାଇଁ ମୋର ବିବରଣୀ ଦେବାକୁ ସମ୍ମତ।", "ଆଗକୁ ଯିବା ପାଇଁ ଦୟାକରି ବାକ୍ସରେ ଟିକ୍ ଦିଅନ୍ତୁ।"],
-  ta: ["தனியுரிமை அறிவிப்பு", "உங்கள் கருத்தைப் புரிந்துகொள்ளவும் அதைப் பற்றிப் பின்னர் தொடர்புகொள்ளவும் மட்டுமே ECO Mobility உங்கள் பெயர், ஓட்டுநர் ஐடி, மொபைல் எண் மற்றும் (நீங்கள் கொடுத்தால்) வாகன எண்ணைச் சேகரிக்கிறது. பங்கேற்பது முழுக்க உங்கள் விருப்பம்; இது ECO Mobility உடனான உங்கள் வணிகத்தைப் பாதிக்காது. உங்கள் பதில்கள் 12 மாதங்கள் வைக்கப்பட்டு, பின்னர் நீக்கப்படும். உங்கள் தரவைப் பார்க்க, திருத்த அல்லது நீக்க, ஒப்புதலைத் திரும்பப் பெற அல்லது புகார் அளிக்க {email} அல்லது {phone} ஐத் தொடர்புகொள்ளவும். இந்திய தரவுப் பாதுகாப்பு வாரியத்திடமும் நீங்கள் புகார் அளிக்கலாம்.", "இந்த அறிவிப்பைப் படித்தேன்; இந்தக் கணக்கெடுப்புக்காக என் விவரங்களைப் பகிர ஒப்புக்கொள்கிறேன்.", "தொடர, பெட்டியில் டிக் செய்யவும்."],
-  te: ["గోప్యతా నోటీసు", "మీ అభిప్రాయాన్ని అర్థం చేసుకోవడానికి, దానిపై తర్వాత సంప్రదించడానికి మాత్రమే ECO Mobility మీ పేరు, డ్రైవర్ ఐడి, మొబైల్ నంబర్ మరియు (మీరు ఇస్తే) వాహన నంబర్‌ను సేకరిస్తుంది. పాల్గొనడం పూర్తిగా మీ ఇష్టం; ఇది ECO Mobilityతో మీ వ్యాపారాన్ని ప్రభావితం చేయదు. మీ సమాధానాలు 12 నెలలు ఉంచబడి, ఆ తర్వాత తొలగించబడతాయి. మీ డేటాను చూడటానికి, సరిదిద్దటానికి లేదా తొలగించడానికి, సమ్మతిని ఉపసంహరించుకోవడానికి లేదా ఫిర్యాదు చేయడానికి {email} లేదా {phone}ను సంప్రదించండి. మీరు భారత డేటా రక్షణ బోర్డుకు కూడా ఫిర్యాదు చేయవచ్చు.", "నేను ఈ నోటీసు చదివాను మరియు ఈ సర్వే కోసం నా వివరాలు ఇవ్వడానికి అంగీకరిస్తున్నాను.", "కొనసాగడానికి దయచేసి బాక్స్‌ను టిక్ చేయండి."],
-  kn: ["ಗೌಪ್ಯತಾ ಸೂಚನೆ", "ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಮತ್ತು ಅದರ ಬಗ್ಗೆ ನಂತರ ಸಂಪರ್ಕಿಸಲು ಮಾತ್ರ ECO Mobility ನಿಮ್ಮ ಹೆಸರು, ಚಾಲಕ ಐಡಿ, ಮೊಬೈಲ್ ಸಂಖ್ಯೆ ಮತ್ತು (ನೀವು ನೀಡಿದರೆ) ವಾಹನ ಸಂಖ್ಯೆಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ. ಭಾಗವಹಿಸುವುದು ಸಂಪೂರ್ಣ ಐಚ್ಛಿಕ; ಇದು ECO Mobility ಜೊತೆಗಿನ ನಿಮ್ಮ ವ್ಯವಹಾರದ ಮೇಲೆ ಯಾವುದೇ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ. ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು 12 ತಿಂಗಳು ಇರಿಸಿ, ನಂತರ ಅಳಿಸಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಡೇಟಾ ನೋಡಲು, ತಿದ್ದಲು ಅಥವಾ ಅಳಿಸಲು, ಸಮ್ಮತಿ ಹಿಂಪಡೆಯಲು ಅಥವಾ ದೂರು ನೀಡಲು {email} ಅಥವಾ {phone} ಅನ್ನು ಸಂಪರ್ಕಿಸಿ. ನೀವು ಭಾರತದ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಮಂಡಳಿಗೂ ದೂರು ನೀಡಬಹುದು.", "ನಾನು ಈ ಸೂಚನೆಯನ್ನು ಓದಿದ್ದೇನೆ ಮತ್ತು ಈ ಸಮೀಕ್ಷೆಗಾಗಿ ನನ್ನ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಒಪ್ಪುತ್ತೇನೆ.", "ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಬಾಕ್ಸ್ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ."],
-  ml: ["സ്വകാര്യതാ അറിയിപ്പ്", "നിങ്ങളുടെ അഭിപ്രായം മനസ്സിലാക്കാനും അതിനെക്കുറിച്ച് പിന്നീട് ബന്ധപ്പെടാനും മാത്രമാണ് ECO Mobility നിങ്ങളുടെ പേര്, ഡ്രൈവർ ഐഡി, മൊബൈൽ നമ്പർ, (നിങ്ങൾ നൽകിയാൽ) വാഹന നമ്പർ എന്നിവ ശേഖരിക്കുന്നത്. പങ്കെടുക്കുന്നത് പൂർണ്ണമായും നിങ്ങളുടെ ഇഷ്ടമാണ്; ഇത് ECO Mobility-യുമായുള്ള നിങ്ങളുടെ ബിസിനസിനെ ബാധിക്കില്ല. നിങ്ങളുടെ ഉത്തരങ്ങൾ 12 മാസം സൂക്ഷിക്കുകയും തുടർന്ന് ഇല്ലാതാക്കുകയും ചെയ്യും. നിങ്ങളുടെ ഡാറ്റ കാണാനോ തിരുത്താനോ ഇല്ലാതാക്കാനോ, സമ്മതം പിൻവലിക്കാനോ, പരാതി നൽകാനോ {email} അല്ലെങ്കിൽ {phone} എന്നതിൽ ബന്ധപ്പെടുക. ഇന്ത്യയുടെ ഡാറ്റ സംരക്ഷണ ബോർഡിലും നിങ്ങൾക്ക് പരാതി നൽകാം.", "ഞാൻ ഈ അറിയിപ്പ് വായിച്ചു, ഈ സർവേയ്ക്കായി എന്റെ വിവരങ്ങൾ നൽകാൻ സമ്മതിക്കുന്നു.", "തുടരാൻ ദയവായി ബോക്സിൽ ടിക്ക് ചെയ്യുക."],
+  en: ["Privacy notice", "ECO Mobility collects your name, chauffeur ID, mobile number, branch and (if you give it) vehicle number only to understand your feedback and follow up on it. Taking part is voluntary and will not affect your business with ECO Mobility. Your responses are kept for 12 months and then deleted. To see, correct or delete your data, withdraw consent or raise a complaint, contact {email} or {phone}. You can also complain to the Data Protection Board of India.", "I have read this notice and agree to share my details for this survey.", "Please tick the box to continue."],
+  hi: ["गोपनीयता सूचना", "ECO Mobility आपका नाम, चालक आईडी, मोबाइल नंबर, ब्रांच और (यदि आप दें तो) वाहन नंबर केवल आपकी राय समझने और उस पर आगे संपर्क करने के लिए लेता है। इसमें भाग लेना आपकी इच्छा पर है और इससे ECO Mobility के साथ आपके व्यवसाय पर कोई असर नहीं पड़ेगा। आपके जवाब 12 महीने तक रखे जाएँगे और फिर हटा दिए जाएँगे। अपना डेटा देखने, सुधारने या हटवाने, सहमति वापस लेने या शिकायत करने के लिए {email} या {phone} पर संपर्क करें। आप भारतीय डेटा संरक्षण बोर्ड से भी शिकायत कर सकते हैं।", "मैंने यह सूचना पढ़ ली है और इस सर्वे के लिए अपनी जानकारी देने के लिए सहमत हूँ।", "आगे बढ़ने के लिए कृपया बॉक्स पर टिक करें।"],
+  mr: ["गोपनीयता सूचना", "ECO Mobility तुमचे नाव, चालक आयडी, मोबाइल नंबर, शाखा आणि (तुम्ही दिल्यास) वाहन क्रमांक फक्त तुमचा अभिप्राय समजून घेण्यासाठी आणि त्यावर पुढे संपर्क साधण्यासाठी घेते. यात सहभागी होणे ऐच्छिक आहे आणि त्याचा ECO Mobility सोबतच्या तुमच्या व्यवसायावर कोणताही परिणाम होणार नाही. तुमची उत्तरे 12 महिने ठेवली जातील आणि नंतर हटवली जातील. तुमचा डेटा पाहण्यासाठी, दुरुस्त करण्यासाठी किंवा हटवण्यासाठी, संमती मागे घेण्यासाठी किंवा तक्रार करण्यासाठी {email} किंवा {phone} वर संपर्क साधा. तुम्ही भारतीय डेटा संरक्षण मंडळाकडेही तक्रार करू शकता.", "मी ही सूचना वाचली आहे आणि या सर्वेक्षणासाठी माझी माहिती देण्यास संमती देतो/देते.", "पुढे जाण्यासाठी कृपया बॉक्सवर टिक करा."],
+  gu: ["ગોપનીયતા સૂચના", "ECO Mobility તમારું નામ, ડ્રાઇવર આઈડી, મોબાઇલ નંબર, બ્રાન્ચ અને (તમે આપો તો) વાહન નંબર ફક્ત તમારો પ્રતિસાદ સમજવા અને તેના પર આગળ સંપર્ક કરવા માટે લે છે. ભાગ લેવો સંપૂર્ણપણે તમારી મરજી પર છે અને તેનાથી ECO Mobility સાથેના તમારા વ્યવસાય પર કોઈ અસર નહીં થાય. તમારા જવાબો 12 મહિના સુધી રાખવામાં આવશે અને પછી કાઢી નાખવામાં આવશે. તમારો ડેટા જોવા, સુધારવા કે કાઢી નાખવા, સંમતિ પાછી ખેંચવા અથવા ફરિયાદ કરવા માટે {email} અથવા {phone} પર સંપર્ક કરો. તમે ભારતના ડેટા પ્રોટેક્શન બોર્ડને પણ ફરિયાદ કરી શકો છો.", "મેં આ સૂચના વાંચી છે અને આ સર્વે માટે મારી વિગતો આપવા સંમત છું.", "આગળ વધવા માટે કૃપા કરીને બોક્સમાં ટિક કરો."],
+  pa: ["ਗੋਪਨੀਯਤਾ ਸੂਚਨਾ", "ECO Mobility ਤੁਹਾਡਾ ਨਾਮ, ਡਰਾਈਵਰ ਆਈਡੀ, ਮੋਬਾਈਲ ਨੰਬਰ, ਬ੍ਰਾਂਚ ਅਤੇ (ਜੇ ਤੁਸੀਂ ਦਿਓ) ਗੱਡੀ ਨੰਬਰ ਸਿਰਫ਼ ਤੁਹਾਡੀ ਰਾਏ ਸਮਝਣ ਅਤੇ ਉਸ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਲੈਂਦੀ ਹੈ। ਇਸ ਵਿੱਚ ਹਿੱਸਾ ਲੈਣਾ ਤੁਹਾਡੀ ਮਰਜ਼ੀ ਹੈ ਅਤੇ ਇਸ ਨਾਲ ECO Mobility ਨਾਲ ਤੁਹਾਡੇ ਕਾਰੋਬਾਰ 'ਤੇ ਕੋਈ ਅਸਰ ਨਹੀਂ ਪਵੇਗਾ। ਤੁਹਾਡੇ ਜਵਾਬ 12 ਮਹੀਨਿਆਂ ਤੱਕ ਰੱਖੇ ਜਾਣਗੇ ਅਤੇ ਫਿਰ ਮਿਟਾ ਦਿੱਤੇ ਜਾਣਗੇ। ਆਪਣਾ ਡੇਟਾ ਦੇਖਣ, ਠੀਕ ਕਰਵਾਉਣ ਜਾਂ ਮਿਟਵਾਉਣ, ਸਹਿਮਤੀ ਵਾਪਸ ਲੈਣ ਜਾਂ ਸ਼ਿਕਾਇਤ ਕਰਨ ਲਈ {email} ਜਾਂ {phone} 'ਤੇ ਸੰਪਰਕ ਕਰੋ। ਤੁਸੀਂ ਭਾਰਤੀ ਡੇਟਾ ਸੁਰੱਖਿਆ ਬੋਰਡ ਕੋਲ ਵੀ ਸ਼ਿਕਾਇਤ ਕਰ ਸਕਦੇ ਹੋ।", "ਮੈਂ ਇਹ ਸੂਚਨਾ ਪੜ੍ਹ ਲਈ ਹੈ ਅਤੇ ਇਸ ਸਰਵੇ ਲਈ ਆਪਣੀ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਸਹਿਮਤ ਹਾਂ।", "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਬਾਕਸ 'ਤੇ ਟਿੱਕ ਕਰੋ।"],
+  bn: ["গোপনীয়তা বিজ্ঞপ্তি", "ECO Mobility আপনার নাম, চালক আইডি, মোবাইল নম্বর, ব্রাঞ্চ এবং (আপনি দিলে) গাড়ির নম্বর শুধুমাত্র আপনার মতামত বুঝতে ও সে বিষয়ে পরে যোগাযোগ করতে সংগ্রহ করে। অংশগ্রহণ সম্পূর্ণ ঐচ্ছিক এবং এতে ECO Mobility-র সঙ্গে আপনার ব্যবসায় কোনো প্রভাব পড়বে না। আপনার উত্তর ১২ মাস রাখা হবে, তারপর মুছে ফেলা হবে। আপনার তথ্য দেখতে, সংশোধন বা মুছতে, সম্মতি প্রত্যাহার করতে বা অভিযোগ জানাতে {email} বা {phone}-এ যোগাযোগ করুন। আপনি ভারতের ডেটা সুরক্ষা বোর্ডেও অভিযোগ করতে পারেন।", "আমি এই বিজ্ঞপ্তি পড়েছি এবং এই সমীক্ষার জন্য আমার তথ্য দিতে সম্মত।", "এগিয়ে যেতে অনুগ্রহ করে বাক্সে টিক দিন।"],
+  as: ["গোপনীয়তা জাননী", "ECO Mobility-এ আপোনাৰ নাম, চালক আইডি, মোবাইল নম্বৰ, শাখা আৰু (আপুনি দিলে) গাড়ীৰ নম্বৰ কেৱল আপোনাৰ মতামত বুজিবলৈ আৰু সেই বিষয়ে পিছত যোগাযোগ কৰিবলৈ সংগ্ৰহ কৰে। অংশগ্ৰহণ সম্পূৰ্ণ ঐচ্ছিক আৰু ইয়াৰ ফলত ECO Mobility-ৰ সৈতে আপোনাৰ ব্যৱসায়ত কোনো প্ৰভাৱ নপৰে। আপোনাৰ উত্তৰ ১২ মাহ ৰখা হ'ব আৰু তাৰ পিছত মচি পেলোৱা হ'ব। আপোনাৰ তথ্য চাবলৈ, শুধৰাবলৈ বা মচিবলৈ, সন্মতি উঠাই ল'বলৈ বা অভিযোগ দিবলৈ {email} বা {phone}-ত যোগাযোগ কৰক। আপুনি ভাৰতৰ ডেটা সুৰক্ষা বৰ্ডতো অভিযোগ দিব পাৰে।", "মই এই জাননী পঢ়িছোঁ আৰু এই সমীক্ষাৰ বাবে মোৰ তথ্য দিবলৈ সন্মত।", "আগবাঢ়িবলৈ অনুগ্ৰহ কৰি বাকচত টিক দিয়ক।"],
+  or: ["ଗୋପନୀୟତା ସୂଚନା", "ECO Mobility ଆପଣଙ୍କ ନାମ, ଚାଳକ ଆଇଡି, ମୋବାଇଲ୍ ନମ୍ବର, ଶାଖା ଏବଂ (ଆପଣ ଦେଲେ) ଗାଡ଼ି ନମ୍ବର କେବଳ ଆପଣଙ୍କ ମତାମତ ବୁଝିବା ଓ ସେ ବିଷୟରେ ପରେ ଯୋଗାଯୋଗ କରିବା ପାଇଁ ସଂଗ୍ରହ କରେ। ଅଂଶଗ୍ରହଣ ସମ୍ପୂର୍ଣ୍ଣ ଇଚ୍ଛାଧୀନ ଏବଂ ଏହା ECO Mobility ସହ ଆପଣଙ୍କ ବ୍ୟବସାୟ ଉପରେ କୌଣସି ପ୍ରଭାବ ପକାଇବ ନାହିଁ। ଆପଣଙ୍କ ଉତ୍ତର 12 ମାସ ରଖାଯିବ ଏବଂ ତାପରେ ବିଲୋପ କରାଯିବ। ଆପଣଙ୍କ ତଥ୍ୟ ଦେଖିବା, ସଂଶୋଧନ ବା ବିଲୋପ କରିବା, ସମ୍ମତି ପ୍ରତ୍ୟାହାର କରିବା କିମ୍ବା ଅଭିଯୋଗ କରିବା ପାଇଁ {email} କିମ୍ବା {phone}ରେ ଯୋଗାଯୋଗ କରନ୍ତୁ। ଆପଣ ଭାରତର ଡାଟା ସୁରକ୍ଷା ବୋର୍ଡରେ ମଧ୍ୟ ଅଭିଯୋଗ କରିପାରିବେ।", "ମୁଁ ଏହି ସୂଚନା ପଢ଼ିଛି ଏବଂ ଏହି ସର୍ଭେ ପାଇଁ ମୋର ବିବରଣୀ ଦେବାକୁ ସମ୍ମତ।", "ଆଗକୁ ଯିବା ପାଇଁ ଦୟାକରି ବାକ୍ସରେ ଟିକ୍ ଦିଅନ୍ତୁ।"],
+  ta: ["தனியுரிமை அறிவிப்பு", "உங்கள் கருத்தைப் புரிந்துகொள்ளவும் அதைப் பற்றிப் பின்னர் தொடர்புகொள்ளவும் மட்டுமே ECO Mobility உங்கள் பெயர், ஓட்டுநர் ஐடி, மொபைல் எண், கிளை மற்றும் (நீங்கள் கொடுத்தால்) வாகன எண்ணைச் சேகரிக்கிறது. பங்கேற்பது முழுக்க உங்கள் விருப்பம்; இது ECO Mobility உடனான உங்கள் வணிகத்தைப் பாதிக்காது. உங்கள் பதில்கள் 12 மாதங்கள் வைக்கப்பட்டு, பின்னர் நீக்கப்படும். உங்கள் தரவைப் பார்க்க, திருத்த அல்லது நீக்க, ஒப்புதலைத் திரும்பப் பெற அல்லது புகார் அளிக்க {email} அல்லது {phone} ஐத் தொடர்புகொள்ளவும். இந்திய தரவுப் பாதுகாப்பு வாரியத்திடமும் நீங்கள் புகார் அளிக்கலாம்.", "இந்த அறிவிப்பைப் படித்தேன்; இந்தக் கணக்கெடுப்புக்காக என் விவரங்களைப் பகிர ஒப்புக்கொள்கிறேன்.", "தொடர, பெட்டியில் டிக் செய்யவும்."],
+  te: ["గోప్యతా నోటీసు", "మీ అభిప్రాయాన్ని అర్థం చేసుకోవడానికి, దానిపై తర్వాత సంప్రదించడానికి మాత్రమే ECO Mobility మీ పేరు, డ్రైవర్ ఐడి, మొబైల్ నంబర్, బ్రాంచ్ మరియు (మీరు ఇస్తే) వాహన నంబర్‌ను సేకరిస్తుంది. పాల్గొనడం పూర్తిగా మీ ఇష్టం; ఇది ECO Mobilityతో మీ వ్యాపారాన్ని ప్రభావితం చేయదు. మీ సమాధానాలు 12 నెలలు ఉంచబడి, ఆ తర్వాత తొలగించబడతాయి. మీ డేటాను చూడటానికి, సరిదిద్దటానికి లేదా తొలగించడానికి, సమ్మతిని ఉపసంహరించుకోవడానికి లేదా ఫిర్యాదు చేయడానికి {email} లేదా {phone}ను సంప్రదించండి. మీరు భారత డేటా రక్షణ బోర్డుకు కూడా ఫిర్యాదు చేయవచ్చు.", "నేను ఈ నోటీసు చదివాను మరియు ఈ సర్వే కోసం నా వివరాలు ఇవ్వడానికి అంగీకరిస్తున్నాను.", "కొనసాగడానికి దయచేసి బాక్స్‌ను టిక్ చేయండి."],
+  kn: ["ಗೌಪ್ಯತಾ ಸೂಚನೆ", "ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಮತ್ತು ಅದರ ಬಗ್ಗೆ ನಂತರ ಸಂಪರ್ಕಿಸಲು ಮಾತ್ರ ECO Mobility ನಿಮ್ಮ ಹೆಸರು, ಚಾಲಕ ಐಡಿ, ಮೊಬೈಲ್ ಸಂಖ್ಯೆ, ಶಾಖೆ ಮತ್ತು (ನೀವು ನೀಡಿದರೆ) ವಾಹನ ಸಂಖ್ಯೆಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ. ಭಾಗವಹಿಸುವುದು ಸಂಪೂರ್ಣ ಐಚ್ಛಿಕ; ಇದು ECO Mobility ಜೊತೆಗಿನ ನಿಮ್ಮ ವ್ಯವಹಾರದ ಮೇಲೆ ಯಾವುದೇ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ. ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು 12 ತಿಂಗಳು ಇರಿಸಿ, ನಂತರ ಅಳಿಸಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಡೇಟಾ ನೋಡಲು, ತಿದ್ದಲು ಅಥವಾ ಅಳಿಸಲು, ಸಮ್ಮತಿ ಹಿಂಪಡೆಯಲು ಅಥವಾ ದೂರು ನೀಡಲು {email} ಅಥವಾ {phone} ಅನ್ನು ಸಂಪರ್ಕಿಸಿ. ನೀವು ಭಾರತದ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಮಂಡಳಿಗೂ ದೂರು ನೀಡಬಹುದು.", "ನಾನು ಈ ಸೂಚನೆಯನ್ನು ಓದಿದ್ದೇನೆ ಮತ್ತು ಈ ಸಮೀಕ್ಷೆಗಾಗಿ ನನ್ನ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಒಪ್ಪುತ್ತೇನೆ.", "ಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಬಾಕ್ಸ್ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ."],
+  ml: ["സ്വകാര്യതാ അറിയിപ്പ്", "നിങ്ങളുടെ അഭിപ്രായം മനസ്സിലാക്കാനും അതിനെക്കുറിച്ച് പിന്നീട് ബന്ധപ്പെടാനും മാത്രമാണ് ECO Mobility നിങ്ങളുടെ പേര്, ഡ്രൈവർ ഐഡി, മൊബൈൽ നമ്പർ, ബ്രാഞ്ച്, (നിങ്ങൾ നൽകിയാൽ) വാഹന നമ്പർ എന്നിവ ശേഖരിക്കുന്നത്. പങ്കെടുക്കുന്നത് പൂർണ്ണമായും നിങ്ങളുടെ ഇഷ്ടമാണ്; ഇത് ECO Mobility-യുമായുള്ള നിങ്ങളുടെ ബിസിനസിനെ ബാധിക്കില്ല. നിങ്ങളുടെ ഉത്തരങ്ങൾ 12 മാസം സൂക്ഷിക്കുകയും തുടർന്ന് ഇല്ലാതാക്കുകയും ചെയ്യും. നിങ്ങളുടെ ഡാറ്റ കാണാനോ തിരുത്താനോ ഇല്ലാതാക്കാനോ, സമ്മതം പിൻവലിക്കാനോ, പരാതി നൽകാനോ {email} അല്ലെങ്കിൽ {phone} എന്നതിൽ ബന്ധപ്പെടുക. ഇന്ത്യയുടെ ഡാറ്റ സംരക്ഷണ ബോർഡിലും നിങ്ങൾക്ക് പരാതി നൽകാം.", "ഞാൻ ഈ അറിയിപ്പ് വായിച്ചു, ഈ സർവേയ്ക്കായി എന്റെ വിവരങ്ങൾ നൽകാൻ സമ്മതിക്കുന്നു.", "തുടരാൻ ദയവായി ബോക്സിൽ ടിക്ക് ചെയ്യുക."],
 };
 for (const k in PRIVACY) { [T[k].privTitle, T[k].privText, T[k].consent, T[k].needConsent] = PRIVACY[k]; }
 
@@ -562,7 +541,7 @@ function cleanVehicle(v) {
 
 // Welcome screen: [heading, why we are running the survey]
 const WELCOME = {
-  en: ["Welcome to the ECO Mobility Vendor Experience Survey", "This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you."],
+  en: ["Welcome to the ECO Mobility Business Partner Survey", "This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you."],
   hi: ["ECO Mobility वेंडर अनुभव सर्वे में आपका स्वागत है", "यह छोटा सर्वे भुगतान, सम्मान, व्यवसाय के निष्पक्ष बंटवारे, ब्रांच सहयोग और चालक प्रशिक्षण पर आपकी राय जानने के लिए है। आपके सच्चे जवाब हमें वही सुधारने में मदद करेंगे जो आपके लिए सबसे ज़रूरी है।"],
   mr: ["ECO Mobility व्हेंडर अनुभव सर्वेक्षणात आपले स्वागत आहे", "हे छोटे सर्वेक्षण पेमेंट, आदर, व्यवसायाचे निष्पक्ष वाटप, शाखेचे सहकार्य आणि चालक प्रशिक्षण याबद्दल तुमचे मत जाणून घेण्यासाठी आहे. तुमची प्रामाणिक उत्तरे आम्हाला तुमच्यासाठी सर्वात महत्त्वाच्या गोष्टी सुधारण्यास मदत करतील."],
   gu: ["ECO Mobility વેન્ડર અનુભવ સર્વેક્ષણમાં તમારું સ્વાગત છે", "આ ટૂંકો સર્વે ચુકવણી, આદર, વ્યવસાયની નિષ્પક્ષ ફાળવણી, બ્રાન્ચ સહકાર અને ડ્રાઇવર તાલીમ વિશે તમારો અભિપ્રાય જાણવા માટે છે. તમારા પ્રામાણિક જવાબો અમને તમારા માટે સૌથી મહત્વની બાબતો સુધારવામાં મદદ કરશે."],
@@ -607,7 +586,7 @@ const REPORT_KEYS = ["Q1 Credibility", "Q2 Respect", "Q3 Fairness", "Q4 Pride", 
 const TOTAL = 8; // 7 questions + suggestion
 
 const S = load() || { lang: null, screen: "lang", step: 0, a: {}, sug: "" };
-S.d = Object.assign({ name: "", id: "", phone: "", vehicle: "", consent: false, consentAt: "" }, S.d);
+S.d = Object.assign({ name: "", id: "", phone: "", branch: "", vehicle: "", consent: false, consentAt: "" }, S.d);
 if (S.screen === "welcome") S.screen = "lang";
 let showHint = false, showErrs = false;
 
@@ -619,8 +598,6 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const $view = document.getElementById("view");
 const $actions = document.getElementById("actions");
 
-function agreeColor(v) { return ["var(--bad)", "var(--bad)", "var(--mid)", "var(--good)", "var(--good)"][v - 1]; }
-function npsColor(v) { return v <= 6 ? "var(--bad)" : v <= 8 ? "var(--mid)" : "var(--good)"; }
 
 function render() {
   const L = t();
@@ -649,12 +626,9 @@ const splitHead = h => { const i = h.indexOf(" – "); return i < 0 ? [h, ""] : 
 function renderLang() {
   if (!S.lang) S.lang = deviceLang();
   const L = t();
-  const words = L.title.split(" ");
-  const last = words.pop();
-  const caps = s => S.lang === "en" ? s.toUpperCase() : s;
   document.getElementById("splashBanner").innerHTML = `
     <div class="hero-top">
-      <div class="logo-tile"><img src="/assets/logo.png" alt="ECO Mobility" width="64" height="64"></div>
+      <img class="hero-logo" src="/assets/logo.png" alt="ECO Mobility" width="72" height="72">
       <label class="lang-chip">${GLOBE}<span>${LANGS.find(l => l[0] === S.lang)[1]}</span>
         <svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <select id="langSel" aria-label="Language">
@@ -662,22 +636,21 @@ function renderLang() {
         </select>
       </label>
     </div>
-    <h1 class="hero-title">${caps(words.join(" "))} <span>${caps(last)}</span></h1>
-    <p class="hero-sub">${caps(L.tagline)}</p>
+    <h1 class="hero-title">${L.title}</h1>
+    <p class="hero-sub">${L.tagline}</p>
     <p class="hero-intro">${L.intro}</p>
     <div class="feature-row">
-      <div class="feature"><i aria-hidden="true">❓</i><span>${L.qs}</span></div>
-      <div class="feature"><i aria-hidden="true">⏱️</i><span>${L.time}</span></div>
-      <div class="feature"><i aria-hidden="true">🌐</i><span>${L.langCount}</span></div>
-    </div>
-    <div class="road" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>`;
-  const cards = [[0, "💳"], [1, "🤝"], [5, "🎓"]];
+      <div class="feature">${L.qs}</div>
+      <div class="feature">${L.time}</div>
+      <div class="feature">${L.langCount}</div>
+    </div>`;
+  const cards = [0, 1, 5];
   $view.innerHTML = `
     <p class="scan-line">${L.footer}</p>
     <h2 class="section-title">${L.whyTitle}</h2>
     <p class="section-lead">${L.why}</p>
     <div class="why-list">
-      ${cards.map(([i, ico]) => { const [h, d] = splitHead(L.q[i][0]); return `<article class="why-card"><i aria-hidden="true">${ico}</i><div><h3>${caps(h)}</h3><p>${d}</p></div></article>`; }).join("")}
+      ${cards.map(i => { const [h, d] = splitHead(L.q[i][0]); return `<article class="why-card"><h3>${h}</h3>${d ? `<p>${d}</p>` : ""}</article>`; }).join("")}
     </div>`;
   document.getElementById("langSel").onchange = e => { S.lang = e.target.value; save(); render(); };
   setActions([{ label: L.start + "  →", primary: true, on: () => {
@@ -704,6 +677,7 @@ function detailErrors() {
     name: S.d.name.trim() ? "" : L.req,
     id: S.d.id.trim() ? "" : L.req,
     phone: !S.d.phone.trim() ? L.req : cleanPhone(S.d.phone) ? "" : L.badPhone,
+    branch: BRANCHES.includes(S.d.branch) ? "" : L.req,
     vehicle: !S.d.vehicle.trim() || cleanVehicle(S.d.vehicle) ? "" : L.badVehicle,
     consent: S.d.consent ? "" : L.needConsent,
   };
@@ -715,12 +689,15 @@ function renderDetails() {
     ["name", L.fName, "text", "name", "text", ""],
     ["id", L.fId, "text", "off", "text", ""],
     ["phone", L.fPhone, "tel", "tel", "numeric", 'maxlength="18" placeholder="98XXXXXXXX"'],
+    ["branch", L.fBranch, "select"],
     ["vehicle", `${L.fVehicle} (${L.optional})`, "text", "off", "text", 'maxlength="16" autocapitalize="characters" spellcheck="false" placeholder="MH 12 AB 1234" style="text-transform: uppercase"'],
   ];
   $view.innerHTML = `<h2>${L.detTitle}</h2><p class="muted">${L.detNote}</p>
     <div class="fields">
       ${fields.map(([k, label, type, ac, im, extra]) => `<label class="field" for="d-${k}"><span>${label}</span>
-        <input id="d-${k}" type="${type}" autocomplete="${ac}" inputmode="${im}" value="${esc(S.d[k])}" ${extra}>
+        ${type === "select"
+          ? `<span class="select"><select id="d-${k}"><option value="">${L.pickBranch}</option>${BRANCHES.map(b => `<option ${S.d[k] === b ? "selected" : ""}>${esc(b)}</option>`).join("")}</select></span>`
+          : `<input id="d-${k}" type="${type}" autocomplete="${ac}" inputmode="${im}" value="${esc(S.d[k])}" ${extra}>`}
         <em class="err" id="e-${k}" hidden></em></label>`).join("")}
     </div>
     <section class="notice" aria-labelledby="privTitle">
@@ -766,11 +743,11 @@ function renderQ() {
   if (i < 5) {
     body = `<p class="muted">${L.rateAgree}</p>
       <div class="opts" role="radiogroup">
-        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="opt" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}"><span class="n">${v}</span><span class="l">${L.scale[v - 1]}</span></button>`).join("")}
+        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="opt" data-v="${v}" aria-checked="${S.a[i] === v}"><span class="n">${v}</span><span class="l">${L.scale[v - 1]}</span></button>`).join("")}
       </div>`;
   } else if (i === 5) {
     body = `<div class="row5" role="radiogroup">
-        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${agreeColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+        ${[5, 4, 3, 2, 1].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" aria-label="${v}">${v}</button>`).join("")}
       </div>
       <div class="ends"><span>5 – ${L.veryUseful}</span><span>1 – ${L.notUseful}</span></div>
       <div class="or">${L.or}</div>
@@ -780,7 +757,7 @@ function renderQ() {
       </div>`;
   } else if (i === 6) {
     body = `<div class="nps" role="radiogroup">
-        ${[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" style="--c:${npsColor(v)}" aria-label="${v}">${v}</button>`).join("")}
+        ${[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map(v => `<button type="button" role="radio" class="sq" data-v="${v}" aria-checked="${S.a[i] === v}" aria-label="${v}">${v}</button>`).join("")}
       </div>
       <div class="ends"><span>${L.npsHigh}</span><span>${L.npsLow}</span></div>`;
   }
@@ -848,7 +825,7 @@ const SEND_TEXT = {
 
 function payload() {
   const lang = LANGS.find(l => l[0] === S.lang)[2];
-  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), vehicleNumber: cleanVehicle(S.d.vehicle) || "", consent: S.d.consent === true, consentAt: S.d.consentAt, language: lang, suggestion: S.sug.trim() };
+  const out = { name: S.d.name.trim(), chauffeurId: S.d.id.trim(), mobile: cleanPhone(S.d.phone), branch: S.d.branch, vehicleNumber: cleanVehicle(S.d.vehicle) || "", consent: S.d.consent === true, consentAt: S.d.consentAt, language: lang, suggestion: S.sug.trim() };
   for (let i = 0; i < 7; i++) out["q" + (i + 1)] = S.a[i];
   return out;
 }
@@ -865,7 +842,7 @@ async function submit() {
     const j = await r.json().catch(() => ({}));
     if (!r.ok || !j.ok) throw new Error(j.error || "HTTP " + r.status);
     // Clear answers so the phone can be handed to the next chauffeur; keep the language.
-    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "", vehicle: "", consent: false, consentAt: "" } });
+    Object.assign(S, { screen: "done", step: 0, a: {}, sug: "", d: { name: "", id: "", phone: "", branch: "", vehicle: "", consent: false, consentAt: "" } });
     save(); render();
   } catch (e) {
     $view.querySelectorAll(".hint").forEach(n => n.remove());
@@ -887,7 +864,7 @@ function renderDone() {
   const L = t();
   $view.innerHTML = `
     <div class="done">
-      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sel)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
       <h1>${L.thanks}</h1>
       <p class="foot">${L.footer}</p>
     </div>`;

@@ -7,6 +7,8 @@
 
 const LANGUAGES = ["English", "Hindi", "Marathi", "Gujarati", "Punjabi", "Bengali", "Assamese", "Odia", "Tamil", "Telugu", "Kannada", "Malayalam"];
 
+const BRANCHES = ["Ahmedabad", "Bangalore", "Bhubaneswar", "Chakan", "Chandigarh", "Chennai", "Coimbatore & Cochin", "Gurgaon", "Guwahati", "Hyderabad", "Indore", "Jaipur", "Kapashera", "Kolkata", "Lucknow & Kanpur", "Mumbai", "Nagpur", "Noida", "Patna", "Pune", "Other Cities"];
+
 const isInt = (v, min, max) => Number.isInteger(v) && v >= min && v <= max;
 const text = (v, max) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
@@ -15,6 +17,7 @@ function validate(b) {
     name: text(b.name, 100),
     chauffeurId: text(b.chauffeurId, 40),
     mobile: text(b.mobile, 10),
+    branch: text(b.branch, 40),
     vehicleNumber: text(b.vehicleNumber, 12).toUpperCase(),
     language: text(b.language, 20),
     suggestion: text(b.suggestion, 1000),
@@ -28,6 +31,7 @@ function validate(b) {
   const consentAt = new Date(typeof b.consentAt === "string" ? b.consentAt : "");
   row.consentAt = (isNaN(consentAt) ? new Date() : consentAt).toISOString();
   if (!LANGUAGES.includes(row.language)) return ["unknown language"];
+  if (!BRANCHES.includes(row.branch)) return ["branch must be one of the listed branches"];
   for (let i = 1; i <= 5; i++) {
     if (!isInt(b["q" + i], 1, 5)) return [`q${i} must be 1-5`];
     row["q" + i] = b["q" + i];

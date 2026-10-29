@@ -1,4 +1,4 @@
-// ECO Mobility – Vendor Experience Survey: Google Sheet receiver.
+// ECO Mobility – Business Partner Survey: Google Sheet receiver.
 // Paste this into the sheet's Extensions → Apps Script, set SECRET, then
 // Deploy → New deployment → Web app (Execute as: Me, Who has access: Anyone).
 
@@ -6,7 +6,7 @@ const SECRET = "CHANGE-ME-to-a-long-random-string"; // must match SHEET_SECRET o
 const SHEET_NAME = "Responses";
 
 const HEADERS = [
-  "Submitted at", "Name", "Chauffeur ID", "Mobile", "Vehicle Number", "Language",
+  "Submitted at", "Name", "Chauffeur ID", "Mobile", "Branch", "Vehicle Number", "Language",
   "Q1. Credibility - Trust & Transparency: ECO Mobility ensures timely payments and maintains transparency in billing and payment processes. (1 = Strongly Disagree, 5 = Strongly Agree)",
   "Q2. Respect - Valuing Partners: My concerns and suggestions are heard, addressed and valued by ECO Mobility. (1-5)",
   "Q3. Fairness - Equal Opportunities: ECO Mobility allocates vehicle business opportunities fairly and transparently. (1-5)",
@@ -33,10 +33,10 @@ function doPost(e) {
     const sheet = getSheet();
     writeHeaders(sheet);
     const row = Math.max(sheet.getLastRow() + 1, 2);
-    // Keep Chauffeur ID, Mobile and Vehicle Number as text so leading zeros survive.
-    sheet.getRange(row, 3, 1, 3).setNumberFormat("@");
+    // Keep Chauffeur ID, Mobile, Branch and Vehicle Number as text so leading zeros survive.
+    sheet.getRange(row, 3, 1, 4).setNumberFormat("@");
     sheet.getRange(row, 1, 1, HEADERS.length).setValues([[
-      new Date(), body.name, body.chauffeurId, body.mobile, body.vehicleNumber || "", body.language,
+      new Date(), body.name, body.chauffeurId, body.mobile, body.branch || "", body.vehicleNumber || "", body.language,
       body.q1, body.q2, body.q3, body.q4, body.q5, body.q6, body.q7, body.suggestion || "",
       body.consentAt ? new Date(body.consentAt) : "",
     ]]);
