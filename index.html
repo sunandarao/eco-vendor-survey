@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#d50019">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>ECO Mobility – Vendor Experience Survey</title>
-<meta name="description" content="Share your experience as an ECO Mobility vehicle partner. 8 questions, about 2 minutes, in 11 Indian languages.">
+<meta name="description" content="Share your experience as an ECO Mobility vehicle partner. 8 questions, about 2 minutes, in 12 Indian languages.">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ECO Mobility">
 <meta property="og:url" content="https://eco-vendor-survey.vercel.app/">
 <meta property="og:title" content="ECO Mobility – Vendor Experience Survey">
-<meta property="og:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 11 languages.">
+<meta property="og:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 12 languages.">
 <meta property="og:image" content="https://eco-vendor-survey.vercel.app/assets/og-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -21,11 +21,11 @@
 <meta property="og:image:alt" content="ECO Mobility Vendor Experience Survey">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ECO Mobility – Vendor Experience Survey">
-<meta name="twitter:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 11 languages.">
+<meta name="twitter:description" content="Your Partnership. Your Voice. 8 questions · 2 minutes · 12 languages.">
 <meta name="twitter:image" content="https://eco-vendor-survey.vercel.app/assets/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: single-column phone app — ECO red app bar with wordmark, one question per screen, sticky bottom action bar */
 :root {
@@ -43,7 +43,7 @@
   --mid: #c98a12;
   --good: #1f8a4c;
   --wa: #1fa855;
-  --font-body: "Poppins", "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", system-ui, sans-serif;
+  --font-body: "Poppins", "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Bengali", "Noto Sans Gurmukhi", "Noto Sans Oriya", "Noto Sans Malayalam", "Noto Sans Gujarati", system-ui, sans-serif;
   --font-brand: "Archivo Black", "Arial Black", "Noto Sans", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -220,6 +220,7 @@ const LANGS = [
   ["en", "English", "English"],
   ["hi", "हिंदी", "Hindi"],
   ["mr", "मराठी", "Marathi"],
+  ["gu", "ગુજરાતી", "Gujarati"],
   ["pa", "ਪੰਜਾਬੀ", "Punjabi"],
   ["bn", "বাংলা", "Bengali"],
   ["as", "অসমীয়া", "Assamese"],
@@ -386,6 +387,28 @@ bn: {
   sendTitle: "শেষ ধাপ: আপনার উত্তর পাঠান", sendBody: "সবুজ বোতাম টিপে আপনার উত্তর WhatsApp-এ পাঠান।",
   wa: "WhatsApp-এ পাঠান", copy: "উত্তর কপি করুন", copied: "কপি হয়েছে", edit: "উত্তর বদলান",
 },
+gu: {
+  title: "વેન્ડર અનુભવ સર્વેક્ષણ", tagline: "તમારી ભાગીદારી. તમારો અવાજ.", greet: "પ્રિય માનનીય ભાગીદાર,",
+  intro: "ECO Mobility માં અમે તમારી ભાગીદારીને મહત્વ આપીએ છીએ. તમારો પ્રતિસાદ અમને વિશ્વાસ મજબૂત કરવામાં, અમારી સેવાઓ સુધારવામાં અને વધુ સારા સંબંધો બાંધવામાં મદદ કરશે.",
+  start: "સર્વે શરૂ કરો", time: "લગભગ 2 મિનિટ", qs: "8 ટૂંકા પ્રશ્નો", choose: "તમારી ભાષા પસંદ કરો",
+  scale: ["સંપૂર્ણ અસંમત", "અસંમત", "તટસ્થ", "સંમત", "સંપૂર્ણ સંમત"],
+  q: [
+    ["વિશ્વસનીયતા – વિશ્વાસ અને પારદર્શિતા", "ECO Mobility સમયસર ચુકવણી કરે છે અને બિલિંગ તથા ચુકવણી પ્રક્રિયામાં પારદર્શિતા જાળવે છે."],
+    ["આદર – ભાગીદારોની કદર", "મારી સમસ્યાઓ અને સૂચનો ECO Mobility સાંભળે છે, તેનું નિરાકરણ કરે છે અને તેને મહત્વ આપે છે."],
+    ["નિષ્પક્ષતા – સમાન તકો", "ECO Mobility વાહન વ્યવસાયની તકો નિષ્પક્ષ અને પારદર્શક રીતે ફાળવે છે."],
+    ["ગૌરવ – ECO સાથેનું જોડાણ", "વાહન ભાગીદાર તરીકે ECO Mobility સાથે જોડાયેલા હોવાનો મને ગર્વ છે."],
+    ["સહકાર – કાર્યકારી સંબંધો", "મને મારી ECO Mobility બ્રાન્ચ ટીમ તરફથી સહકાર અને સમર્થન મળે છે."],
+    ["ડ્રાઇવર તાલીમ અને વિકાસ", "ECO Mobility દ્વારા યોજાતા ડ્રાઇવર તાલીમ કાર્યક્રમો ડ્રાઇવરોની કુશળતા અને સેવાની ગુણવત્તા સુધારવામાં કેટલા ઉપયોગી છે?"],
+    ["એકંદર ભલામણ", "અન્ય વાહન માલિકોને તેમના વાહનો ECO Mobility સાથે જોડવા માટે ભલામણ કરવાની તમારી કેટલી શક્યતા છે?"],
+  ],
+  rateAgree: "એક પસંદ કરો: તમે કેટલા સંમત છો?", notUseful: "ઉપયોગી નથી", veryUseful: "ખૂબ ઉપયોગી", notAttended: "તાલીમમાં હાજરી આપી નથી", notSure: "ખાતરી નથી", or: "અથવા",
+  npsLow: "0 – બિલકુલ શક્યતા નથી", npsHigh: "10 – ખૂબ જ શક્યતા",
+  sugTitle: "તમારા સૂચનો", optional: "વૈકલ્પિક", sugQ: "ECO Mobility એ કઈ એક બાબતમાં સુધારો કરવો જોઈએ?", sugPh: "અહીં લખો…",
+  next: "આગળ", back: "પાછળ", submit: "સબમિટ કરો", skip: "છોડીને સબમિટ કરો", progress: "પ્રશ્ન {n} / {t}", pick: "આગળ વધવા માટે કૃપા કરીને એક જવાબ પસંદ કરો",
+  thanks: "તમારા મૂલ્યવાન પ્રતિસાદ બદલ આભાર!", footer: "ECO Mobility – સાથે મળીને આગળ વધીએ.",
+  sendTitle: "છેલ્લું પગલું: તમારા જવાબો મોકલો", sendBody: "લીલું બટન દબાવીને તમારા જવાબો WhatsApp પર મોકલો.",
+  wa: "WhatsApp પર મોકલો", copy: "જવાબો કૉપિ કરો", copied: "કૉપિ થયું", edit: "જવાબો બદલો",
+},
 pa: {
   title: "ਵੈਂਡਰ ਅਨੁਭਵ ਸਰਵੇਖਣ", tagline: "ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ। ਤੁਹਾਡੀ ਆਵਾਜ਼।", greet: "ਪਿਆਰੇ ਸਤਿਕਾਰਯੋਗ ਸਾਥੀ,",
   intro: "ECO Mobility ਵਿੱਚ ਅਸੀਂ ਤੁਹਾਡੀ ਸਾਂਝੇਦਾਰੀ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ। ਤੁਹਾਡੀ ਰਾਏ ਸਾਨੂੰ ਭਰੋਸਾ ਮਜ਼ਬੂਤ ਕਰਨ, ਆਪਣੀਆਂ ਸੇਵਾਵਾਂ ਸੁਧਾਰਨ ਅਤੇ ਬਿਹਤਰ ਰਿਸ਼ਤੇ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੇਗੀ।",
@@ -482,6 +505,7 @@ const DETAILS = {
   en: ["Your Details", "We need these to follow up on your feedback.", "Full name", "Chauffeur ID", "Mobile number", "Please fill this in", "Enter a valid 10-digit mobile number"],
   hi: ["आपकी जानकारी", "आपकी राय पर आगे संपर्क करने के लिए यह जानकारी ज़रूरी है।", "पूरा नाम", "चालक (शोफ़र) आईडी", "मोबाइल नंबर", "कृपया यह भरें", "सही 10 अंकों का मोबाइल नंबर डालें"],
   mr: ["तुमची माहिती", "तुमच्या अभिप्रायावर पुढे संपर्क साधण्यासाठी ही माहिती आवश्यक आहे.", "पूर्ण नाव", "चालक (शोफर) आयडी", "मोबाइल नंबर", "कृपया हे भरा", "योग्य 10 अंकी मोबाइल नंबर टाका"],
+  gu: ["તમારી વિગતો", "તમારા પ્રતિસાદ પર આગળ સંપર્ક કરવા માટે આ વિગતો જરૂરી છે.", "પૂરું નામ", "ડ્રાઇવર (શોફર) આઈડી", "મોબાઇલ નંબર", "કૃપા કરીને આ ભરો", "સાચો 10 અંકનો મોબાઇલ નંબર દાખલ કરો"],
   pa: ["ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ", "ਤੁਹਾਡੀ ਰਾਏ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਇਹ ਜਾਣਕਾਰੀ ਜ਼ਰੂਰੀ ਹੈ।", "ਪੂਰਾ ਨਾਮ", "ਡਰਾਈਵਰ (ਸ਼ੋਫ਼ਰ) ਆਈਡੀ", "ਮੋਬਾਈਲ ਨੰਬਰ", "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਭਰੋ", "ਸਹੀ 10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਭਰੋ"],
   bn: ["আপনার তথ্য", "আপনার মতামত নিয়ে পরে যোগাযোগের জন্য এই তথ্য প্রয়োজন।", "পুরো নাম", "চালক (শোফার) আইডি", "মোবাইল নম্বর", "অনুগ্রহ করে এটি পূরণ করুন", "সঠিক ১০ সংখ্যার মোবাইল নম্বর দিন"],
   as: ["আপোনাৰ তথ্য", "আপোনাৰ মতামতৰ বিষয়ে পিছত যোগাযোগ কৰিবলৈ এই তথ্য প্ৰয়োজন।", "সম্পূৰ্ণ নাম", "চালক (শ্বফাৰ) আইডি", "মোবাইল নম্বৰ", "অনুগ্ৰহ কৰি এইটো পূৰণ কৰক", "শুদ্ধ ১০ অংকৰ মোবাইল নম্বৰ দিয়ক"],
@@ -498,6 +522,7 @@ const VEHICLE = {
   en: ["Vehicle number", "Enter a valid vehicle number, e.g. MH12AB1234"],
   hi: ["वाहन नंबर", "सही वाहन नंबर डालें, जैसे MH12AB1234"],
   mr: ["वाहन क्रमांक", "योग्य वाहन क्रमांक टाका, उदा. MH12AB1234"],
+  gu: ["વાહન નંબર", "સાચો વાહન નંબર દાખલ કરો, દા.ત. MH12AB1234"],
   pa: ["ਗੱਡੀ ਨੰਬਰ", "ਸਹੀ ਗੱਡੀ ਨੰਬਰ ਭਰੋ, ਜਿਵੇਂ MH12AB1234"],
   bn: ["গাড়ির নম্বর", "সঠিক গাড়ির নম্বর দিন, যেমন MH12AB1234"],
   as: ["গাড়ীৰ নম্বৰ", "শুদ্ধ গাড়ীৰ নম্বৰ দিয়ক, যেনে MH12AB1234"],
@@ -517,6 +542,7 @@ const PRIVACY = {
   en: ["Privacy notice", "ECO Mobility collects your name, chauffeur ID, mobile number and (if you give it) vehicle number only to understand your feedback and follow up on it. Taking part is voluntary and will not affect your business with ECO Mobility. Your responses are kept for 12 months and then deleted. To see, correct or delete your data, withdraw consent or raise a complaint, contact {email} or {phone}. You can also complain to the Data Protection Board of India.", "I have read this notice and agree to share my details for this survey.", "Please tick the box to continue."],
   hi: ["गोपनीयता सूचना", "ECO Mobility आपका नाम, चालक आईडी, मोबाइल नंबर और (यदि आप दें तो) वाहन नंबर केवल आपकी राय समझने और उस पर आगे संपर्क करने के लिए लेता है। इसमें भाग लेना आपकी इच्छा पर है और इससे ECO Mobility के साथ आपके व्यवसाय पर कोई असर नहीं पड़ेगा। आपके जवाब 12 महीने तक रखे जाएँगे और फिर हटा दिए जाएँगे। अपना डेटा देखने, सुधारने या हटवाने, सहमति वापस लेने या शिकायत करने के लिए {email} या {phone} पर संपर्क करें। आप भारतीय डेटा संरक्षण बोर्ड से भी शिकायत कर सकते हैं।", "मैंने यह सूचना पढ़ ली है और इस सर्वे के लिए अपनी जानकारी देने के लिए सहमत हूँ।", "आगे बढ़ने के लिए कृपया बॉक्स पर टिक करें।"],
   mr: ["गोपनीयता सूचना", "ECO Mobility तुमचे नाव, चालक आयडी, मोबाइल नंबर आणि (तुम्ही दिल्यास) वाहन क्रमांक फक्त तुमचा अभिप्राय समजून घेण्यासाठी आणि त्यावर पुढे संपर्क साधण्यासाठी घेते. यात सहभागी होणे ऐच्छिक आहे आणि त्याचा ECO Mobility सोबतच्या तुमच्या व्यवसायावर कोणताही परिणाम होणार नाही. तुमची उत्तरे 12 महिने ठेवली जातील आणि नंतर हटवली जातील. तुमचा डेटा पाहण्यासाठी, दुरुस्त करण्यासाठी किंवा हटवण्यासाठी, संमती मागे घेण्यासाठी किंवा तक्रार करण्यासाठी {email} किंवा {phone} वर संपर्क साधा. तुम्ही भारतीय डेटा संरक्षण मंडळाकडेही तक्रार करू शकता.", "मी ही सूचना वाचली आहे आणि या सर्वेक्षणासाठी माझी माहिती देण्यास संमती देतो/देते.", "पुढे जाण्यासाठी कृपया बॉक्सवर टिक करा."],
+  gu: ["ગોપનીયતા સૂચના", "ECO Mobility તમારું નામ, ડ્રાઇવર આઈડી, મોબાઇલ નંબર અને (તમે આપો તો) વાહન નંબર ફક્ત તમારો પ્રતિસાદ સમજવા અને તેના પર આગળ સંપર્ક કરવા માટે લે છે. ભાગ લેવો સંપૂર્ણપણે તમારી મરજી પર છે અને તેનાથી ECO Mobility સાથેના તમારા વ્યવસાય પર કોઈ અસર નહીં થાય. તમારા જવાબો 12 મહિના સુધી રાખવામાં આવશે અને પછી કાઢી નાખવામાં આવશે. તમારો ડેટા જોવા, સુધારવા કે કાઢી નાખવા, સંમતિ પાછી ખેંચવા અથવા ફરિયાદ કરવા માટે {email} અથવા {phone} પર સંપર્ક કરો. તમે ભારતના ડેટા પ્રોટેક્શન બોર્ડને પણ ફરિયાદ કરી શકો છો.", "મેં આ સૂચના વાંચી છે અને આ સર્વે માટે મારી વિગતો આપવા સંમત છું.", "આગળ વધવા માટે કૃપા કરીને બોક્સમાં ટિક કરો."],
   pa: ["ਗੋਪਨੀਯਤਾ ਸੂਚਨਾ", "ECO Mobility ਤੁਹਾਡਾ ਨਾਮ, ਡਰਾਈਵਰ ਆਈਡੀ, ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ (ਜੇ ਤੁਸੀਂ ਦਿਓ) ਗੱਡੀ ਨੰਬਰ ਸਿਰਫ਼ ਤੁਹਾਡੀ ਰਾਏ ਸਮਝਣ ਅਤੇ ਉਸ 'ਤੇ ਅੱਗੇ ਸੰਪਰਕ ਕਰਨ ਲਈ ਲੈਂਦੀ ਹੈ। ਇਸ ਵਿੱਚ ਹਿੱਸਾ ਲੈਣਾ ਤੁਹਾਡੀ ਮਰਜ਼ੀ ਹੈ ਅਤੇ ਇਸ ਨਾਲ ECO Mobility ਨਾਲ ਤੁਹਾਡੇ ਕਾਰੋਬਾਰ 'ਤੇ ਕੋਈ ਅਸਰ ਨਹੀਂ ਪਵੇਗਾ। ਤੁਹਾਡੇ ਜਵਾਬ 12 ਮਹੀਨਿਆਂ ਤੱਕ ਰੱਖੇ ਜਾਣਗੇ ਅਤੇ ਫਿਰ ਮਿਟਾ ਦਿੱਤੇ ਜਾਣਗੇ। ਆਪਣਾ ਡੇਟਾ ਦੇਖਣ, ਠੀਕ ਕਰਵਾਉਣ ਜਾਂ ਮਿਟਵਾਉਣ, ਸਹਿਮਤੀ ਵਾਪਸ ਲੈਣ ਜਾਂ ਸ਼ਿਕਾਇਤ ਕਰਨ ਲਈ {email} ਜਾਂ {phone} 'ਤੇ ਸੰਪਰਕ ਕਰੋ। ਤੁਸੀਂ ਭਾਰਤੀ ਡੇਟਾ ਸੁਰੱਖਿਆ ਬੋਰਡ ਕੋਲ ਵੀ ਸ਼ਿਕਾਇਤ ਕਰ ਸਕਦੇ ਹੋ।", "ਮੈਂ ਇਹ ਸੂਚਨਾ ਪੜ੍ਹ ਲਈ ਹੈ ਅਤੇ ਇਸ ਸਰਵੇ ਲਈ ਆਪਣੀ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਸਹਿਮਤ ਹਾਂ।", "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਬਾਕਸ 'ਤੇ ਟਿੱਕ ਕਰੋ।"],
   bn: ["গোপনীয়তা বিজ্ঞপ্তি", "ECO Mobility আপনার নাম, চালক আইডি, মোবাইল নম্বর এবং (আপনি দিলে) গাড়ির নম্বর শুধুমাত্র আপনার মতামত বুঝতে ও সে বিষয়ে পরে যোগাযোগ করতে সংগ্রহ করে। অংশগ্রহণ সম্পূর্ণ ঐচ্ছিক এবং এতে ECO Mobility-র সঙ্গে আপনার ব্যবসায় কোনো প্রভাব পড়বে না। আপনার উত্তর ১২ মাস রাখা হবে, তারপর মুছে ফেলা হবে। আপনার তথ্য দেখতে, সংশোধন বা মুছতে, সম্মতি প্রত্যাহার করতে বা অভিযোগ জানাতে {email} বা {phone}-এ যোগাযোগ করুন। আপনি ভারতের ডেটা সুরক্ষা বোর্ডেও অভিযোগ করতে পারেন।", "আমি এই বিজ্ঞপ্তি পড়েছি এবং এই সমীক্ষার জন্য আমার তথ্য দিতে সম্মত।", "এগিয়ে যেতে অনুগ্রহ করে বাক্সে টিক দিন।"],
   as: ["গোপনীয়তা জাননী", "ECO Mobility-এ আপোনাৰ নাম, চালক আইডি, মোবাইল নম্বৰ আৰু (আপুনি দিলে) গাড়ীৰ নম্বৰ কেৱল আপোনাৰ মতামত বুজিবলৈ আৰু সেই বিষয়ে পিছত যোগাযোগ কৰিবলৈ সংগ্ৰহ কৰে। অংশগ্ৰহণ সম্পূৰ্ণ ঐচ্ছিক আৰু ইয়াৰ ফলত ECO Mobility-ৰ সৈতে আপোনাৰ ব্যৱসায়ত কোনো প্ৰভাৱ নপৰে। আপোনাৰ উত্তৰ ১২ মাহ ৰখা হ'ব আৰু তাৰ পিছত মচি পেলোৱা হ'ব। আপোনাৰ তথ্য চাবলৈ, শুধৰাবলৈ বা মচিবলৈ, সন্মতি উঠাই ল'বলৈ বা অভিযোগ দিবলৈ {email} বা {phone}-ত যোগাযোগ কৰক। আপুনি ভাৰতৰ ডেটা সুৰক্ষা বৰ্ডতো অভিযোগ দিব পাৰে।", "মই এই জাননী পঢ়িছোঁ আৰু এই সমীক্ষাৰ বাবে মোৰ তথ্য দিবলৈ সন্মত।", "আগবাঢ়িবলৈ অনুগ্ৰহ কৰি বাকচত টিক দিয়ক।"],
@@ -539,6 +565,7 @@ const WELCOME = {
   en: ["Welcome to the ECO Mobility Vendor Experience Survey", "This short survey asks how we are doing on payments, respect, fair allocation of business, branch support and chauffeur training. Your honest answers help us fix what matters most to you."],
   hi: ["ECO Mobility वेंडर अनुभव सर्वे में आपका स्वागत है", "यह छोटा सर्वे भुगतान, सम्मान, व्यवसाय के निष्पक्ष बंटवारे, ब्रांच सहयोग और चालक प्रशिक्षण पर आपकी राय जानने के लिए है। आपके सच्चे जवाब हमें वही सुधारने में मदद करेंगे जो आपके लिए सबसे ज़रूरी है।"],
   mr: ["ECO Mobility व्हेंडर अनुभव सर्वेक्षणात आपले स्वागत आहे", "हे छोटे सर्वेक्षण पेमेंट, आदर, व्यवसायाचे निष्पक्ष वाटप, शाखेचे सहकार्य आणि चालक प्रशिक्षण याबद्दल तुमचे मत जाणून घेण्यासाठी आहे. तुमची प्रामाणिक उत्तरे आम्हाला तुमच्यासाठी सर्वात महत्त्वाच्या गोष्टी सुधारण्यास मदत करतील."],
+  gu: ["ECO Mobility વેન્ડર અનુભવ સર્વેક્ષણમાં તમારું સ્વાગત છે", "આ ટૂંકો સર્વે ચુકવણી, આદર, વ્યવસાયની નિષ્પક્ષ ફાળવણી, બ્રાન્ચ સહકાર અને ડ્રાઇવર તાલીમ વિશે તમારો અભિપ્રાય જાણવા માટે છે. તમારા પ્રામાણિક જવાબો અમને તમારા માટે સૌથી મહત્વની બાબતો સુધારવામાં મદદ કરશે."],
   pa: ["ECO Mobility ਵੈਂਡਰ ਅਨੁਭਵ ਸਰਵੇਖਣ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ", "ਇਹ ਛੋਟਾ ਸਰਵੇ ਭੁਗਤਾਨ, ਸਤਿਕਾਰ, ਕਾਰੋਬਾਰ ਦੀ ਨਿਰਪੱਖ ਵੰਡ, ਬ੍ਰਾਂਚ ਸਹਿਯੋਗ ਅਤੇ ਡਰਾਈਵਰ ਸਿਖਲਾਈ ਬਾਰੇ ਤੁਹਾਡੀ ਰਾਏ ਜਾਣਨ ਲਈ ਹੈ। ਤੁਹਾਡੇ ਸੱਚੇ ਜਵਾਬ ਸਾਨੂੰ ਉਹ ਸੁਧਾਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨਗੇ ਜੋ ਤੁਹਾਡੇ ਲਈ ਸਭ ਤੋਂ ਜ਼ਰੂਰੀ ਹੈ।"],
   bn: ["ECO Mobility ভেন্ডর অভিজ্ঞতা সমীক্ষায় আপনাকে স্বাগত", "এই ছোট সমীক্ষায় পেমেন্ট, সম্মান, ব্যবসার ন্যায্য বণ্টন, ব্রাঞ্চের সহযোগিতা এবং চালক প্রশিক্ষণ নিয়ে আপনার মতামত জানতে চাওয়া হয়েছে। আপনার সৎ উত্তর আমাদের সেই বিষয়গুলি উন্নত করতে সাহায্য করবে যা আপনার কাছে সবচেয়ে গুরুত্বপূর্ণ।"],
   as: ["ECO Mobility ভেণ্ডৰ অভিজ্ঞতা সমীক্ষালৈ আপোনাক স্বাগতম", "এই চুটি সমীক্ষাত পেমেণ্ট, সন্মান, ব্যৱসায়ৰ ন্যায্য বিতৰণ, শাখাৰ সহযোগিতা আৰু চালক প্ৰশিক্ষণৰ বিষয়ে আপোনাৰ মতামত বিচৰা হৈছে। আপোনাৰ সঁচা উত্তৰে আমাক আপোনাৰ বাবে আটাইতকৈ গুৰুত্বপূৰ্ণ বিষয়সমূহ উন্নত কৰাত সহায় কৰিব।"],
@@ -552,17 +579,18 @@ for (const k in WELCOME) { T[k].welcome = WELCOME[k][0]; T[k].why = WELCOME[k][1
 
 // First page: [why heading, language count]
 const FRONT = {
-  en: ["Why this survey?", "11 languages"],
-  hi: ["यह सर्वे क्यों?", "11 भाषाएँ"],
-  mr: ["हे सर्वेक्षण का?", "11 भाषा"],
-  pa: ["ਇਹ ਸਰਵੇ ਕਿਉਂ?", "11 ਭਾਸ਼ਾਵਾਂ"],
-  bn: ["এই সমীক্ষা কেন?", "১১টি ভাষা"],
-  as: ["এই সমীক্ষা কিয়?", "১১টা ভাষা"],
-  or: ["ଏହି ସର୍ଭେ କାହିଁକି?", "11ଟି ଭାଷା"],
-  ta: ["இந்தக் கணக்கெடுப்பு ஏன்?", "11 மொழிகள்"],
-  te: ["ఈ సర్వే ఎందుకు?", "11 భాషలు"],
-  kn: ["ಈ ಸಮೀಕ್ಷೆ ಏಕೆ?", "11 ಭಾಷೆಗಳು"],
-  ml: ["ഈ സർവേ എന്തിന്?", "11 ഭാഷകൾ"],
+  en: ["Why this survey?", "12 languages"],
+  hi: ["यह सर्वे क्यों?", "12 भाषाएँ"],
+  mr: ["हे सर्वेक्षण का?", "12 भाषा"],
+  gu: ["આ સર્વે શા માટે?", "12 ભાષાઓ"],
+  pa: ["ਇਹ ਸਰਵੇ ਕਿਉਂ?", "12 ਭਾਸ਼ਾਵਾਂ"],
+  bn: ["এই সমীক্ষা কেন?", "১২টি ভাষা"],
+  as: ["এই সমীক্ষা কিয়?", "১২টা ভাষা"],
+  or: ["ଏହି ସର୍ଭେ କାହିଁକି?", "12ଟି ଭାଷା"],
+  ta: ["இந்தக் கணக்கெடுப்பு ஏன்?", "12 மொழிகள்"],
+  te: ["ఈ సర్వే ఎందుకు?", "12 భాషలు"],
+  kn: ["ಈ ಸಮೀಕ್ಷೆ ಏಕೆ?", "12 ಭಾಷೆಗಳು"],
+  ml: ["ഈ സർവേ എന്തിന്?", "12 ഭാഷകൾ"],
 };
 for (const k in FRONT) { T[k].whyTitle = FRONT[k][0]; T[k].langCount = FRONT[k][1]; }
 
@@ -807,6 +835,7 @@ const SEND_TEXT = {
   en: ["Sending…", "Could not send. Check your internet connection and try again.", "Try again"],
   hi: ["भेजा जा रहा है…", "भेजा नहीं जा सका। इंटरनेट कनेक्शन जाँचें और फिर से कोशिश करें।", "फिर से कोशिश करें"],
   mr: ["पाठवत आहे…", "पाठवता आले नाही. इंटरनेट कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.", "पुन्हा प्रयत्न करा"],
+  gu: ["મોકલી રહ્યા છીએ…", "મોકલી શકાયું નહીં. તમારું ઇન્ટરનેટ કનેક્શન તપાસો અને ફરી પ્રયાસ કરો.", "ફરી પ્રયાસ કરો"],
   pa: ["ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…", "ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।", "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ"],
   bn: ["পাঠানো হচ্ছে…", "পাঠানো যায়নি। ইন্টারনেট সংযোগ দেখে আবার চেষ্টা করুন।", "আবার চেষ্টা করুন"],
   as: ["পঠিয়া হৈছে…", "পঠিয়াব পৰা নগ'ল। ইণ্টাৰনেট সংযোগ পৰীক্ষা কৰি পুনৰ চেষ্টা কৰক।", "পুনৰ চেষ্টা কৰক"],

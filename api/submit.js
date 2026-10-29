@@ -5,7 +5,7 @@
 //   SHEET_WEBHOOK_URL  the Apps Script web app URL ending in /exec
 //   SHEET_SECRET       the same secret string set in Code.gs
 
-const LANGUAGES = ["English", "Hindi", "Marathi", "Punjabi", "Bengali", "Assamese", "Odia", "Tamil", "Telugu", "Kannada", "Malayalam"];
+const LANGUAGES = ["English", "Hindi", "Marathi", "Gujarati", "Punjabi", "Bengali", "Assamese", "Odia", "Tamil", "Telugu", "Kannada", "Malayalam"];
 
 const isInt = (v, min, max) => Number.isInteger(v) && v >= min && v <= max;
 const text = (v, max) => (typeof v === "string" ? v.trim().slice(0, max) : "");

@@ -1,6 +1,6 @@
 # ECO Mobility – Vendor Experience Survey
 
-A mobile survey for ECO Mobility vehicle partners and chauffeurs in 11 languages: English, Hindi, Marathi, Punjabi, Bengali, Assamese, Odia, Tamil, Telugu, Kannada and Malayalam. Each response is saved as a row in a Google Sheet.
+A mobile survey for ECO Mobility vehicle partners and chauffeurs in 12 languages: English, Hindi, Marathi, Gujarati, Punjabi, Bengali, Assamese, Odia, Tamil, Telugu, Kannada and Malayalam. Each response is saved as a row in a Google Sheet.
 
 - `index.html`: the survey page (language picker, details, 7 questions, suggestion)
 - `api/submit.js`: Vercel function that checks each response and forwards it to the sheet
